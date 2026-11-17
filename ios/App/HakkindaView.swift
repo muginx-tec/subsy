@@ -95,6 +95,15 @@ struct HakkindaView: View {
                         Label(Hakkinda.destek, systemImage: "envelope")
                             .font(.system(size: 15, weight: .semibold)).foregroundColor(Theme.accent)
                     }
+                    // Gizlilik ve koşullar her zaman görünür (Apple 5.1.1: gizlilik bağlantısı uygulamada kolay bulunmalı).
+                    Button { openURL(Hakkinda.gizlilikAdresi) } label: {
+                        Label(L("Gizlilik"), systemImage: "hand.raised")
+                            .font(.system(size: 15, weight: .semibold)).foregroundColor(Theme.accent)
+                    }
+                    Button { openURL(Hakkinda.kosullarAdresi) } label: {
+                        Label(L("Kullanım Koşulları"), systemImage: "doc.text")
+                            .font(.system(size: 15, weight: .semibold)).foregroundColor(Theme.accent)
+                    }
                 }
             }
             .padding(20)

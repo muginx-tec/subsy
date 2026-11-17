@@ -41,7 +41,7 @@ struct BaglanView: View {
                     }
                     .padding(.top, 8)
                     if !konsol.hesapNo.isEmpty {
-                        Button("PSN hesabını değiştir (\(UserDefaults.standard.string(forKey: "psnAd") ?? "giriş yapıldı"))") { showGiris = true }
+                        Button(L("PSN hesabını değiştir") + (UserDefaults.standard.string(forKey: "psnAd").map { " (\($0))" } ?? "")) { showGiris = true }
                             .font(.system(size: 13)).foregroundColor(Theme.dim).padding(.top, 8)
                     }
                 } label: {
@@ -121,7 +121,7 @@ struct BaglanView: View {
                 }
                 .disabled(konsol.durum == .baglaniyor)
                 if case .koptu(let neden) = konsol.durum {
-                    Text("Bağlantı kesildi\(neden.isEmpty ? "" : ": \(neden)")").font(.system(size: 13)).foregroundColor(Theme.dim)
+                    Text(L("Bağlantı kesildi") + (neden.isEmpty ? "" : ": \(neden)")).font(.system(size: 13)).foregroundColor(Theme.dim)
                 }
                 Button(L("Eşleştirmeyi sil")) { konsol.kaydiSil() }.font(.system(size: 13)).foregroundColor(Theme.dim)
             } else if konsol.hesapNo.isEmpty {
@@ -133,7 +133,7 @@ struct BaglanView: View {
                      : L("PS4'te Ayarlar > Uzaktan Oynama Bağlantı Ayarları > Cihaz Ekle ekranını aç. Çıkan 8 haneli kodu buraya yaz."))
                     .font(.system(size: 14)).foregroundColor(Theme.dim).fixedSize(horizontal: false, vertical: true)
                 HStack(spacing: 10) {
-                    TextField("8 haneli kod", text: $pin)
+                    TextField(L("8 haneli kod"), text: $pin)
                         .keyboardType(.numberPad).font(.system(size: 20, weight: .semibold, design: .monospaced))
                         .padding(.horizontal, 14).padding(.vertical, 12)
                         .background(RoundedRectangle(cornerRadius: 12).fill(Color.black.opacity(0.35)))

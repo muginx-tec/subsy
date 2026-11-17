@@ -32,7 +32,7 @@ struct SettingsView: View {
                         }
                         Text(dilDurumu).font(.system(size: 13)).foregroundColor(Theme.dim).fixedSize(horizontal: false, vertical: true)
                         if model.language == "indirilmeli" {
-                            Button("Dil paketini indir") { dismiss(); model.onDownloadLanguage() }
+                            Button(L("Dil paketini indir")) { dismiss(); model.onDownloadLanguage() }
                                 .font(.system(size: 14, weight: .semibold)).foregroundColor(Theme.accent)
                         }
                     }
@@ -107,7 +107,7 @@ struct SettingsView: View {
         case "kurulu": return L("Telefonla çeviri bu dilde hazır.")
         case "indirilmeli": return L("Telefonla çeviri için dil paketi bir kez indirilmeli (ücretsiz).")
         case "desteklenmiyor": return L("Telefonun hazır çevirisi bu dili desteklemiyor. Bu dilde yalnız \"Yapay zekâ ile çevir\" çalışır.")
-        default: return "Denetleniyor..."
+        default: return L("Denetleniyor...")
         }
     }
 

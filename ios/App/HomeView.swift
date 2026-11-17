@@ -252,7 +252,7 @@ struct HomeView: View {
         HStack(spacing: 12) {
             Image(systemName: "arrow.down.circle.fill").font(.system(size: 22)).foregroundColor(Theme.accent)
             VStack(alignment: .leading, spacing: 2) {
-                Text("\(model.dilAdi) dil paketi").font(.system(size: 15, weight: .semibold)).foregroundColor(.white)
+                Text(model.dilAdi + " · " + L("Dil paketi")).font(.system(size: 15, weight: .semibold)).foregroundColor(.white)
                 Text(model.language == "desteklenmiyor" ? L("Telefon bu dili çeviremiyor. Ayarlar'dan yapay zekâyı seç.")
                                                         : L("Telefonla çeviri için bir kez indirilmeli (ücretsiz)."))
                     .font(.system(size: 13)).foregroundColor(Theme.dim).fixedSize(horizontal: false, vertical: true)

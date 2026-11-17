@@ -167,7 +167,7 @@ struct PsnGirisView: View {
                             dismiss()
                         } catch {
                             calisiyor = false
-                            durum = "Olmadı: \((error as? PsnGiris.Hata)?.mesaj ?? error.localizedDescription). Yeniden dene."
+                            durum = L("Giriş olmadı, yeniden dene.") + " (\((error as? PsnGiris.Hata)?.mesaj ?? error.localizedDescription))"
                         }
                     }
                 }
