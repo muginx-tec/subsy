@@ -286,9 +286,15 @@ struct ProView: View {
         .preferredColorScheme(.dark)
         .task { await magaza.yukle() }
         .onChange(of: yonetiyor) { _, acik in if !acik { Task { await magaza.yukle() } } }   // pencere kapanınca durumu tazele
+        .onChange(of: sahne) { _, yeni in
+            if yeni == .active && instagramaGitti { instagramaGitti = false; Task { await magaza.denemeAl() } }
+        }
     }
 
     @State private var paylasiyor = false
+    /// Instagram hikâye ekranı açıldı; uygulamaya dönünce 1 saat verilir (Instagram "paylaşıldı" bildirmez).
+    @State private var instagramaGitti = false
+    @Environment(\.scenePhase) private var sahne
     @State private var yonetiyor = false
 
     /// Paylaşana 1 saat Pro (Selim'in kararı, 2026-11-17). Sistem paylaşım penceresi açılır; Instagram
@@ -299,9 +305,14 @@ struct ProView: View {
                 .font(.system(size: 17, weight: .bold)).foregroundColor(.white)
             Text(L("Subsy'yi Instagram'da paylaş, yapay zekâ çevirisini 1 saat ücretsiz dene."))
                 .font(.system(size: 14)).foregroundColor(Color.white.opacity(0.78)).fixedSize(horizontal: false, vertical: true)
-            Button { paylasiyor = true } label: {
+            Button {
+                if Paylasim.hikayeAcik {
+                    Task { instagramaGitti = await Paylasim.hikayedePaylas() }
+                } else { paylasiyor = true }
+            } label: {
                 Group {
                     if magaza.islenen == "deneme" { ProgressView().tint(.black) }
+                    else if Paylasim.hikayeAcik { Label(L("Instagram hikâyende paylaş"), systemImage: "camera.fill") }
                     else { Label(L("Paylaş"), systemImage: "square.and.arrow.up") }
                 }
                     .font(.system(size: 16, weight: .bold)).foregroundColor(.black)
@@ -335,8 +346,34 @@ struct ProView: View {
 
 
 /// Paylaşılan içerik: Subsy kartı (resim), kısa yazı ve ürün sayfası bağlantısı.
+/// Asıl yol Instagram hikâyesi (Strava gibi çıkartma; Selim, 2026-11-17). Meta kimliği boşsa ya da
+/// Instagram kurulu değilse sistemin paylaşım penceresi açılır.
 enum Paylasim {
     static let adres = URL(string: "https://muginx.com/subsy/")!
+
+    /// Meta (Facebook) uygulama kimliği. Ocak 2023'ten beri Instagram hikâyesine paylaşım bunu ister
+    /// (developers.facebook.com, "Sharing to Stories"). Gizli değil. Boşken hikâye yolu kapalı.
+    static let metaUygulamaKimligi = ""
+
+    static var hikayeAcik: Bool {
+        !metaUygulamaKimligi.isEmpty && UIApplication.shared.canOpenURL(URL(string: "instagram-stories://share")!)
+    }
+
+    /// Çıkartmayı panoya koyup Instagram'ı hikâye ekranında açar. Instagram açıldıysa true.
+    /// Instagram gönderinin paylaşılıp paylaşılmadığını bildirmez [Meta'nın belgesi: geri bildirim yok].
+    @MainActor
+    static func hikayedePaylas() async -> Bool {
+        let r = ImageRenderer(content: HikayeCikartmasi())
+        r.scale = 1
+        guard let png = r.uiImage?.pngData(),
+              let url = URL(string: "instagram-stories://share?source_application=" + metaUygulamaKimligi) else { return false }
+        UIPasteboard.general.setItems([[
+            "com.instagram.sharedSticker.stickerImage": png,
+            "com.instagram.sharedSticker.backgroundTopColor": "#0D0F33",
+            "com.instagram.sharedSticker.backgroundBottomColor": "#2A0B45",
+        ]], options: [.expirationDate: Date().addingTimeInterval(300)])
+        return await UIApplication.shared.open(url)
+    }
 
     @MainActor
     static func ogeler() -> [Any] {
@@ -345,6 +382,32 @@ enum Paylasim {
         kart.scale = 1
         if let resim = kart.uiImage { liste.insert(resim, at: 0) }
         return liste
+    }
+}
+
+/// Instagram hikâyesi çıkartması (960x720; Meta 4:3 öneriyor). Kullanıcı hikâyede büyütüp gezdirebilir.
+/// Metin Selim'in (2026-11-17): "oyun oynarken Subsy kullanıyorum", altında "12 dilde oyun çeviri uygulaması · App Store'da".
+/// Oyun adı, görüntü ve başkasının markası yok.
+struct HikayeCikartmasi: View {
+    var body: some View {
+        HStack(spacing: 40) {
+            Image(uiImage: UIImage(named: "logo.png") ?? UIImage()).resizable().scaledToFit().frame(width: 290, height: 290)
+            VStack(alignment: .leading, spacing: 18) {
+                Text(L("Oyun oynarken Subsy kullanıyorum")).font(.system(size: 62, weight: .heavy)).foregroundColor(.white)
+                    .fixedSize(horizontal: false, vertical: true).minimumScaleFactor(0.6)
+                Text(L("12 dilde oyun çeviri uygulaması")).font(.system(size: 36, weight: .semibold))
+                    .foregroundColor(Color(red: 0.91, green: 0.76, blue: 0.93)).fixedSize(horizontal: false, vertical: true)
+                Text(L("App Store'da")).font(.system(size: 32, weight: .bold)).foregroundColor(.white)
+                    .padding(.horizontal, 22).padding(.vertical, 10).background(Capsule().fill(Color.white.opacity(0.16)))
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(44)
+        .frame(width: 960, height: 720)
+        .background(RoundedRectangle(cornerRadius: 60, style: .continuous)
+            .fill(LinearGradient(colors: [Color(red: 0.07, green: 0.09, blue: 0.27), Color(red: 0.20, green: 0.07, blue: 0.33)],
+                                 startPoint: .topLeading, endPoint: .bottomTrailing)))
+        .overlay(RoundedRectangle(cornerRadius: 60, style: .continuous).stroke(Color.white.opacity(0.25), lineWidth: 3))
     }
 }
 

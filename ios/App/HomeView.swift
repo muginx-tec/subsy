@@ -128,6 +128,14 @@ struct HomeView: View {
             case 2: SettingsView(model: model, gomulu: true)
             default: anaSayfa
             }
+            // Saat ve pil satırının arkası: kaydırılan içerik (logo, başlık) bu satırın altına girmesin,
+            // altındaki ince geçişle yumuşakça kararsın (Selim, 2026-11-17).
+            VStack(spacing: 0) {
+                Color.clear.frame(height: 0).background(Theme.night.ignoresSafeArea(edges: .top))
+                LinearGradient(colors: [Theme.night, Theme.night.opacity(0)], startPoint: .top, endPoint: .bottom).frame(height: 18)
+                Spacer(minLength: 0)
+            }
+            .allowsHitTesting(false)
         }
         .safeAreaInset(edge: .bottom) { sekmeCubugu }
         .environment(\.layoutDirection, ArayuzDili.sagdanSola ? .rightToLeft : .leftToRight)

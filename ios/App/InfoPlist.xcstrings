@@ -1,0 +1,84 @@
+{
+  "sourceLanguage": "tr",
+  "strings": {
+    "NSLocalNetworkUsageDescription": {
+      "comment": "Yerel ağ izin penceresi",
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "للعثور على جهاز الألعاب المتصل بشبكة Wi-Fi نفسها والاتصال به."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "K nalezení herní konzole ve stejné síti Wi-Fi a připojení k ní."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Για να βρει την κονσόλα παιχνιδιών στο ίδιο δίκτυο Wi-Fi και να συνδεθεί σε αυτήν."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To find and connect to your game console on the same Wi-Fi network."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उसी Wi-Fi नेटवर्क पर अपना गेम कंसोल ढूँढने और उससे जुड़ने के लिए।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hogy megtalálja az ugyanazon a Wi-Fi-hálózaton lévő játékkonzolt, és csatlakozzon hozzá."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk menemukan dan terhubung ke konsol game di jaringan Wi-Fi yang sama."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Om je gameconsole op hetzelfde wifinetwerk te vinden en ermee te verbinden."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "För att hitta och ansluta till din spelkonsol på samma wifi-nätverk."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อค้นหาและเชื่อมต่อกับเครื่องเล่นเกมที่อยู่ในเครือข่าย Wi-Fi เดียวกัน"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Щоб знайти ігрову консоль у тій самій мережі Wi-Fi і підключитися до неї."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Để tìm và kết nối với máy chơi game trong cùng mạng Wi-Fi."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
