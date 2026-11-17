@@ -1,0 +1,2 @@
+// Örnek: bunu Gizli.xcconfig adıyla kopyalayıp gerçek sırrı yaz. Gerçek dosya git'e girmez.
+SUBSY_SUNUCU_SIRRI = 

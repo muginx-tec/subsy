@@ -1,0 +1,5 @@
+ios/Config/Gizli.xcconfig
+dis/
+**/xcuserdata/
+.DS_Store
+**/__pycache__/
