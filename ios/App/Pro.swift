@@ -247,7 +247,7 @@ struct ProView: View {
                         }
                         .buttonStyle(Basili()).disabled(magaza.calisiyor)
                     }
-                    Text(L("Abonelik App Store hesabından yönetilir ve istediğin zaman iptal edilir."))
+                    Text(L("Abonelik, dönem bitmeden en az 24 saat önce iptal edilmezse kendiliğinden yenilenir. Ücret Apple hesabından alınır; aboneliği App Store ayarlarından yönetebilir ya da iptal edebilirsin."))
                         .font(.system(size: 12)).foregroundColor(Theme.dim).fixedSize(horizontal: false, vertical: true)
                 }
 
@@ -269,6 +269,16 @@ struct ProView: View {
                     .font(.system(size: 14)).foregroundColor(Theme.dim).frame(maxWidth: .infinity)
                 }
                 .disabled(magaza.calisiyor)
+
+                // Apple 3.1.2: abonelik ekranında yenileme bilgisi, gizlilik ve kullanım koşulları bağlantısı şart.
+                VStack(spacing: 10) {
+                    HStack(spacing: 18) {
+                        Link(L("Gizlilik"), destination: Hakkinda.gizlilikAdresi)
+                        Link(L("Kullanım Koşulları"), destination: Hakkinda.kosullarAdresi)
+                    }
+                    .font(.system(size: 13, weight: .semibold)).foregroundColor(Theme.accent)
+                }
+                .frame(maxWidth: .infinity)
             }
             .padding(22)
         }

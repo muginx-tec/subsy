@@ -229,6 +229,82 @@
         }
       }
     },
+    "Abonelik, dönem bitmeden en az 24 saat önce iptal edilmezse kendiliğinden yenilenir. Ücret Apple hesabından alınır; aboneliği App Store ayarlarından yönetebilir ya da iptal edebilirsin.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يتجدد الاشتراك تلقائيًا ما لم يُلغَ قبل 24 ساعة على الأقل من نهاية الفترة. تُخصم الرسوم من حساب Apple الخاص بك، ويمكنك إدارة الاشتراك أو إلغاؤه من إعدادات App Store."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Předplatné se automaticky obnoví, pokud ho nezrušíš alespoň 24 hodin před koncem období. Platba se strhává z tvého účtu Apple; předplatné můžeš spravovat nebo zrušit v nastavení App Storu."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η συνδρομή ανανεώνεται αυτόματα, εκτός αν ακυρωθεί τουλάχιστον 24 ώρες πριν από το τέλος της περιόδου. Η χρέωση γίνεται στον λογαριασμό σου Apple· μπορείς να τη διαχειριστείς ή να την ακυρώσεις από τις ρυθμίσεις του App Store."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The subscription renews automatically unless cancelled at least 24 hours before the end of the period. Payment is charged to your Apple Account; you can manage or cancel it in your App Store settings."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अवधि खत्म होने से कम से कम 24 घंटे पहले रद्द न करने पर सदस्यता अपने आप नवीनीकृत हो जाती है। भुगतान आपके Apple खाते से लिया जाता है; आप App Store सेटिंग्स में इसे प्रबंधित या रद्द कर सकते हैं।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Az előfizetés automatikusan megújul, hacsak nem mondod le legalább 24 órával az időszak vége előtt. A díjat az Apple-fiókodra terheljük; az előfizetést az App Store beállításaiban kezelheted vagy mondhatod le."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Langganan diperpanjang otomatis kecuali dibatalkan paling lambat 24 jam sebelum periode berakhir. Pembayaran ditagihkan ke Akun Apple kamu; kamu bisa mengelola atau membatalkannya di pengaturan App Store."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Het abonnement wordt automatisch verlengd, tenzij je het uiterlijk 24 uur voor het einde van de periode opzegt. De betaling gaat via je Apple-account; je kunt het abonnement beheren of opzeggen in je App Store-instellingen."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prenumerationen förnyas automatiskt om den inte sägs upp minst 24 timmar innan perioden tar slut. Betalningen dras från ditt Apple-konto; du kan hantera eller avsluta den i App Store-inställningarna."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การสมัครสมาชิกจะต่ออายุอัตโนมัติ เว้นแต่จะยกเลิกอย่างน้อย 24 ชั่วโมงก่อนสิ้นสุดรอบ ระบบจะเรียกเก็บเงินจากบัญชี Apple ของคุณ และคุณจัดการหรือยกเลิกได้ในการตั้งค่า App Store"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Підписка поновлюється автоматично, якщо її не скасовано щонайменше за 24 години до кінця періоду. Оплата стягується з вашого облікового запису Apple; керувати підпискою чи скасувати її можна в налаштуваннях App Store."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gói đăng ký tự động gia hạn trừ khi được hủy ít nhất 24 giờ trước khi kết thúc kỳ. Phí được tính vào Tài khoản Apple của bạn; bạn có thể quản lý hoặc hủy trong cài đặt App Store."
+          }
+        }
+      }
+    },
     "Aboneliği yönet": {
       "localizations": {
         "ar": {
@@ -3725,6 +3801,82 @@
         }
       }
     },
+    "Gizlilik": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الخصوصية"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soukromí"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Απόρρητο"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गोपनीयता"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adatvédelem"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privasi"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integritet"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ความเป็นส่วนตัว"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Конфіденційність"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quyền riêng tư"
+          }
+        }
+      }
+    },
     "Haftalık": {
       "localizations": {
         "ar": {
@@ -5545,6 +5697,82 @@
           "stringUnit": {
             "state": "translated",
             "value": "Thư viện mã nguồn mở được dùng"
+          }
+        }
+      }
+    },
+    "Kullanım Koşulları": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شروط الاستخدام"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podmínky použití"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Όροι χρήσης"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terms of Use"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उपयोग की शर्तें"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Felhasználási feltételek"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ketentuan Penggunaan"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gebruiksvoorwaarden"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Användarvillkor"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ข้อกำหนดการใช้งาน"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Умови використання"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Điều khoản sử dụng"
           }
         }
       }

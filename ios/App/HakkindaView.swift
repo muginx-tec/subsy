@@ -9,6 +9,9 @@ enum Hakkinda {
     /// Mağazaya gönderilmeden önce DOLDURULMALI: AGPL kaynak koda erişim yolunun gösterilmesini şart koşar.
     static let kaynakAdresi = "https://github.com/muginx-tec/subsy"
     static let destek = "support@muginx.com"
+    /// Gizlilik metni (muginx.com/subsy/gizlilik/) ve Apple'ın standart kullanım koşulları (abonelik için, kural 3.1.2).
+    static let gizlilikAdresi = URL(string: "https://muginx.com/subsy/gizlilik/")!
+    static let kosullarAdresi = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
 
     /// (ad, lisans). Lisans adları çevrilmez.
     static let kutuphaneler: [(String, String)] = [
