@@ -1065,82 +1065,6 @@
         }
       }
     },
-    "Anlık ve akıcı çeviri.": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ترجمة فورية وسلسة."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Okamžitý, plynulý překlad."
-          }
-        },
-        "el": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Άμεση, ομαλή μετάφραση."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Instant, smooth translation."
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "तुरंत और सहज अनुवाद।"
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Azonnali, gördülékeny fordítás."
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Terjemahan instan dan lancar."
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Directe, vloeiende vertaling."
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Omedelbar, mjuk översättning."
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "แปลทันทีและลื่นไหล"
-          }
-        },
-        "uk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Миттєвий плавний переклад."
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dịch tức thì, mượt mà."
-          }
-        }
-      }
-    },
     "Argo ve deyimler": {
       "localizations": {
         "ar": {
@@ -8969,6 +8893,82 @@
         }
       }
     },
+    "Telefonla çeviri saniyenin altında.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الترجمة على الهاتف في أقل من ثانية."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Překlad v telefonu za méně než sekundu."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Κάτω από 1 δευτ. στο τηλέφωνο."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On-device translation in under a second."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोन पर अनुवाद एक सेकंड से कम में।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonos fordítás egy másodpercen belül."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terjemahan di ponsel di bawah satu detik."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vertalen op je telefoon in minder dan een seconde."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Översättning på telefonen på under en sekund."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แปลบนโทรศัพท์ในเวลาไม่ถึงวินาที"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переклад на телефоні менш ніж за секунду."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dịch trên điện thoại chưa tới một giây."
+          }
+        }
+      }
+    },
     "Telefonun hazır çevirisi bu dili desteklemiyor. Bu dilde yalnız \"Yapay zekâ ile çevir\" çalışır.": {
       "localizations": {
         "ar": {
@@ -9041,82 +9041,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tính năng dịch có sẵn của điện thoại không hỗ trợ ngôn ngữ này. Với ngôn ngữ này chỉ \"Dịch bằng AI\" hoạt động."
-          }
-        }
-      }
-    },
-    "Terimler her zaman yanında.": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "المصطلحات معك دائمًا."
-          }
-        },
-        "cs": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pojmy vždy po ruce."
-          }
-        },
-        "el": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Οι όροι πάντα μαζί σου."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Key terms always with you."
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "शब्द हमेशा आपके साथ।"
-          }
-        },
-        "hu": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A kifejezések mindig kéznél vannak."
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Istilah selalu tersedia."
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Termen altijd bij de hand."
-          }
-        },
-        "sv": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Termerna alltid med dig."
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "คำศัพท์อยู่กับคุณเสมอ"
-          }
-        },
-        "uk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Терміни завжди під рукою."
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thuật ngữ luôn sẵn sàng."
           }
         }
       }
@@ -10413,78 +10337,78 @@
         }
       }
     },
-    "Çevrimdışı Sözlük": {
+    "Çevrimdışı Çeviri": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "قاموس بلا إنترنت"
+            "value": "ترجمة دون إنترنت"
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Offline slovník"
+            "value": "Překlad offline"
           }
         },
         "el": {
           "stringUnit": {
             "state": "translated",
-            "value": "Λεξικό εκτός σύνδεσης"
+            "value": "Χωρίς ίντερνετ"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Offline Glossary"
+            "value": "Offline Translation"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "ऑफ़लाइन शब्दकोश"
+            "value": "ऑफ़लाइन अनुवाद"
           }
         },
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "Offline szótár"
+            "value": "Offline fordítás"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kamus Offline"
+            "value": "Terjemahan Offline"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Offline woordenlijst"
+            "value": "Offline vertalen"
           }
         },
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ordlista offline"
+            "value": "Offlineöversättning"
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "พจนานุกรมออฟไลน์"
+            "value": "แปลแบบออฟไลน์"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Офлайн-словник"
+            "value": "Переклад офлайн"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Từ điển ngoại tuyến"
+            "value": "Dịch ngoại tuyến"
           }
         }
       }
@@ -11093,6 +11017,82 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cần internet, mất khoảng 1 giây."
+          }
+        }
+      }
+    },
+    "İnternetsiz de çalışır.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يعمل أيضًا دون إنترنت."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Funguje i bez internetu."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Λειτουργεί και χωρίς ίντερνετ."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Works without internet too."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बिना इंटरनेट के भी चलता है।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Internet nélkül is működik."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tetap jalan tanpa internet."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Werkt ook zonder internet."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fungerar även utan internet."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ใช้งานได้แม้ไม่มีอินเทอร์เน็ต"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Працює й без інтернету."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không cần internet vẫn chạy."
           }
         }
       }

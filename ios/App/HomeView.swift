@@ -10,17 +10,35 @@ final class HomeModel: ObservableObject {
     @Published var cloudStatus = ""
     var onCloudChanged: () -> Void = {}
     var onDownloadLanguage: () -> Void = {}
+    /// Arayüz İngilizce mi (Selim, 2026-11-17: "İngilizce dil de ekleyelim"). İngilizce altyazı dili
+    /// değil (oyunun kendi dili), yalnız arayüz dili; altyazı dili olduğu gibi kalır.
+    @Published var arayuzIngilizce = (ArayuzDili.secilen == "en")
     @Published var hedefDil = Diller.secili.kod {
         didSet {
             guard hedefDil != oldValue, let d = Diller.hepsi.first(where: { $0.kod == hedefDil }) else { return }
             Diller.secili = d
-            ArayuzDili.secilen = d.kod      // tek dil ayarı: altyazı da arayüz de bu dile geçer
+            // Tek dil ayarı: altyazı da arayüz de bu dile geçer. Arayüz İngilizceyse (kullanıcı bilerek
+            // seçti) yalnız altyazı dili değişir.
+            if !arayuzIngilizce { ArayuzDili.secilen = d.kod }
             language = "denetleniyor"
             onLanguageChanged()
         }
     }
     var onLanguageChanged: () -> Void = {}
     var dilAdi: String { Diller.hepsi.first(where: { $0.kod == hedefDil })?.ad ?? hedefDil }
+
+    /// Sağ üst menüden seçim. "en": yalnız arayüz İngilizce olur. Başka dil: arayüz ve altyazı o dile geçer.
+    func menudenSec(_ kod: String) {
+        if kod == "en" {
+            ArayuzDili.secilen = "en"
+            arayuzIngilizce = true
+            return
+        }
+        arayuzIngilizce = false
+        ArayuzDili.secilen = kod
+        hedefDil = kod
+        objectWillChange.send()   // altyazı dili aynı kaldıysa da arayüz yeniden çizilsin
+    }
 }
 
 enum Theme {
@@ -197,14 +215,19 @@ struct HomeView: View {
     private var dilDugmesi: some View {
         Menu {
             ForEach(Diller.hepsi) { d in
-                Button { model.hedefDil = d.kod } label: {
-                    if d.kod == model.hedefDil { Label(d.ad, systemImage: "checkmark") } else { Text(d.ad) }
+                Button { model.menudenSec(d.kod) } label: {
+                    if !model.arayuzIngilizce && d.kod == model.hedefDil { Label(d.ad, systemImage: "checkmark") } else { Text(d.ad) }
                 }
+            }
+            Divider()
+            // İngilizce yalnız arayüz dili; altyazı Ayarlar'da seçili dile çevrilmeye devam eder.
+            Button { model.menudenSec("en") } label: {
+                if model.arayuzIngilizce { Label("English", systemImage: "checkmark") } else { Text("English") }
             }
         } label: {
             HStack(spacing: 6) {
                 Image(systemName: "globe").font(.system(size: 14, weight: .semibold))
-                Text(model.hedefDil.uppercased()).font(.system(size: 13, weight: .bold))
+                Text(model.arayuzIngilizce ? "EN" : model.hedefDil.uppercased()).font(.system(size: 13, weight: .bold))
             }
             .foregroundColor(.white)
             .padding(.horizontal, 12).padding(.vertical, 8)
@@ -238,14 +261,15 @@ struct HomeView: View {
     private var baglaDugmesi: some View {
         Button { sekme = 1 } label: {
             HStack(spacing: 16) {
-                // Selim'in kararı (2026-11-16): burada PlayStation logosu durur. Apple'ın simge setindeki
-                // hazır hâli kullanılıyor (playstation.logo). Marka riski Selim'e söylendi, DURUM.md'de yazılı.
-                Image(systemName: bagli ? "checkmark.circle.fill" : "playstation.logo")
+                // PlayStation logosu kaldırıldı (Selim, 2026-11-17): mağaza görüntülerinde marka riski.
+                // Genel kumanda simgesi; alt sekmedeki "Konsol" ile aynı aile.
+                Image(systemName: bagli ? "checkmark.circle.fill" : "gamecontroller.fill")
                     .font(.system(size: 30, weight: .semibold)).foregroundColor(bagli ? Theme.good : .white)
                     .frame(width: 44)
                 Rectangle().fill(Color.white.opacity(0.18)).frame(width: 1, height: 40)
                 VStack(alignment: .leading, spacing: 4) {
                     Text(bagli ? L("Konsol Bağlı") : L("Konsola Bağla")).font(.system(size: 22, weight: .bold)).foregroundColor(.white)
+                        .lineLimit(1).minimumScaleFactor(0.6)   // uzun dillerde iki satıra taşıp sayfayı itmesin
                     Text(bagli ? L("Altyazıyı açmak için dokun.") : L("PS5 veya PS4'ünü bul ve çeviriyi başlat."))
                         .font(.system(size: 13.5)).foregroundColor(Color.white.opacity(0.7))
                         .lineLimit(2).minimumScaleFactor(0.85).multilineTextAlignment(.leading)
@@ -269,9 +293,9 @@ struct HomeView: View {
         HStack(alignment: .top, spacing: 0) {
             ozellik(simge: "square.stack.3d.up", ad: L("AI Context"), aciklama: L("Hikâyeyi ve bağlamı anlar."))
             Rectangle().fill(Color.white.opacity(0.12)).frame(width: 1, height: 38).padding(.horizontal, 5)
-            ozellik(simge: "bolt", ad: L("Düşük Gecikme"), aciklama: L("Anlık ve akıcı çeviri."))
+            ozellik(simge: "bolt", ad: L("Düşük Gecikme"), aciklama: L("Telefonla çeviri saniyenin altında."))
             Rectangle().fill(Color.white.opacity(0.12)).frame(width: 1, height: 38).padding(.horizontal, 5)
-            ozellik(simge: "wifi", ad: L("Çevrimdışı Sözlük"), aciklama: L("Terimler her zaman yanında."))
+            ozellik(simge: "wifi.slash", ad: L("Çevrimdışı Çeviri"), aciklama: L("İnternetsiz de çalışır."))
         }
         .padding(.horizontal, 4)
     }
@@ -283,7 +307,7 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(ad).font(.system(size: 11.5, weight: .bold)).foregroundColor(.white).lineLimit(1).minimumScaleFactor(0.6)
                 Text(aciklama).font(.system(size: 10.5)).foregroundColor(Color.white.opacity(0.6))
-                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(3).minimumScaleFactor(0.75)   // uzun dillerde sayfayı aşağı itmesin
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
