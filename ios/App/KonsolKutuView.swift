@@ -77,6 +77,10 @@ struct KonsolKutuView: View {
             UIApplication.shared.isIdleTimerDisabled = true
             konsol.sonOkunan = ""
             konsol.kutuAyari = true
+            if ProcessInfo.processInfo.arguments.contains("-kutuOnizleme") {
+                konsol.sonKare = Onizleme.sahne()
+                konsol.sonOkunan = Onizleme.kutuAltyazisi
+            }
         }
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = false
@@ -93,7 +97,7 @@ struct KonsolKutuView: View {
 
     private func ayar(_ ad: String, value: Binding<Double>, range: ClosedRange<Double>) -> some View {
         HStack(spacing: 12) {
-            Text(ad).font(.system(size: 15, weight: .semibold)).foregroundColor(.white).frame(width: 38, alignment: .leading)
+            Text(ad).font(.system(size: 15, weight: .semibold)).foregroundColor(.white).lineLimit(1).minimumScaleFactor(0.7).frame(width: 64, alignment: .leading)
             Slider(value: value, in: range).tint(Theme.accent)
         }
     }

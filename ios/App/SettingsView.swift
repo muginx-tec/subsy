@@ -113,7 +113,7 @@ struct SettingsView: View {
 
     private func section<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(title.uppercased(with: Locale(identifier: "tr_TR"))).font(.system(size: 13, weight: .bold)).kerning(1.1).foregroundColor(Theme.dim)
+            Text(title.uppercased(with: ArayuzDili.yerel)).font(.system(size: 13, weight: .bold)).kerning(1.1).foregroundColor(Theme.dim)
             content()
         }
     }

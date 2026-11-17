@@ -63,12 +63,7 @@ final class Konsol: ObservableObject {
     func altyaziyiBaslat() {
         // Deneme: konsolsuz görünüş denemesi için örnek konuşma (uydurma replikler, oyun ve karakter adı yok).
         if ProcessInfo.processInfo.arguments.contains("-altyaziOnizleme") && satirlar.isEmpty {
-            satirlar = [
-                Satir(id: 1, konusan: nil, metin: "Neden bu kadar geç kaldın?", renk: 0),
-                Satir(id: 2, konusan: nil, metin: "Yol kapalıydı, dolaşmak zorunda kaldım.", renk: 1),
-                Satir(id: 3, konusan: nil, metin: "Lafı uzatma da sür, vaktimiz yok.", renk: 0),
-                Satir(id: 4, konusan: nil, metin: "Abi, trenden önce geçeriz.", renk: 1),
-            ]
+            satirlar = Onizleme.replikler.enumerated().map { Satir(id: $0.offset + 1, konusan: nil, metin: $0.element, renk: $0.offset % 2) }
         }
         Pipeline.main?.onKonsolResult = { [weak self] r in self?.cevrildi(r) }
         okumaAcik = true

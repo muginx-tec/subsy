@@ -113,12 +113,12 @@ struct Glass: View {
 struct HomeView: View {
     @ObservedObject var model: HomeModel
     @State private var showSettings = false
-    @State private var showKutu = false
+    @State private var showKutu = ProcessInfo.processInfo.arguments.contains("-kutuOnizleme")
     @State private var showPro = ProcessInfo.processInfo.arguments.contains("-proEkrani")
     @ObservedObject private var konsol = Konsol.shared
 
     /// Alt çubuktaki sekme: 0 ana sayfa, 1 konsol, 2 ayarlar.
-    @State private var sekme = (ProcessInfo.processInfo.arguments.contains("-konsolDeneme") || ProcessInfo.processInfo.arguments.contains("-altyaziOnizleme")) ? 1 : (ProcessInfo.processInfo.arguments.contains("-hakkinda") ? 2 : 0)
+    @State private var sekme = (ProcessInfo.processInfo.arguments.contains("-konsolDeneme") || ProcessInfo.processInfo.arguments.contains("-altyaziOnizleme")) ? 1 : (ProcessInfo.processInfo.arguments.contains("-hakkinda") || ProcessInfo.processInfo.arguments.contains("-ayarlarSekmesi") ? 2 : 0)
 
     var body: some View {
         ZStack {
@@ -139,7 +139,11 @@ struct HomeView: View {
         .sheet(isPresented: $showPro) {
             ProView().environment(\.layoutDirection, ArayuzDili.sagdanSola ? .rightToLeft : .leftToRight)
         }
-        .onAppear { if !UserDefaults.standard.bool(forKey: "guideSeen") { model.showGuide = true } }
+        .onAppear {
+            // Ekran görüntüsü seçenekleriyle açılınca rehber üstlerine binmesin.
+            let onizleme = ["-ayarlarSekmesi", "-kutuOnizleme", "-altyaziOnizleme", "-hakkinda", "-proEkrani"]
+            if !UserDefaults.standard.bool(forKey: "guideSeen"), !ProcessInfo.processInfo.arguments.contains(where: onizleme.contains) { model.showGuide = true }
+        }
     }
 
     // MARK: Ana ekran, Selim'in tasarımına göre (tasarim/ana_ekran_tasarim.webp, 2026-11-16)

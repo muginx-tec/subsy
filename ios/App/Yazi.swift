@@ -15,9 +15,14 @@ enum ArayuzDili {
         set { UserDefaults.standard.set(newValue, forKey: anahtar); paket = nil }
     }
 
+    /// Şu an geçerli arayüz dilinin kodu (seçilen ya da telefonun dili).
+    static var kod: String { secilen ?? (Bundle.main.preferredLocalizations.first ?? "tr") }
+
+    /// Büyük harfe çevirirken arayüz dilinin kuralı: Türkçede "i" → "İ", İngilizcede "I".
+    static var yerel: Locale { Locale(identifier: kod) }
+
     /// Şu an geçerli arayüz dili sağdan sola mı (Arapça).
     static var sagdanSola: Bool {
-        let kod = secilen ?? (Bundle.main.preferredLocalizations.first ?? "tr")
         return kod.hasPrefix("ar")
     }
 

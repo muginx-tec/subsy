@@ -188,7 +188,7 @@ struct ProView: View {
                         .font(.system(size: 16, weight: .medium)).foregroundColor(Color.white.opacity(0.9))
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                Text(L("Pro ile neler gelir").uppercased(with: Locale(identifier: ArayuzDili.secilen ?? "tr")))
+                Text(L("Pro ile neler gelir").uppercased(with: ArayuzDili.yerel))
                     .font(.system(size: 12, weight: .bold)).kerning(1).foregroundColor(Theme.dim)
 
                 VStack(alignment: .leading, spacing: 16) {
