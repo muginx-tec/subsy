@@ -167,5 +167,8 @@
  "Fordítás...",
  "Minta kipróbálása konzol nélkül",
  "Nem sikerült lefordítani. Nézd meg a Beállításokat.",
- "A nyelvi csomag nincs letöltve"
+ "A nyelvi csomag nincs letöltve",
+ "Árak betöltése...",
+ "Nem sikerült betölteni az árakat. Ellenőrizd az internetkapcsolatot.",
+ "Újra"
 ]

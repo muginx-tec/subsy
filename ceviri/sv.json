@@ -167,5 +167,8 @@
  "Översätter...",
  "Prova ett exempel utan konsol",
  "Det gick inte att översätta. Kolla Inställningar.",
- "Språkpaketet är inte nedladdat"
+ "Språkpaketet är inte nedladdat",
+ "Läser in priser...",
+ "Det gick inte att läsa in priserna. Kontrollera din internetanslutning.",
+ "Försök igen"
 ]

@@ -167,5 +167,8 @@
  "Menerjemahkan...",
  "Coba contoh tanpa konsol",
  "Gagal menerjemahkan. Cek Pengaturan.",
- "Paket bahasa belum diunduh"
+ "Paket bahasa belum diunduh",
+ "Memuat harga...",
+ "Gagal memuat harga. Periksa koneksi internet kamu.",
+ "Coba lagi"
 ]

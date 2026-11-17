@@ -56,6 +56,9 @@ final class ProMagaza: ObservableObject {
     @Published var kilit = ProcessInfo.processInfo.arguments.contains("-kilitGoster")
     @Published var mesaj = ""
     @Published var calisiyor = false
+    /// Fiyatlar mağazadan gelene kadar true. Eskiden bu arada "Yakında / herkese açık" yazıyordu; incelemeci
+    /// yavaş ağda bunu görürse yanıltıcı olur (mağaza oturumunun bulgusu, 2026-11-17).
+    @Published var paketlerYukleniyor = true
     /// Şu an hangi işin beklendiği: paket kimliği, "geri" (geri yükleme) ya da "deneme". Düğmede dönen gösterge için.
     @Published var islenen: String?
 
@@ -88,9 +91,11 @@ final class ProMagaza: ObservableObject {
 
     func yukle() async {
         if Purchases.isConfigured {
+            if paketler.isEmpty { paketlerYukleniyor = true }
             if let teklifler = try? await Purchases.shared.offerings() {
                 paketler = (teklifler.current?.availablePackages ?? []).sorted { $0.storeProduct.price < $1.storeProduct.price }
             }
+            paketlerYukleniyor = false
             if let bilgi = try? await Purchases.shared.customerInfo() { isle(bilgi) }
         }
         await sunucuDurumu()
@@ -223,10 +228,18 @@ struct ProView: View {
                     .frame(maxWidth: .infinity).padding(.vertical, 16).background(Glass(radius: 18))
                     .manageSubscriptionsSheet(isPresented: $yonetiyor)
                 } else if magaza.paketler.isEmpty {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(L("Yakında")).font(.system(size: 18, weight: .bold)).foregroundColor(.white)
-                        Text(L("Pro henüz satışta değil. Yapay zekâ çevirisi şimdilik herkese açık."))
-                            .font(.system(size: 14)).foregroundColor(Color.white.opacity(0.75)).fixedSize(horizontal: false, vertical: true)
+                    VStack(alignment: .leading, spacing: 10) {
+                        if magaza.paketlerYukleniyor && magaza.rcHazir {
+                            HStack(spacing: 10) {
+                                ProgressView().tint(.white)
+                                Text(L("Fiyatlar yükleniyor...")).font(.system(size: 16, weight: .semibold)).foregroundColor(.white)
+                            }
+                        } else {
+                            Text(L("Fiyatlar yüklenemedi. İnternet bağlantını kontrol et.")).font(.system(size: 15, weight: .semibold))
+                                .foregroundColor(.white).fixedSize(horizontal: false, vertical: true)
+                            Button(L("Yeniden dene")) { Task { await magaza.yukle() } }
+                                .font(.system(size: 15, weight: .bold)).foregroundColor(Theme.accent)
+                        }
                     }
                     .padding(18).frame(maxWidth: .infinity, alignment: .leading).background(Glass(radius: 18, parlak: true))
                 } else {

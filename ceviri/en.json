@@ -167,5 +167,8 @@
  "Translating...",
  "Try a sample without a console",
  "Couldn't translate. Check Settings.",
- "Language pack not downloaded"
+ "Language pack not downloaded",
+ "Loading prices...",
+ "Couldn't load prices. Check your internet connection.",
+ "Try again"
 ]

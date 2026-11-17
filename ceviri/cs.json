@@ -167,5 +167,8 @@
  "Překládám...",
  "Vyzkoušet ukázku bez konzole",
  "Překlad se nezdařil. Zkontroluj Nastavení.",
- "Jazykový balíček není stažený"
+ "Jazykový balíček není stažený",
+ "Načítám ceny...",
+ "Ceny se nepodařilo načíst. Zkontroluj připojení k internetu.",
+ "Zkusit znovu"
 ]
