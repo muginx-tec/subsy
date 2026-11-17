@@ -16,6 +16,15 @@ final class Translator {
     enum State: String { case installed = "kurulu", supported = "indirilmeli", unsupported = "desteklenmiyor" }
 
     func state() async -> State {
+        #if DEBUG
+        // Mağaza ekran görüntüsü: simülatörde dil paketi yok, "desteklemiyor" uyarısı yanıltıcı olur.
+        // Yalnız gösterilen durumu değiştirir; çeviri oturumu gerçek duruma bakar (prepare).
+        if ProcessInfo.processInfo.arguments.contains("-magazaGorunumu") { return .installed }
+        #endif
+        return await gercekDurum()
+    }
+
+    private func gercekDurum() async -> State {
         switch await LanguageAvailability().status(from: Self.source, to: Self.target) {
         case .installed: return .installed
         case .supported: return .supported
@@ -25,7 +34,7 @@ final class Translator {
 
     /// Dil paketi kuruluysa oturumu açar. Arayüz gerektirmediği için arka planda da çağrılabilir.
     func prepare() async -> Bool {
-        guard await state() == .installed else { session = nil; return false }
+        guard await gercekDurum() == .installed else { session = nil; return false }
         if session == nil { session = TranslationSession(installedSource: Self.source, target: Self.target) }
         return true
     }
