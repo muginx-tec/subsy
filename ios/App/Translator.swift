@@ -42,7 +42,7 @@ final class Translator {
     func translate(_ text: String) async throws -> String {
         if session == nil { _ = await prepare() }
         guard let session else { throw NSError(domain: "Translator", code: 1,
-                                               userInfo: [NSLocalizedDescriptionKey: "dil paketi kurulu değil"]) }
+                                               userInfo: [NSLocalizedDescriptionKey: L("Dil paketi indirilmemiş")]) }
         return try await session.translate(text).targetText
     }
 }

@@ -66,6 +66,13 @@ final class Konsol: ObservableObject {
             satirlar = Onizleme.replikler.enumerated().map { Satir(id: $0.offset + 1, konusan: nil, metin: $0.element, renk: $0.offset % 2) }
         }
         Pipeline.main?.onKonsolResult = { [weak self] r in self?.cevrildi(r) }
+        if ornekKipi {
+            ornekBesle()
+            ornekZamanlayici = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in
+                Task { @MainActor in self?.ornekBesle() }
+            }
+            return
+        }
         okumaAcik = true
         yaz("altyazı okuma açık")
     }
@@ -73,13 +80,34 @@ final class Konsol: ObservableObject {
     func altyaziyiDurdur() {
         okumaAcik = false
         Pipeline.main?.onKonsolResult = nil
+        ornekZamanlayici?.invalidate(); ornekZamanlayici = nil
+        ornekKipi = false
+    }
+
+    // MARK: Konsolsuz örnek (App Store incelemecisi ve konsolu yanında olmayan kullanıcı için)
+    /// Açıkken altyazı ekranı, uydurma İngilizce replikleri birkaç saniyede bir gerçek çeviri hattından
+    /// geçirir: telefonla ya da yapay zekâ ile çeviri aynen çalışır, yalnız kaynak konsol değil.
+    @Published var ornekKipi = false
+    private var ornekZamanlayici: Timer?
+    private var ornekSira = 0
+
+    func ornegiHazirla() {
+        satirlar = []; sonKaynak = ""; adRenkleri = [:]
+        ornekKipi = true
+        ornekSira = 0
+    }
+
+    private func ornekBesle() {
+        let metin = Onizleme.ornekIngilizce[ornekSira % Onizleme.ornekIngilizce.count]
+        ornekSira += 1
+        Pipeline.main?.handle(text: metin, capturedAt: Date().timeIntervalSince1970, ocrMs: 0, place: "konsol")
     }
 
     private func cevrildi(_ r: Pipeline.Result) {
         guard r.place == "konsol" else { return }
         proNotu = r.proGerekli
         // Çeviri yapılamadıysa (ör. telefonda dil paketi yok) sessiz kalma: altyazı ekranının altına yaz.
-        if let hata = r.error { sonSure = "Çeviri yapılamadı: \(hata). Ayarlar'a bak."; return }
+        if let hata = r.error { sonSure = L("Çeviri yapılamadı. Ayarlar'a bak.") + " (\(hata))"; return }
         guard !r.translated.isEmpty else { return }
         // Aynı satırın düzeltilmiş okuması yeni satır açmaz, eskisinin yerine geçer.
         let a = MetinOkuyucu.sade(r.original), b = MetinOkuyucu.sade(sonKaynak)

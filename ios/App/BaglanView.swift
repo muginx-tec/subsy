@@ -31,8 +31,16 @@ struct BaglanView: View {
                 } else {
                     ForEach(konsol.hosts, id: \.self) { host in konsolKarti(host) }
                 }
+                if !bagli {
+                    // Konsolu yanında olmayan (App Store incelemecisi dahil) çeviriyi örnek repliklerle görsün.
+                    ikincilDugme(L("Konsolsuz örnekle dene"), simge: "play.rectangle") {
+                        konsol.ornegiHazirla(); showAltyazi = true
+                    }
+                }
 
                 DisclosureGroup(isExpanded: $showAyrinti) {
+                    #if DEBUG
+                    // Geliştirici kaydı yalnız deneme derlemesinde (Apple 2.1: yayında geliştirici ekranı olmasın).
                     VStack(alignment: .leading, spacing: 3) {
                         ForEach(Array(konsol.gunluk.suffix(8).enumerated()), id: \.offset) { _, line in
                             Text(line).font(.system(size: 12, design: .monospaced)).foregroundColor(Color.white.opacity(0.7))
@@ -40,6 +48,7 @@ struct BaglanView: View {
                         }
                     }
                     .padding(.top, 8)
+                    #endif
                     if !konsol.hesapNo.isEmpty {
                         Button(L("PSN hesabını değiştir") + (UserDefaults.standard.string(forKey: "psnAd").map { " (\($0))" } ?? "")) { showGiris = true }
                             .font(.system(size: 13)).foregroundColor(Theme.dim).padding(.top, 8)

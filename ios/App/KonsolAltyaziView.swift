@@ -1,4 +1,5 @@
 import SwiftUI
+import Translation
 
 /// Tam ekran altyazı (kendi PS5 bağlantımızla). Oyun görüntüsü gösterilmez: oyun TV'de, telefon
 /// yanda duran altyazı ekranı. En yeni replik altta, büyük ve beyaz; öncekiler üstünde soluk.
@@ -23,6 +24,8 @@ struct KonsolAltyaziView: View {
     /// Tablette ekran büyük: yazı baştan daha büyük başlar (Selim: "tablette de çıkacağız").
     private var taban: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 1.7 : 1.0 }
 
+    @State private var paketAyari: TranslationSession.Configuration?
+
     var body: some View {
         GeometryReader { geo in
             icerik
@@ -43,6 +46,17 @@ struct KonsolAltyaziView: View {
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = true   // ekran kararmasın
             konsol.altyaziyiBaslat()
+            // Telefonun dil paketi inmemişse sistemin indirme penceresini burada aç: kullanıcı (ve App Store
+            // incelemecisi) "çeviri yapılamadı" görüp Ayarlar'ı aramak zorunda kalmasın.
+            Task { @MainActor in
+                if await Pipeline.main?.translator.state() == .supported {
+                    paketAyari = .init(source: Translator.source, target: Translator.target)
+                }
+            }
+        }
+        .translationTask(paketAyari) { oturum in
+            try? await oturum.prepareTranslation()
+            Pipeline.main?.translator.reset()   // yeni inen paketle oturum yeniden açılsın
         }
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = false
@@ -54,8 +68,15 @@ struct KonsolAltyaziView: View {
         ZStack(alignment: .bottom) {
             Color(red: 10 / 255, green: 16 / 255, blue: 40 / 255).ignoresSafeArea()
 
+            if konsol.ornekKipi {
+                // Örnek kipinde olduğu açıkça yazsın: replikler uydurma, çeviri gerçek.
+                Text(L("Örnek: uydurma replikler, çeviri gerçek"))
+                    .font(.system(size: 12 * taban, weight: .semibold)).foregroundColor(Theme.accent)
+                    .padding(.horizontal, 10).padding(.vertical, 5).background(Capsule().fill(Color.white.opacity(0.08)))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).padding(.top, 14)
+            }
             if konsol.satirlar.isEmpty {
-                Text(konsol.durum == .bagli ? L("Altyazı bekleniyor...") : L("PS5 bağlı değil"))
+                Text(konsol.ornekKipi ? L("Çevriliyor...") : (konsol.durum == .bagli ? L("Altyazı bekleniyor...") : L("PS5 bağlı değil")))
                     .font(.system(size: 22, weight: .medium)).foregroundColor(Color.white.opacity(0.35))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }

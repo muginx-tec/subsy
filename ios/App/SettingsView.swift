@@ -52,6 +52,7 @@ struct SettingsView: View {
                                    L("İnternet ister, yaklaşık 1 saniye sürer."),
                                    L("Bağlantı olmazsa kendiliğinden telefonun çevirisine döner.")]) {
                         // Sunucuda Pro kilidi açıkken Pro (ya da 1 saatlik deneme) yoksa önce Pro ekranı açılır.
+                        // İzin penceresi yok (Selim, 2026-11-17): giden şey oyunun altyazısı, kişisel veri değil.
                         if magaza.kilit && !magaza.aktif { showPro = true } else { model.cloud = true }
                     }
                     if model.cloud {

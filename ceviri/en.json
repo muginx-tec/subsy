@@ -162,5 +162,10 @@
  "Language pack",
  "Download language pack",
  "Checking...",
- "Sign-in failed, please try again."
+ "Sign-in failed, please try again.",
+ "Sample: made-up lines, real translation",
+ "Translating...",
+ "Try a sample without a console",
+ "Couldn't translate. Check Settings.",
+ "Language pack not downloaded"
 ]

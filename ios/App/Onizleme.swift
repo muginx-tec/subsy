@@ -64,6 +64,18 @@ enum Onizleme {
                "Håll dig nära. Den här vägen blir snabbt mörk."],
     ]
 
+    /// Konsolsuz örnek kipinde gerçek çeviri hattına verilen İngilizce replikler (oyunun kaynak dili).
+    static let ornekIngilizce = [
+        "Mara: Where have you been? I waited all night.",
+        "Theo: The bridge was closed, so I took the long way.",
+        "Mara: Fine. Grab the map, we leave at sunrise.",
+        "Theo: You almost gave me a heart attack back there.",
+        "Mara: Stay close. This road gets dark fast.",
+        "Theo: If they find us, we run. No arguments.",
+        "Mara: Get to cover! They're coming from the north.",
+        "Theo: I'll get out of your hair once we reach the city.",
+    ]
+
     /// Kutu ayarı ekranındaki örnek altyazı (oyunun kaynak dili İngilizce olduğu için hep İngilizce).
     static let kutuAltyazisi = "Stay close. This road gets dark fast."
 

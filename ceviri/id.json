@@ -162,5 +162,10 @@
  "Paket bahasa",
  "Unduh paket bahasa",
  "Memeriksa...",
- "Gagal masuk, coba lagi."
+ "Gagal masuk, coba lagi.",
+ "Contoh: dialog karangan, terjemahan asli",
+ "Menerjemahkan...",
+ "Coba contoh tanpa konsol",
+ "Gagal menerjemahkan. Cek Pengaturan.",
+ "Paket bahasa belum diunduh"
 ]
