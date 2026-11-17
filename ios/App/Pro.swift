@@ -28,6 +28,9 @@ final class ProMagaza: ObservableObject {
     static let rcAnahtar = "appl_HZHRhPcKnbVQiKfGYvlErYJHMfU"   // RevenueCat projesi "Subsy" (679e5efb), 2026-11-17
     /// RevenueCat'teki yetki kimliği; sunucudaki GT_RC_YETKI ile aynı olmalı.
     static let yetki = "pro"
+    /// Paylaşana 1 saat Pro. Kapalı (Selim, 2026-11-17: "Remove it from 1.0"): Apple 3.2.2 ödül karşılığı eylemi
+    /// yasaklıyor, 1.0 incelemesini riske atmasın. Kod duruyor; onaydan sonra 1.1'de açılacak.
+    static let paylasOdulu = false
     /// App Store Connect'te bu kimliklerle açılacak abonelikler (açmak Selim'in işi). RevenueCat'te
     /// "pro" yetkisine ve varsayılan teklife bağlanacaklar.
     /// App Store Connect'te açık (2026-11-17, "Subsy Pro" grubu): haftalık, aylık, yıllık.
@@ -254,7 +257,7 @@ struct ProView: View {
                 if magaza.denemede, let bitis = magaza.denemeBitis {
                     Label(L("Deneme süresi bitiyor:") + " " + bitis.formatted(date: .omitted, time: .shortened), systemImage: "clock.fill")
                         .font(.system(size: 15, weight: .semibold)).foregroundColor(Theme.good)
-                } else if magaza.kilit && !magaza.satinAlinmis && !magaza.denemeKullanildi {
+                } else if ProMagaza.paylasOdulu && magaza.kilit && !magaza.satinAlinmis && !magaza.denemeKullanildi {
                     paylasKarti
                 }
 
