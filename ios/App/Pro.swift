@@ -297,7 +297,7 @@ struct ProView: View {
         VStack(alignment: .leading, spacing: 10) {
             Label(L("Paylaş, 1 saat Pro kazan"), systemImage: "gift.fill")
                 .font(.system(size: 17, weight: .bold)).foregroundColor(.white)
-            Text(L("Subsy'yi Instagram'da ya da istediğin yerde paylaş, yapay zekâ çevirisini 1 saat ücretsiz dene."))
+            Text(L("Subsy'yi Instagram'da paylaş, yapay zekâ çevirisini 1 saat ücretsiz dene."))
                 .font(.system(size: 14)).foregroundColor(Color.white.opacity(0.78)).fixedSize(horizontal: false, vertical: true)
             Button { paylasiyor = true } label: {
                 Group {
@@ -312,9 +312,11 @@ struct ProView: View {
         }
         .padding(18).frame(maxWidth: .infinity, alignment: .leading).background(Glass(radius: 18, parlak: true))
         .sheet(isPresented: $paylasiyor) {
-            PaylasimPenceresi(ogeler: Paylasim.ogeler()) { tamamlandi in
+            PaylasimPenceresi(ogeler: Paylasim.ogeler()) { tamamlandi, instagram in
                 paylasiyor = false
-                if tamamlandi { Task { await magaza.denemeAl() } }
+                // Selim (2026-11-17): kopyalamak ya da başka yere göndermek yetmez, 1 saat yalnız Instagram'a.
+                if tamamlandi && instagram { Task { await magaza.denemeAl() } }
+                else if tamamlandi { magaza.mesaj = L("1 saatlik Pro yalnız Instagram'da paylaşınca verilir.") }
             }
             .presentationDetents([.medium, .large])
         }
@@ -363,14 +365,18 @@ struct PaylasimKarti: View {
     }
 }
 
-/// Sistemin paylaşım penceresi. `bitti(true)` yalnız kullanıcı bir yere gönderdiğinde gelir.
+/// Sistemin paylaşım penceresi. `bitti(tamamlandi, instagram)`: tamamlandı yalnız kullanıcı bir yere
+/// gönderdiğinde true; instagram, seçilen hedef Instagram'ın paylaşım eklentisiyse (kimliği "com.burbn.instagram...").
+/// Gönderinin gerçekten yayımlandığı doğrulanamaz; iOS yalnız eklentinin "tamam" dediğini bildirir.
 struct PaylasimPenceresi: UIViewControllerRepresentable {
     let ogeler: [Any]
-    let bitti: (Bool) -> Void
+    let bitti: (Bool, Bool) -> Void
 
     func makeUIViewController(context: Context) -> UIActivityViewController {
         let vc = UIActivityViewController(activityItems: ogeler, applicationActivities: nil)
-        vc.completionWithItemsHandler = { _, tamamlandi, _, _ in bitti(tamamlandi) }
+        vc.completionWithItemsHandler = { tur, tamamlandi, _, _ in
+            bitti(tamamlandi, tur?.rawValue.lowercased().contains("instagram") ?? false)
+        }
         return vc
     }
 

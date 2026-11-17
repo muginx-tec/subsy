@@ -218,15 +218,15 @@ struct HomeView: View {
     /// uygulamanın yazılarını hem altyazının çevrileceği dili değiştirir.
     private var dilDugmesi: some View {
         Menu {
+            // İngilizce listenin başında, öbürleriyle aynı listede (Selim: "listede farklı yerde duruyor").
+            // Yalnız arayüz dili; altyazı Ayarlar'da seçili dile çevrilmeye devam eder.
+            Button { model.menudenSec("en") } label: {
+                if model.arayuzIngilizce { Label("English", systemImage: "checkmark") } else { Text("English") }
+            }
             ForEach(Diller.hepsi) { d in
                 Button { model.menudenSec(d.kod) } label: {
                     if !model.arayuzIngilizce && d.kod == model.hedefDil { Label(d.ad, systemImage: "checkmark") } else { Text(d.ad) }
                 }
-            }
-            Divider()
-            // İngilizce yalnız arayüz dili; altyazı Ayarlar'da seçili dile çevrilmeye devam eder.
-            Button { model.menudenSec("en") } label: {
-                if model.arayuzIngilizce { Label("English", systemImage: "checkmark") } else { Text("English") }
             }
         } label: {
             HStack(spacing: 6) {

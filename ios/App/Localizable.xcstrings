@@ -77,6 +77,82 @@
         }
       }
     },
+    "1 saatlik Pro yalnız Instagram'da paylaşınca verilir.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُمنح ساعة Pro المجانية فقط عند المشاركة على Instagram."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hodinu Pro zdarma dostaneš jen za sdílení na Instagramu."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η δωρεάν ώρα Pro δίνεται μόνο για κοινοποίηση στο Instagram."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The free hour of Pro is given only for sharing on Instagram."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 घंटे का मुफ़्त Pro सिर्फ़ Instagram पर शेयर करने पर मिलता है।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Az ingyenes Pro órát csak instagramos megosztásért adjuk."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro gratis 1 jam hanya diberikan jika kamu membagikan di Instagram."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Het gratis uur Pro krijg je alleen als je op Instagram deelt."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Den gratis Pro-timmen ges bara när du delar på Instagram."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro ฟรี 1 ชั่วโมงจะได้รับเฉพาะเมื่อแชร์บน Instagram เท่านั้น"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Безкоштовну годину Pro можна отримати лише за допис в Instagram."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 giờ Pro miễn phí chỉ được tặng khi chia sẻ trên Instagram."
+          }
+        }
+      }
+    },
     "AI Context": {
       "localizations": {
         "ar": {
@@ -8509,6 +8585,82 @@
           "stringUnit": {
             "state": "translated",
             "value": "Subsy là ứng dụng độc lập. Ứng dụng không liên kết với Sony Interactive Entertainment, không được công ty này tài trợ hay chứng thực. PlayStation, PS5 và PS4 là nhãn hiệu của Sony Interactive Entertainment Inc."
+          }
+        }
+      }
+    },
+    "Subsy'yi Instagram'da paylaş, yapay zekâ çevirisini 1 saat ücretsiz dene.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شارك Subsy على Instagram وجرّب الترجمة بالذكاء الاصطناعي مجانًا لمدة ساعة."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sdílej Subsy na Instagramu a vyzkoušej překlad s AI na 1 hodinu zdarma."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Μοιράσου το Subsy στο Instagram και δοκίμασε δωρεάν τη μετάφραση με AI για 1 ώρα."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share Subsy on Instagram and try AI translation free for 1 hour."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subsy को Instagram पर शेयर करें और AI अनुवाद 1 घंटे मुफ़्त आज़माएँ।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oszd meg a Subsyt az Instagramon, és próbáld ki az AI-fordítást 1 órán át ingyen."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bagikan Subsy di Instagram dan coba terjemahan AI gratis selama 1 jam."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deel Subsy op Instagram en probeer AI-vertaling 1 uur gratis."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dela Subsy på Instagram och prova AI-översättning gratis i 1 timme."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แชร์ Subsy บน Instagram แล้วลองแปลด้วย AI ฟรี 1 ชั่วโมง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поділися Subsy в Instagram і спробуй переклад зі ШІ безкоштовно протягом 1 години."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chia sẻ Subsy trên Instagram và dùng thử dịch bằng AI miễn phí 1 giờ."
           }
         }
       }
