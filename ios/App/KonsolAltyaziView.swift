@@ -25,6 +25,8 @@ struct KonsolAltyaziView: View {
     private var taban: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 1.7 : 1.0 }
 
     @State private var paketAyari: TranslationSession.Configuration?
+    /// Dil paketi bu cihaza indirilebiliyor mu (desteklenmeyen dilde "indir" düğmesi anlamsız).
+    @State private var paketIndirilebilir = false
 
     var body: some View {
         GeometryReader { geo in
@@ -50,6 +52,7 @@ struct KonsolAltyaziView: View {
             // incelemecisi) "çeviri yapılamadı" görüp Ayarlar'ı aramak zorunda kalmasın.
             Task { @MainActor in
                 if await Pipeline.main?.translator.state() == .supported {
+                    paketIndirilebilir = true
                     paketAyari = .init(source: Translator.source, target: Translator.target)
                 }
             }
@@ -64,6 +67,15 @@ struct KonsolAltyaziView: View {
         }
     }
 
+    private var cevirmenRozeti: some View {
+        let ai = konsol.cevirmen == "bulut"
+        return Label(ai ? L("Yapay zekâ · Pro") : L("Telefon çevirisi"), systemImage: ai ? "sparkles" : "iphone")
+            .font(.system(size: 12 * taban, weight: .semibold))
+            .foregroundColor(ai ? Theme.pro : Color.white.opacity(0.55))
+            .padding(.horizontal, 10).padding(.vertical, 5)
+            .background(Capsule().fill(Color.white.opacity(0.08)))
+    }
+
     private var icerik: some View {
         ZStack(alignment: .bottom) {
             Color(red: 10 / 255, green: 16 / 255, blue: 40 / 255).ignoresSafeArea()
@@ -75,8 +87,22 @@ struct KonsolAltyaziView: View {
                     .padding(.horizontal, 10).padding(.vertical, 5).background(Capsule().fill(Color.white.opacity(0.08)))
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).padding(.top, 14)
             }
+            // Sağ üst: o an çeviriyi kim yapıyor (Selim, 2026-11-17: "o an kim çeviri yapıyor görünsün").
+            cevirmenRozeti
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                .padding(.top, 14).padding(.trailing, 64)
+            if konsol.paketEksik && paketIndirilebilir {
+                // Telefonun çevirisi için dil paketi yok: indirmeyi burada öner.
+                Button { paketAyari = .init(source: Translator.source, target: Translator.target) } label: {
+                    Label(L("Dil paketini indir"), systemImage: "arrow.down.circle.fill")
+                        .font(.system(size: 18 * taban, weight: .bold)).foregroundColor(.white)
+                        .padding(.horizontal, 18).padding(.vertical, 10).background(Capsule().fill(Theme.accent))
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center).offset(y: 60)
+            }
             if konsol.satirlar.isEmpty {
-                Text(konsol.ornekKipi ? L("Çevriliyor...") : (konsol.durum == .bagli ? L("Altyazı bekleniyor...") : L("PS5 bağlı değil")))
+                Text(konsol.ornekKipi ? L("Çevriliyor...") : (konsol.gosterilemez ? L("Konsolda açık olan içerik Uzaktan Oynama'da gösterilemiyor. Bir oyun aç, altyazı kendiliğinden gelir.") : (konsol.durum == .bagli ? L("Altyazı bekleniyor...") : L("PS5 bağlı değil"))))
+                    .multilineTextAlignment(.center).padding(.horizontal, 80)
                     .font(.system(size: 22, weight: .medium)).foregroundColor(Color.white.opacity(0.35))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }

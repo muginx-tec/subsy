@@ -24,6 +24,12 @@ struct BaglanView: View {
                     if !gomulu { Button(L("Kapat")) { dismiss() }.font(.system(size: 17, weight: .semibold)).foregroundColor(Theme.accent) }
                 }
 
+                if konsol.gosterilemez {
+                    kart(vurgulu: true) {
+                        Label(L("Konsolda açık olan içerik Uzaktan Oynama'da gösterilemiyor. Bir oyun aç, altyazı kendiliğinden gelir."), systemImage: "exclamationmark.triangle.fill")
+                            .font(.system(size: 15, weight: .semibold)).foregroundColor(.white).fixedSize(horizontal: false, vertical: true)
+                    }
+                }
                 if bagli {
                     bagliKart
                 } else if konsol.hosts.isEmpty {

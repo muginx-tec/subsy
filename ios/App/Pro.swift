@@ -31,6 +31,9 @@ final class ProMagaza: ObservableObject {
     /// Paylaşana 1 saat Pro. Kapalı (Selim, 2026-11-17: "Remove it from 1.0"): Apple 3.2.2 ödül karşılığı eylemi
     /// yasaklıyor, 1.0 incelemesini riske atmasın. Kod duruyor; onaydan sonra 1.1'de açılacak.
     static let paylasOdulu = false
+    /// Paylaşım şartı olmadan, kişi başı bir kez 2 saatlik yapay zekâ denemesi (Selim, 2026-11-18:
+    /// "2 saat deneme süresi", "bir paylaşım falan yapmadan koyalım"). Süreyi sunucu verir (GT_DENEME_SANIYE).
+    static let ucretsizDeneme = true
     /// App Store Connect'te bu kimliklerle açılacak abonelikler (açmak Selim'in işi). RevenueCat'te
     /// "pro" yetkisine ve varsayılan teklife bağlanacaklar.
     /// App Store Connect'te açık (2026-11-17, "Subsy Pro" grubu): haftalık, aylık, yıllık.
@@ -51,9 +54,10 @@ final class ProMagaza: ObservableObject {
     /// Sunucunun verdiği deneme süresinin bitişi (paylaşana 1 saat). Yoksa nil.
     @Published var denemeBitis: Date?
     @Published var denemeKullanildi = false
-    /// Sunucuda Pro kilidi açık mı. Kapalıyken herkes yapay zekâ çevirisi alır, deneme anlamsızdır.
-    /// `-kilitGoster` ile açılırsa (yalnız görünüş denemesi) açık sayılır.
-    @Published var kilit = ProcessInfo.processInfo.arguments.contains("-kilitGoster")
+    /// Sunucuda Pro kilidi açık mı. AÇIK başlar ve yalnız sunucu açıkça "kapalı" derse kapanır.
+    /// Eskiden kapalı başlıyordu: sunucunun cevabı gelmeden (ya da istek düşünce) Pro olmayan kişi
+    /// "Yapay zekâ ile çevir"i paket ekranı görmeden işaretleyebiliyordu (2026-11-18, mağaza sürümü 1.0).
+    @Published var kilit = true
     @Published var mesaj = ""
     @Published var calisiyor = false
     /// Fiyatlar mağazadan gelene kadar true. Eskiden bu arada "Yakında / herkese açık" yazıyordu; incelemeci
@@ -81,6 +85,10 @@ final class ProMagaza: ObservableObject {
             }
         }
         Task { await yukle() }
+        // Uygulama her öne geldiğinde Pro ve deneme durumu tazelenir (deneme uygulama kapalıyken bitebilir).
+        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
+            Task { await self?.yukle() }
+        }
     }
 
     private func isle(_ bilgi: CustomerInfo) {
@@ -90,15 +98,19 @@ final class ProMagaza: ObservableObject {
     }
 
     func yukle() async {
+        var bilgiGeldi = false
         if Purchases.isConfigured {
             if paketler.isEmpty { paketlerYukleniyor = true }
             if let teklifler = try? await Purchases.shared.offerings() {
                 paketler = (teklifler.current?.availablePackages ?? []).sorted { $0.storeProduct.price < $1.storeProduct.price }
             }
             paketlerYukleniyor = false
-            if let bilgi = try? await Purchases.shared.customerInfo() { isle(bilgi) }
+            if let bilgi = try? await Purchases.shared.customerInfo() { isle(bilgi); bilgiGeldi = true }
         }
         await sunucuDurumu()
+        // Kilit açıkken Pro da deneme de yoksa yapay zekâ seçili kalmasın. Abonelik bilgisi hiç okunamadıysa
+        // (ör. internet yok) dokunma: gerçek Pro kullanıcısının seçimi boşuna kapanmasın, sunucu zaten denetliyor.
+        if bilgiGeldi && kilit && !aktif { CloudTranslator.proYokKapat() }
     }
 
     /// Sunucudan deneme süresini öğrenir.
@@ -139,7 +151,9 @@ final class ProMagaza: ObservableObject {
         denemeKullanildi = d.denemeKullanildi
         denemeBitis = d.denemeBitis
         if denemede { CloudTranslator.enabled = true }
-        mesaj = denemede ? L("Pro denemen başladı: 1 saat yapay zekâ çevirisi senin.") : L("Deneme hakkını kullandın.")
+        mesaj = denemede ? (Self.ucretsizDeneme ? L("Denemen başladı: 2 saat boyunca yapay zekâ çevirisi açık.")
+                                                : L("Pro denemen başladı: 1 saat yapay zekâ çevirisi senin."))
+                         : L("Deneme hakkını kullandın.")
     }
 }
 
@@ -196,6 +210,19 @@ struct ProView: View {
                         .font(.system(size: 16, weight: .medium)).foregroundColor(Color.white.opacity(0.9))
                         .fixedSize(horizontal: false, vertical: true)
                 }
+                // Oran 2026-11-17 kıyasından: telefon ~45, yapay zekâ ~14 anlam hatası (DURUM.md). Ölçüm değişirse burası da değişir.
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack(alignment: .firstTextBaseline, spacing: 10) {
+                        Text(L("%70")).font(.system(size: 44, weight: .heavy)).foregroundColor(Theme.pro)
+                            .shadow(color: Theme.pro.opacity(0.6), radius: 10)
+                        Text(L("daha az anlam hatası")).font(.system(size: 18, weight: .bold)).foregroundColor(.white)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Text(L("Gerçek oyunda yaptığımız testte, telefon çevirisine göre."))
+                        .font(.system(size: 13)).foregroundColor(Theme.dim).fixedSize(horizontal: false, vertical: true)
+                }
+                .padding(18).frame(maxWidth: .infinity, alignment: .leading).background(Glass(radius: 22, parlak: true))
+
                 Text(L("Pro ile neler gelir").uppercased(with: ArayuzDili.yerel))
                     .font(.system(size: 12, weight: .bold)).kerning(1).foregroundColor(Theme.dim)
 
@@ -210,6 +237,9 @@ struct ProView: View {
                 .padding(18)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(Glass(radius: 22))
+
+                // Deneme kartı fiyatlardan bağımsız görünür: fiyatlar yüklenemese de deneme başlatılabilsin.
+                if ProMagaza.ucretsizDeneme && !magaza.aktif && magaza.kilit && !magaza.denemeKullanildi { denemeKarti }
 
                 if magaza.aktif {
                     VStack(spacing: 12) {
@@ -315,6 +345,27 @@ struct ProView: View {
 
     /// Paylaşana 1 saat Pro (Selim'in kararı, 2026-11-17). Sistem paylaşım penceresi açılır; Instagram
     /// kuruluysa listede çıkar. Paylaşılan şey oyun görüntüsü değil, bizim kartımız ve bağlantımız.
+    /// Paylaşımsız 2 saatlik deneme: basınca sunucu süreyi başlatır, yapay zekâ çevirisi açılır.
+    private var denemeKarti: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label(L("2 saat ücretsiz dene"), systemImage: "gift.fill")
+                .font(.system(size: 17, weight: .bold)).foregroundColor(.white)
+            Text(L("Yapay zekâ çevirisini 2 saat ücretsiz kullan. Kart gerekmez, bir kez geçerlidir."))
+                .font(.system(size: 14)).foregroundColor(Color.white.opacity(0.78)).fixedSize(horizontal: false, vertical: true)
+            Button { Task { await magaza.denemeAl() } } label: {
+                Group {
+                    if magaza.islenen == "deneme" { ProgressView().tint(.black) }
+                    else { Text(L("Denemeyi başlat")) }
+                }
+                .font(.system(size: 16, weight: .bold)).foregroundColor(.black)
+                .frame(maxWidth: .infinity).padding(.vertical, 13)
+                .background(Capsule().fill(Color.white))
+            }
+            .buttonStyle(Basili()).disabled(magaza.calisiyor)
+        }
+        .padding(18).frame(maxWidth: .infinity, alignment: .leading).background(Glass(radius: 18, parlak: true))
+    }
+
     private var paylasKarti: some View {
         VStack(alignment: .leading, spacing: 10) {
             Label(L("Paylaş, 1 saat Pro kazan"), systemImage: "gift.fill")

@@ -1,6 +1,82 @@
 {
   "sourceLanguage": "tr",
   "strings": {
+    "%70": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "٪70"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "o 70 %"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "70%"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "70%"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "70%"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "70%-kal"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "70%"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "70%"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "70 %"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "70%"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "на 70%"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "70%"
+          }
+        }
+      }
+    },
     "(kutuda yazı yok)": {
       "localizations": {
         "ar": {
@@ -225,6 +301,82 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ứng dụng dịch game 12 ngôn ngữ"
+          }
+        }
+      }
+    },
+    "2 saat ücretsiz dene": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جرّب مجانًا لمدة ساعتين"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyzkoušej 2 hodiny zdarma"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Δοκίμασε δωρεάν για 2 ώρες"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try free for 2 hours"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 घंटे मुफ़्त आज़माएँ"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próbáld ki 2 órán át ingyen"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coba gratis 2 jam"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Probeer 2 uur gratis"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prova gratis i 2 timmar"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทดลองใช้ฟรี 2 ชั่วโมง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спробуйте безкоштовно 2 години"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dùng thử miễn phí 2 giờ"
           }
         }
       }
@@ -3269,6 +3421,158 @@
         }
       }
     },
+    "Denemen başladı: 2 saat boyunca yapay zekâ çevirisi açık.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بدأت تجربتك: ترجمة الذكاء الاصطناعي مفعّلة لمدة ساعتين."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zkouška začala: AI překlad je zapnutý na 2 hodiny."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η δοκιμή ξεκίνησε: η μετάφραση AI είναι ενεργή για 2 ώρες."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your trial has started: AI translation is on for 2 hours."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका ट्रायल शुरू हो गया: AI अनुवाद 2 घंटे के लिए चालू है।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A próba elindult: az AI-fordítás 2 órán át be van kapcsolva."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Masa coba dimulai: terjemahan AI aktif selama 2 jam."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je proefperiode is gestart: AI-vertaling staat 2 uur aan."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Din provperiod har startat: AI-översättning är på i 2 timmar."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เริ่มทดลองใช้แล้ว: การแปลด้วย AI เปิดใช้งาน 2 ชั่วโมง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пробний період розпочато: ШІ-переклад увімкнено на 2 години."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đã bắt đầu dùng thử: bản dịch AI bật trong 2 giờ."
+          }
+        }
+      }
+    },
+    "Denemeyi başlat": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابدأ التجربة"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spustit zkoušku"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Έναρξη δοκιμής"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start trial"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ट्रायल शुरू करें"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próba indítása"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mulai coba"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start proefperiode"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starta provperiod"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เริ่มทดลองใช้"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Почати пробний період"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bắt đầu dùng thử"
+          }
+        }
+      }
+    },
     "Denetleniyor...": {
       "localizations": {
         "ar": {
@@ -4481,6 +4785,82 @@
           "stringUnit": {
             "state": "translated",
             "value": "Chung"
+          }
+        }
+      }
+    },
+    "Gerçek oyunda yaptığımız testte, telefon çevirisine göre.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في اختبارنا على لعب حقيقي، مقارنةً بالترجمة على الجهاز."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V našem testu na skutečném hraní, ve srovnání s překladem v zařízení."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Στη δοκιμή μας σε πραγματικό παιχνίδι, σε σύγκριση με τη μετάφραση στη συσκευή."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In our test on real gameplay, compared with on-device translation."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "असली गेमप्ले पर हमारे परीक्षण में, डिवाइस पर अनुवाद की तुलना में।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valódi játékon végzett tesztünkben, a készüléken futó fordításhoz képest."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dalam uji kami pada gameplay nyata, dibanding terjemahan di perangkat."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In onze test met echte gameplay, vergeleken met vertalen op het toestel."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I vårt test med riktigt spelande, jämfört med översättning på enheten."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "จากการทดสอบของเรากับการเล่นเกมจริง เทียบกับการแปลบนเครื่อง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У нашому тесті на реальній грі, порівняно з перекладом на пристрої."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trong thử nghiệm của chúng tôi khi chơi thật, so với dịch trên thiết bị."
           }
         }
       }
@@ -6533,6 +6913,82 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kết nối máy chơi game"
+          }
+        }
+      }
+    },
+    "Konsolda açık olan içerik Uzaktan Oynama'da gösterilemiyor. Bir oyun aç, altyazı kendiliğinden gelir.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المحتوى المفتوح على الجهاز لا يمكن عرضه عبر اللعب عن بُعد. افتح لعبة وستظهر الترجمة تلقائيًا."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obsah otevřený na konzoli nelze přes Remote Play zobrazit. Spusť hru a titulky se objeví samy."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το περιεχόμενο που είναι ανοιχτό στην κονσόλα δεν μπορεί να εμφανιστεί μέσω Remote Play. Άνοιξε ένα παιχνίδι και οι υπότιτλοι θα εμφανιστούν μόνοι τους."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The content open on the console can't be shown over Remote Play. Open a game and subtitles will appear on their own."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कंसोल पर खुला कंटेंट Remote Play में नहीं दिखाया जा सकता। कोई गेम खोलें, सबटाइटल अपने आप आ जाएँगे।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A konzolon megnyitott tartalom nem jeleníthető meg Remote Playen keresztül. Indíts el egy játékot, és a feliratok maguktól megjelennek."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konten yang terbuka di konsol tidak bisa ditampilkan lewat Remote Play. Buka game, subtitle akan muncul sendiri."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De inhoud die op de console open staat kan niet via Remote Play worden getoond. Open een game en de ondertitels verschijnen vanzelf."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Innehållet som är öppet på konsolen kan inte visas via Remote Play. Öppna ett spel så visas undertexterna av sig själva."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เนื้อหาที่เปิดอยู่บนคอนโซลไม่สามารถแสดงผ่าน Remote Play ได้ เปิดเกมแล้วซับจะขึ้นเอง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вміст, відкритий на консолі, не можна показати через Remote Play. Відкрийте гру, і субтитри з'являться самі."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nội dung đang mở trên máy không thể hiển thị qua Remote Play. Hãy mở một trò chơi, phụ đề sẽ tự xuất hiện."
           }
         }
       }
@@ -10109,6 +10565,82 @@
         }
       }
     },
+    "Telefon çevirisi": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ترجمة الهاتف"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Překlad v zařízení"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Μετάφραση συσκευής"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On-device translation"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोन अनुवाद"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Készüléken fordítás"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terjemahan ponsel"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vertaling op toestel"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Översättning på enheten"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แปลบนเครื่อง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переклад на пристрої"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dịch trên máy"
+          }
+        }
+      }
+    },
     "Telefonla çevir": {
       "localizations": {
         "ar": {
@@ -11249,6 +11781,82 @@
         }
       }
     },
+    "Yapay zekâ · Pro": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ذكاء اصطناعي · Pro"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI · Pro"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI · Pro"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI · Pro"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI · Pro"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MI · Pro"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI · Pro"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI · Pro"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI · Pro"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI · Pro"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ШІ · Pro"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI · Pro"
+          }
+        }
+      }
+    },
     "Yapay zekâ çevirisi Pro'da · şimdilik telefonla çevriliyor": {
       "localizations": {
         "ar": {
@@ -11321,6 +11929,82 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dịch bằng AI có trong Pro · tạm thời dịch trên điện thoại"
+          }
+        }
+      }
+    },
+    "Yapay zekâ çevirisini 2 saat ücretsiz kullan. Kart gerekmez, bir kez geçerlidir.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "استخدم ترجمة الذكاء الاصطناعي مجانًا لمدة ساعتين. لا حاجة لبطاقة، ولمرة واحدة فقط."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Používej AI překlad 2 hodiny zdarma. Bez karty, jen jednou."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Χρησιμοποίησε τη μετάφραση AI δωρεάν για 2 ώρες. Χωρίς κάρτα, μόνο μία φορά."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use AI translation free for 2 hours. No card needed, available once."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI अनुवाद 2 घंटे मुफ़्त इस्तेमाल करें। कार्ड की ज़रूरत नहीं, केवल एक बार।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Használd az AI-fordítást 2 órán át ingyen. Kártya nem kell, egyszer vehető igénybe."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pakai terjemahan AI gratis selama 2 jam. Tanpa kartu, hanya sekali."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gebruik AI-vertaling 2 uur gratis. Geen kaart nodig, eenmalig."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Använd AI-översättning gratis i 2 timmar. Inget kort behövs, gäller en gång."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ใช้การแปลด้วย AI ฟรี 2 ชั่วโมง ไม่ต้องใช้บัตร ใช้ได้ครั้งเดียว"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Користуйтеся ШІ-перекладом безкоштовно 2 години. Картка не потрібна, лише один раз."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dùng bản dịch AI miễn phí trong 2 giờ. Không cần thẻ, chỉ một lần."
           }
         }
       }
@@ -11625,6 +12309,82 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hàng năm"
+          }
+        }
+      }
+    },
+    "daha az anlam hatası": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أخطاء أقل في المعنى"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "méně chyb ve smyslu"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "λιγότερα λάθη νοήματος"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "fewer meaning errors"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कम अर्थ की गलतियाँ"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kevesebb értelmi hiba"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "lebih sedikit salah makna"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "minder betekenisfouten"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "färre betydelsefel"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ความหมายผิดน้อยลง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "менше смислових помилок"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ít lỗi sai nghĩa hơn"
           }
         }
       }

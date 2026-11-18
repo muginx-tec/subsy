@@ -14,3 +14,7 @@ Bu kod uygulamaya girdiği için **telefon uygulamasının tamamı AGPL-3.0 ile 
 
 - `ChiakiAudioOutputIOS.m`: ses kuyruğunun düzeyi sıfıra çekildi (iki satır, "Subsy eklemesi"
   yorumuyla işaretli). Neden: oyunun sesi TV'den gelir, telefon susmalı. Bağlantı koduna dokunulmadı.
+- `ChiakiSessionBridge.m`: her oturuma "gösterilemez" geri çağrısı verildi ("Subsy eklemesi" yorumlarıyla
+  işaretli). Neden: konsol Uzaktan Oynama'ya kapalı bir içerik gösterirken (ör. YouTube) kütüphane bu geri
+  çağrıyı denetimsiz çağırıyor, verilmemişse uygulama çöküyordu (2026-11-18). Durum `SubsyGosterilemez`
+  bildirimiyle uygulamaya iletilir.

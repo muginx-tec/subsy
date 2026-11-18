@@ -7,6 +7,11 @@ import Foundation
 /// API anahtarı burada YOK ve olmayacak: uygulamadan çıkarılabilir. Anahtar yalnız sunucuda durur
 /// (sunucu/sunucu.py). Sunucu yapay zekâ çevirisini yalnız Pro (RevenueCat) ya da deneme süresindeki
 /// kullanıcıya verir.
+extension Notification.Name {
+    /// Pro olmadığı için yapay zekâ çevirisi kapatıldı.
+    static let yapayZekaKapandi = Notification.Name("yapayZekaKapandi")
+}
+
 enum CloudTranslator {
     private static let d = UserDefaults.standard
 
@@ -25,6 +30,14 @@ enum CloudTranslator {
         set { d.set(newValue, forKey: "cloudGame") }
     }
     static var configured: Bool { !server.isEmpty && !secret.isEmpty }
+
+    /// Pro yok (ya da deneme bitti): yapay zekâ seçimini kapatır, ekranlara haber verir (Selim, 2026-11-17:
+    /// "prosu yoksa pro kart tikli kalmasın"). Ayarlar "Telefonla çevir"e geçer, altyazı ekranı not gösterir.
+    static func proYokKapat() {
+        guard enabled else { return }
+        enabled = false
+        DispatchQueue.main.async { NotificationCenter.default.post(name: .yapayZekaKapandi, object: nil) }
+    }
 
     private static let session: URLSession = {
         let c = URLSessionConfiguration.ephemeral

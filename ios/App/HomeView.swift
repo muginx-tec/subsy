@@ -10,6 +10,13 @@ final class HomeModel: ObservableObject {
     @Published var cloudStatus = ""
     var onCloudChanged: () -> Void = {}
     var onDownloadLanguage: () -> Void = {}
+    private var proGozcu: NSObjectProtocol?
+
+    init() {
+        proGozcu = NotificationCenter.default.addObserver(forName: .yapayZekaKapandi, object: nil, queue: .main) { [weak self] _ in
+            if self?.cloud == true { self?.cloud = false }
+        }
+    }
     /// Arayüz İngilizce mi (Selim, 2026-11-17: "İngilizce dil de ekleyelim"). İngilizce altyazı dili
     /// değil (oyunun kendi dili), yalnız arayüz dili; altyazı dili olduğu gibi kalır.
     @Published var arayuzIngilizce = (ArayuzDili.secilen == "en")

@@ -133,7 +133,7 @@ final class Pipeline {
                         let (t, modelMs) = try await CloudTranslator.translate(body, previous: previous)
                         translated = t; engine = "bulut \(modelMs) ms"
                     } catch { // sunucu yok, yavaş ya da hata: telefonun çevirisine düş, altyazı boş kalmasın
-                        if (error as? CloudTranslator.Failure)?.message == "Pro gerekli" { proGerekli = true }
+                        if (error as? CloudTranslator.Failure)?.message == "Pro gerekli" { proGerekli = true; CloudTranslator.proYokKapat() }
                         onSkip?("bulut çevirisi olmadı, telefona düşüldü · \((error as? CloudTranslator.Failure)?.message ?? error.localizedDescription)")
                         translated = try await translator.translate(Phrasebook.normalize(body))
                     }

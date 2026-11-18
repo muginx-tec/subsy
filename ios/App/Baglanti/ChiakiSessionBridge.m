@@ -20,6 +20,19 @@
 
 static os_log_t s_log;
 
+// Subsy eklemesi: konsol "bu içerik Uzaktan Oynama'da gösterilemez" (rp_prohibit) deyince kütüphane
+// display_sink.cantdisplay_cb'yi boş mu diye bakmadan çağırıyor (lib/src/ctrl.c); verilmemişse uygulama
+// çöküyordu (2026-11-18, PS5'te YouTube açıkken bağlanınca). Geri çağrı her oturumda verilir ve durumu
+// uygulamaya bildirim olarak iletir.
+NSString *const SubsyGosterilemezBildirimi = @"SubsyGosterilemez";
+static void subsy_cantdisplay_cb(void *user, bool cant_display) {
+    (void)user;
+    BOOL deger = cant_display ? YES : NO;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:SubsyGosterilemezBildirimi object:@(deger)];
+    });
+}
+
 typedef struct {
     ChiakiSession *session;  // Separately allocated via chiaki_session_get_sizeof()
     ChiakiLog *log;
@@ -270,6 +283,10 @@ ChiakiSessionRef chiaki_session_bridge_create(const ChiakiSessionBridgeConnectIn
         os_log(s_log, "Audio: ChiakiOpusDecoder + queue (service_type=%d)", connect_info->service_type);
     }
 #endif
+
+    // Subsy eklemesi: yukarıdaki açıklamaya bak.
+    ChiakiCtrlDisplaySink display_sink = { .user = NULL, .cantdisplay_cb = subsy_cantdisplay_cb };
+    chiaki_session_ctrl_set_display_sink_ex(s->session, &display_sink);
 
     return (ChiakiSessionRef)s;
 }

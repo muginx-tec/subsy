@@ -11,6 +11,18 @@ import UIKit
 final class Konsol: ObservableObject {
     static let shared = Konsol()
 
+    /// Konsol "ekrandaki içerik Uzaktan Oynama'da gösterilemez" dedi (ör. YouTube açık). Kütüphane bunu köprüdeki
+    /// geri çağrıyla bildirir (Baglanti/KAYNAK.md); geri çağrı yokken uygulama çöküyordu (2026-11-18).
+    @Published var gosterilemez = false
+
+    private init() {
+        NotificationCenter.default.addObserver(forName: Notification.Name("SubsyGosterilemez"), object: nil, queue: .main) { [weak self] n in
+            guard let self, self.session != nil else { return }
+            self.gosterilemez = (n.object as? NSNumber)?.boolValue ?? false
+            self.yaz(self.gosterilemez ? "konsol: içerik Uzaktan Oynama'da gösterilemiyor" : "konsol: içerik yeniden gösterilebiliyor")
+        }
+    }
+
     enum Durum: Equatable { case bos, kaydoluyor, baglaniyor, bagli, koptu(String) }
 
     @Published var hosts: [PyluxDiscoveredHost] = []
@@ -46,6 +58,10 @@ final class Konsol: ObservableObject {
     @Published var sonSure = ""
     /// Yapay zekâ çevirisi seçili ama kullanıcı Pro değil (sunucu reddetti); altyazı ekranında not gösterilir.
     @Published var proNotu = false
+    /// Son repliği kim çevirdi: "bulut" (yapay zekâ, Pro) ya da "telefon". Altyazı ekranının sağ üstünde görünür.
+    @Published var cevirmen = "telefon"
+    /// Telefonun çevirisi dil paketi olmadığı için yapılamadı: altyazı ekranında "Dil paketini indir" çıkar.
+    @Published var paketEksik = false
 
     private var okumaAcik = false
     /// Kutu ayar ekranı açıkken: okuma sürer ama çevrilmez; okunan ham yazı ekranda gösterilir.
@@ -66,6 +82,8 @@ final class Konsol: ObservableObject {
             satirlar = Onizleme.replikler.enumerated().map { Satir(id: $0.offset + 1, konusan: nil, metin: $0.element, renk: $0.offset % 2) }
         }
         Pipeline.main?.onKonsolResult = { [weak self] r in self?.cevrildi(r) }
+        cevirmen = CloudTranslator.enabled ? "bulut" : "telefon"
+        proNotu = false; paketEksik = false
         if ornekKipi {
             ornekBesle()
             ornekZamanlayici = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in
@@ -83,6 +101,24 @@ final class Konsol: ObservableObject {
         ornekZamanlayici?.invalidate(); ornekZamanlayici = nil
         ornekKipi = false
     }
+
+    #if DEBUG
+    /// Yalnız deneme derlemesi: telefon ve yapay zekâ çevirisini karşılaştırmak için (Selim, 2026-11-17).
+    /// Documents/ceviri_kaydi.tsv: saat, çeviren, süre ms, İngilizce aslı, çeviri. Mağaza sürümünde yok.
+    private func cevirKaydi(_ r: Pipeline.Result) {
+        guard let klasor = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let url = klasor.appendingPathComponent("ceviri_kaydi.tsv")
+        let saat = ISO8601DateFormatter().string(from: Date())
+        let temiz = { (s: String) in s.replacingOccurrences(of: "\t", with: " ").replacingOccurrences(of: "\n", with: " ") }
+        let satir = [saat, r.engine.hasPrefix("bulut") ? "yapay_zeka" : "telefon", String(Int(r.translateMs)),
+                     temiz(r.original), temiz((r.speaker.map { $0 + ": " } ?? "") + r.translated)].joined(separator: "\t") + "\n"
+        if let h = try? FileHandle(forWritingTo: url) {
+            h.seekToEndOfFile(); h.write(Data(satir.utf8)); try? h.close()
+        } else {
+            try? ("saat\tceviren\tms\taslı\tceviri\n" + satir).write(to: url, atomically: true, encoding: .utf8)
+        }
+    }
+    #endif
 
     // MARK: Konsolsuz örnek (App Store incelemecisi ve konsolu yanında olmayan kullanıcı için)
     /// Açıkken altyazı ekranı, uydurma İngilizce replikleri birkaç saniyede bir gerçek çeviri hattından
@@ -105,10 +141,18 @@ final class Konsol: ObservableObject {
 
     private func cevrildi(_ r: Pipeline.Result) {
         guard r.place == "konsol" else { return }
-        proNotu = r.proGerekli
+        if r.proGerekli { proNotu = true }   // bu oturumda kalıcı: Pro bitti, telefonla çevriliyor
         // Çeviri yapılamadıysa (ör. telefonda dil paketi yok) sessiz kalma: altyazı ekranının altına yaz.
-        if let hata = r.error { sonSure = L("Çeviri yapılamadı. Ayarlar'a bak.") + " (\(hata))"; return }
+        if let hata = r.error {
+            if hata == L("Dil paketi indirilmemiş") { paketEksik = true }
+            sonSure = L("Çeviri yapılamadı. Ayarlar'a bak.") + " (\(hata))"; return
+        }
         guard !r.translated.isEmpty else { return }
+        #if DEBUG
+        cevirKaydi(r)
+        #endif
+        paketEksik = false
+        cevirmen = r.engine.hasPrefix("bulut") ? "bulut" : "telefon"
         // Aynı satırın düzeltilmiş okuması yeni satır açmaz, eskisinin yerine geçer.
         let a = MetinOkuyucu.sade(r.original), b = MetinOkuyucu.sade(sonKaynak)
         let ayni = !b.isEmpty && (a.contains(b) || b.contains(a) || a.prefix(14) == b.prefix(14))
@@ -231,6 +275,7 @@ final class Konsol: ObservableObject {
 
     func baglan(host: PyluxDiscoveredHost) {
         guard session == nil, let addr = host.hostAddr else { return }
+        gosterilemez = false
         guard let registKey = Kasa.oku("ps5RegistKey"), let rpKey = Kasa.oku("ps5RpKey") else {
             yaz("önce kayıt gerekli"); return
         }
@@ -301,6 +346,7 @@ final class Konsol: ObservableObject {
                 self.session = nil
                 self.decoder = nil
                 self.receiver = nil
+                self.gosterilemez = false
                 if self.durum == .bagli || self.durum == .baglaniyor { self.durum = .bos }
             }
             chiaki_session_bridge_free(ref)
