@@ -24,6 +24,9 @@ struct KonsolAltyaziView: View {
     /// Tablette ekran büyük: yazı baştan daha büyük başlar (Selim: "tablette de çıkacağız").
     private var taban: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 1.7 : 1.0 }
 
+    /// Altyazı ekranı her açıldığında gösterilen ipucu (Selim, 2026-11-20): oyunun altyazı ayarlarında yazı zemini ve
+    /// konuşan adı açıkken okuma ve çeviri belirgin iyileşiyor. Yalnız "Tamam"a basınca kapanır (Selim: "tamama basılınca kapansın"); kendiliğinden kapanmaz.
+    @State private var ipucu = true
     @State private var paketAyari: TranslationSession.Configuration?
     /// Dil paketi bu cihaza indirilebiliyor mu (desteklenmeyen dilde "indir" düğmesi anlamsız).
     @State private var paketIndirilebilir = false
@@ -48,6 +51,7 @@ struct KonsolAltyaziView: View {
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = true   // ekran kararmasın
             konsol.altyaziyiBaslat()
+            ipucu = true
             // Telefonun dil paketi inmemişse sistemin indirme penceresini burada aç: kullanıcı (ve App Store
             // incelemecisi) "çeviri yapılamadı" görüp Ayarlar'ı aramak zorunda kalmasın.
             Task { @MainActor in
@@ -86,6 +90,25 @@ struct KonsolAltyaziView: View {
                     .font(.system(size: 12 * taban, weight: .semibold)).foregroundColor(Theme.accent)
                     .padding(.horizontal, 10).padding(.vertical, 5).background(Capsule().fill(Color.white.opacity(0.08)))
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).padding(.top, 14)
+            }
+            if ipucu && !konsol.ornekKipi {
+                VStack(alignment: .leading, spacing: 6 * taban) {
+                    Label(L("Küçük bir ipucu"), systemImage: "lightbulb.fill")
+                        .font(.system(size: 14 * taban, weight: .bold)).foregroundColor(Theme.accent)
+                    Text(L("Oyunun altyazı ayarlarından yazı arka planını ve konuşan adlarını açarsan çeviriler çok daha isabetli olur."))
+                        .font(.system(size: 13 * taban)).foregroundColor(.white.opacity(0.9))
+                        .fixedSize(horizontal: false, vertical: true)
+                    Button(L("Anladım")) { withAnimation { ipucu = false } }
+                        .font(.system(size: 13 * taban, weight: .semibold)).foregroundColor(Theme.accent)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .padding(14 * taban)
+                .frame(maxWidth: 420 * taban, alignment: .leading)
+                .background(RoundedRectangle(cornerRadius: 14).fill(Color(red: 0.13, green: 0.16, blue: 0.28)))   // opak: arkadaki altyazı yazıya karışmasın
+                .overlay(RoundedRectangle(cornerRadius: 14).stroke(Color.white.opacity(0.16), lineWidth: 1))
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).padding(.top, 14)
+                .zIndex(10)   // altyazı satırlarının üstünde dursun
+                .transition(.opacity)
             }
             // Sağ üst: o an çeviriyi kim yapıyor (Selim, 2026-11-17: "o an kim çeviri yapıyor görünsün").
             cevirmenRozeti

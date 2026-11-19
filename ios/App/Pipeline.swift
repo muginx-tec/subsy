@@ -47,6 +47,37 @@ final class Pipeline {
         return Double(x.intersection(y).count) / Double(min(x.count, y.count)) >= 0.5
     }
 
+    // MARK: İki replik birden (Selim, 2026-11-20)
+    /// Oyun yeni repliği gösterdiğinde eskisi bir an daha ekranda kalır; kutuda ikisi birden okunur
+    /// ("... you do not want. Locals: Yo..."). Cümle sonundan sonra gelen "Ad:" kalıbı yeni repliğin başıdır.
+    /// Yalnız konuşan adı açık oyunlarda işe yarar; ad yoksa metin tek parça döner. "In Spanish:" ad değil, etikettir.
+    private static let sinir = try! NSRegularExpression(
+        pattern: #"(?<=[.!?…"”])\s+(?=(?!In [A-Z])[A-Z][\p{L}'.-]*(?: [A-Z][\p{L}'.-]*){0,2}: \S)"#)
+    static func replikler(_ text: String) -> [String] {
+        let ns = text as NSString
+        var out: [String] = [], bas = 0
+        for m in sinir.matches(in: text, range: NSRange(location: 0, length: ns.length)) {
+            out.append(ns.substring(with: NSRange(location: bas, length: m.range.location - bas)))
+            bas = m.range.location + m.range.length
+        }
+        out.append(ns.substring(from: bas))
+        return out.map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
+    }
+    /// Repliğin başındaki dil etiketi ("In Spanish: ...") oyunun notudur, çevrilmez.
+    private static let dilEtiketi = try! NSRegularExpression(pattern: #"^In [A-Z][a-z]+:\s*"#)
+    static func etiketsiz(_ s: String) -> String {
+        dilEtiketi.stringByReplacingMatches(in: s, range: NSRange(location: 0, length: (s as NSString).length), withTemplate: "")
+    }
+
+    // MARK: Çeviri hafızası (Selim, 2026-11-20)
+    /// Aynı replik yeniden görününce (oyun tekrar gösterdi, görev yazısı ekranda duruyor) sunucuya yeniden sorulmaz,
+    /// ilk çeviri gösterilir: tutarlı, anında ve bedava. Yalnız telefonun belleğinde, uygulama kapanınca gider.
+    /// 4 kelimeden kısa replik bağlama bağlıdır ("Yeah", "Alright, then!"): onun çevirisi yalnız 20 saniye geçerli.
+    private var hafiza: [String: (ceviri: String, zaman: Double)] = [:]
+    private func hafizaAnahtari(_ body: String) -> String {
+        "\(CloudTranslator.game)|\(Diller.secili.kod)|\(MetinOkuyucu.sade(body))"
+    }
+
     /// Son okunan replikler (İngilizce, konuşan adıyla) ve zamanları: bulut çevirisine bağlam olarak gider.
     private var recent: [(String, Double)] = []
 
@@ -57,7 +88,7 @@ final class Pipeline {
     func dilDegisti() {
         translator.reset()
         speakerNames = [:]
-        recent = []
+        recent = []; hafiza = [:]
         lastText = ""; shownSource = ""; variants = [:]
     }
     private func speakerName(_ name: String) async -> String {
@@ -69,7 +100,13 @@ final class Pipeline {
     }
 
     func handle(text raw: String, capturedAt: Double, ocrMs: Double, place: String) {
-        let text = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        var text = raw.trimmingCharacters(in: .whitespacesAndNewlines)
+        // Kutuda iki replik birden varsa: daha önce görülmemiş ilk parça işlenir (eskisi yeniden çevrilmez);
+        // hepsi görüldüyse sonuncusu. Sıradaki okumada sıra öbür parçaya gelir.
+        let parcalar = Pipeline.replikler(text)
+        if parcalar.count > 1 {
+            text = parcalar.first { p in !recent.contains { sameSubtitle(p, $0.0) } } ?? parcalar[parcalar.count - 1]
+        }
         guard text != lastText else { return }
         lastText = text
         // Tek kelimelik, noktalamasız yazı altyazı değildir: düğme, sekme, etiket ("Browse", "Freeform").
@@ -103,6 +140,12 @@ final class Pipeline {
             let count = variants[text] ?? 0, shownCount = variants[shownSource] ?? 1
             let a = MetinOkuyucu.sade(text), b = MetinOkuyucu.sade(shownSource)
             if a == b || b.contains(a) { return }                       // aynısı ya da eksik hâli
+            // Yalnız sonu oynayan okuma aynı repliktir, yeniden çevrilmez; ilk çeviri kalır (Selim, 2026-11-20:
+            // "sonuna bir kaç satır eklendiyse çevirme"). Örnek: repliğin sonuna yapışan plaka her karede başka
+            // okununca aynı cümle iki kez çevriliyor, ikincisi ekranda kalıyordu. Replik gerçekten uzadıysa
+            // (ikinci satır geldi) aşağıdaki kurallar geçerli.
+            let ortak = zip(a, b).prefix { $0 == $1 }.count
+            if ortak * 5 >= min(a.count, b.count) * 4, abs(a.count - b.count) <= max(6, b.count / 6) { return }
             let fuller = a.contains(b) && count >= 2                     // gösterileni kapsayan daha tam okuma
             let confirmed = count >= 2 && count >= shownCount + 1        // daha sık görülen okuma
             guard fuller || confirmed else { return }
@@ -117,7 +160,9 @@ final class Pipeline {
             let t0 = CFAbsoluteTimeGetCurrent()
             var translated = ""
             var failure: String?
-            let (name, body) = Phrasebook.splitSpeaker(text)
+            var (name, body) = Phrasebook.splitSpeaker(Pipeline.etiketsiz(text))
+            body = Pipeline.etiketsiz(body)
+            if body.isEmpty { body = text; name = nil }
             var speaker: String?
             var engine = "telefon"
             var proGerekli = false
@@ -128,10 +173,16 @@ final class Pipeline {
             let previous = recent.suffix(4).map(\.0)
             if recent.last?.0 != text { recent.append((text, nowT)); if recent.count > 8 { recent.removeFirst() } }
             do {
-                if CloudTranslator.enabled, CloudTranslator.configured {
+                let anahtar = hafizaAnahtari(body)
+                let omur = body.split(separator: " ").count >= 4 ? 600.0 : 20.0
+                if CloudTranslator.enabled, CloudTranslator.configured, let h = hafiza[anahtar], nowT - h.zaman < omur {
+                    translated = h.ceviri; engine = "bulut hafıza"
+                } else if CloudTranslator.enabled, CloudTranslator.configured {
                     do {
                         let (t, modelMs) = try await CloudTranslator.translate(body, previous: previous)
                         translated = t; engine = "bulut \(modelMs) ms"
+                        hafiza[anahtar] = (t, nowT)
+                        if hafiza.count > 300 { hafiza = hafiza.filter { nowT - $0.value.zaman < 600 } }
                     } catch { // sunucu yok, yavaş ya da hata: telefonun çevirisine düş, altyazı boş kalmasın
                         if (error as? CloudTranslator.Failure)?.message == "Pro gerekli" { proGerekli = true; CloudTranslator.proYokKapat() }
                         onSkip?("bulut çevirisi olmadı, telefona düşüldü · \((error as? CloudTranslator.Failure)?.message ?? error.localizedDescription)")

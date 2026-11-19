@@ -61,6 +61,7 @@ struct SettingsView: View {
                             Picker(L("Oyun sözlüğü"), selection: $model.cloudGame) {
                                 Text(L("Genel")).tag("genel")
                                 Text("The Last of Us 2").tag("tlou2")
+                                Text("GTA VI").tag("gta6")
                                 Text("GTA V").tag("gta5")
                             }
                             .pickerStyle(.segmented)

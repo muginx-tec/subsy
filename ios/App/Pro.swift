@@ -8,6 +8,16 @@ import UIKit
 /// (paylaşana 1 saat deneme kişi başı bir kez verilsin diye).
 enum Kullanici {
     static let kimlik: String = {
+        #if DEBUG
+        // Yalniz deneme derlemesi: "-yeniKullanici" ile acilirsa kimlik yenilenir, uygulama hic kurulmamis
+        // biri gibi davranir (2 saatlik deneme karti yeniden gorunur). Her kullanim RevenueCat'te yeni bir
+        // musteri acar; sayilari kirletmemek icin yalniz gerektiginde kullan.
+        if ProcessInfo.processInfo.arguments.contains("-yeniKullanici") {
+            let yeni = UUID().uuidString.lowercased()
+            Kasa.yaz("kullanici", Data(yeni.utf8))
+            return yeni
+        }
+        #endif
         if let d = Kasa.oku("kullanici"), let s = String(data: d, encoding: .utf8), !s.isEmpty { return s }
         let yeni = UUID().uuidString.lowercased()
         Kasa.yaz("kullanici", Data(yeni.utf8))

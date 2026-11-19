@@ -120,6 +120,34 @@ final class Konsol: ObservableObject {
     }
     #endif
 
+    #if DEBUG
+    private var sonResimMetni = ""
+    private var sonResimZamani = 0.0
+    /// Yalnız deneme derlemesi (Selim, 2026-11-19: "sarı ile çizilen alanın resmini çeksin kaydetsin, 20-30 replik
+    /// toplayalım"): okunan kutunun görüntüsü ve Vision'ın gördüğü satırlar ayrı ayrı saklanır; oyunun konuşanları
+    /// nasıl ayırdığına (ayrı satır, renk, tire) bakmak için. Documents/kutu2/<saat>.jpg + kutu2/liste.tsv. En çok 300 resim (ilk 79 resim eski kutu/ klasöründe).
+    /// Okuma kuyruğunda çağrılır. Mağaza sürümünde yok.
+    private func kutuResmiKaydet(_ image: CIImage, satirlar: [String]) {
+        let metin = MetinOkuyucu.sade(satirlar.joined(separator: " "))
+        let simdi = Date().timeIntervalSince1970
+        guard metin.count >= 6, metin != sonResimMetni, simdi - sonResimZamani > 1.0,
+              let kok = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let klasor = kok.appendingPathComponent("kutu2", isDirectory: true)
+        try? FileManager.default.createDirectory(at: klasor, withIntermediateDirectories: true)
+        let var_ = (try? FileManager.default.contentsOfDirectory(atPath: klasor.path))?.filter { $0.hasSuffix(".jpg") }.count ?? 0
+        guard var_ < 300, let renk = CGColorSpace(name: CGColorSpace.sRGB),
+              let veri = ci.jpegRepresentation(of: image, colorSpace: renk) else { return }
+        sonResimMetni = metin; sonResimZamani = simdi
+        let b = DateFormatter(); b.dateFormat = "HHmmss_SSS"
+        let ad = b.string(from: Date()) + ".jpg"
+        try? veri.write(to: klasor.appendingPathComponent(ad))
+        let satir = ad + "\t" + satirlar.map { $0.replacingOccurrences(of: "\t", with: " ") }.joined(separator: " ⏎ ") + "\n"
+        let liste = klasor.appendingPathComponent("liste.tsv")
+        if let h = try? FileHandle(forWritingTo: liste) { h.seekToEndOfFile(); h.write(Data(satir.utf8)); try? h.close() }
+        else { try? satir.write(to: liste, atomically: true, encoding: .utf8) }
+    }
+    #endif
+
     // MARK: Konsolsuz örnek (App Store incelemecisi ve konsolu yanında olmayan kullanıcı için)
     /// Açıkken altyazı ekranı, uydurma İngilizce replikleri birkaç saniyede bir gerçek çeviri hattından
     /// geçirir: telefonla ya da yapay zekâ ile çeviri aynen çalışır, yalnız kaynak konsol değil.
@@ -188,8 +216,12 @@ final class Konsol: ObservableObject {
             let t0 = CFAbsoluteTimeGetCurrent()
             // Kare zaten düz ve yatay geliyor: yön düzeltmesi, siyah şerit denetimi gerekmez.
             let image = MetinOkuyucu.kutu(of: buffer, box: Kutu.kayitli)
-            let text = MetinOkuyucu.oku(image, context: self.ci)
+            let satirlar = MetinOkuyucu.satirlar(image, context: self.ci)
+            let text = MetinOkuyucu.altyaziSatirlari(satirlar).joined(separator: " ")
             let ms = (CFAbsoluteTimeGetCurrent() - t0) * 1000
+            #if DEBUG
+            if self.okumaAcik { self.kutuResmiKaydet(image, satirlar: satirlar) }
+            #endif
             self.okuyor = false
             DispatchQueue.main.async {
                 if self.kutuAyari { self.sonOkunan = text; return }

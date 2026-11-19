@@ -20,11 +20,26 @@ enum CloudTranslator {
         set { d.set(newValue, forKey: "cloudOn") }
     }
     /// Çeviri sunucusu (Hetzner, Caddy arkasında HTTPS).
-    static let server = "https://subsy-api.muginx.com"
+    static let canliSunucu = "https://subsy-api.muginx.com"
+    #if DEBUG
+    /// Yalnız deneme derlemesi (Selim, 2026-11-20: "bu işin bir testi olsa, benim tablet o sunucuya baksa"): uygulama
+    /// "-testSunucu http://<Mac'in yerel adresi>:8788" ile açılırsa çeviriyi Mac'teki test sunucusundan alır ve bunu
+    /// hatırlar; "-testSunucu kapat" canlıya döndürür. Mağaza sürümünde yok.
+    static let server: String = {
+        let args = ProcessInfo.processInfo.arguments
+        if let i = args.firstIndex(of: "-testSunucu"), i + 1 < args.count {
+            if args[i + 1].hasPrefix("http") { UserDefaults.standard.set(args[i + 1], forKey: "testSunucu") }
+            else { UserDefaults.standard.removeObject(forKey: "testSunucu") }
+        }
+        return UserDefaults.standard.string(forKey: "testSunucu") ?? canliSunucu
+    }()
+    #else
+    static let server = canliSunucu
+    #endif
     /// Sunucunun uygulamayı tanıdığı ortak sır. Kaynak koda yazılmaz: `ios/Config/Gizli.xcconfig` (git'e girmez)
     /// derlemede Info.plist'e koyar. Asıl koruma bu değil, sunucunun RevenueCat'ten yaptığı Pro denetimi.
     static let secret = (Bundle.main.object(forInfoDictionaryKey: "SubsySunucuSirri") as? String) ?? ""
-    /// Oyuna özel sözlüğün adı: "genel", "tlou2", "gta5".
+    /// Oyuna özel sözlüğün adı: "genel", "tlou2", "gta5", "gta6" (sunucudaki sozluk.json ile aynı adlar).
     static var game: String {
         get { d.string(forKey: "cloudGame") ?? "genel" }
         set { d.set(newValue, forKey: "cloudGame") }
@@ -75,8 +90,25 @@ enum CloudTranslator {
         guard code == 200, let text = json?["ceviri"] as? String, !text.isEmpty else {
             throw Failure(message: "sunucu \(code): \(json?["hata"] as? String ?? "cevap okunamadı")")
         }
+        #if DEBUG
+        gidenKaydi(line, previous, text)
+        #endif
         return (text, json?["ms"] as? Int ?? 0)
     }
+
+    #if DEBUG
+    /// Yalnız deneme derlemesi (Selim, 2026-11-20): modele GERÇEKTEN giden replik, bağlam ve oyun seçimi ile dönen
+    /// çeviri. Ekrandaki kayıtta görünen "aslı" ile modele giden metin aynı mı diye bakmak için. Documents/giden.tsv
+    private static func gidenKaydi(_ line: String, _ previous: [String], _ ceviri: String) {
+        guard let kok = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let url = kok.appendingPathComponent("giden.tsv")
+        let temiz = { (s: String) in s.replacingOccurrences(of: "\t", with: " ").replacingOccurrences(of: "\n", with: " ") }
+        let satir = [ISO8601DateFormatter().string(from: Date()), game, temiz(line),
+                     previous.map(temiz).joined(separator: " ⏎ "), temiz(ceviri)].joined(separator: "\t") + "\n"
+        if let h = try? FileHandle(forWritingTo: url) { h.seekToEndOfFile(); h.write(Data(satir.utf8)); try? h.close() }
+        else { try? ("saat\toyun\tgiden\tonceki\tceviri\n" + satir).write(to: url, atomically: true, encoding: .utf8) }
+    }
+    #endif
 
     struct ProDurumu { let kilit: Bool; let denemeBitis: Date?; let denemeKullanildi: Bool }
 

@@ -1521,6 +1521,82 @@
         }
       }
     },
+    "Anladım": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فهمت"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozumím"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Κατάλαβα"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Got it"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "समझ गया"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Értem"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mengerti"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Begrepen"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uppfattat"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เข้าใจแล้ว"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зрозуміло"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đã hiểu"
+          }
+        }
+      }
+    },
     "App Store'da": {
       "localizations": {
         "ar": {
@@ -7373,6 +7449,82 @@
         }
       }
     },
+    "Küçük bir ipucu": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نصيحة سريعة"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Malý tip"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Μια μικρή συμβουλή"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A quick tip"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "एक छोटा सुझाव"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Egy gyors tipp"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tips singkat"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Een korte tip"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ett snabbt tips"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เคล็ดลับเล็ก ๆ"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Невелика порада"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mẹo nhỏ"
+          }
+        }
+      }
+    },
     "Menü ve jenerik yazıları çevrilmez. Telefonun sesi tamamen kısıksa çalışmaz, en kısık kademede bırak.": {
       "localizations": {
         "ar": {
@@ -8281,6 +8433,82 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dịch lời thoại trong game sang ngôn ngữ của bạn ngay lập tức."
+          }
+        }
+      }
+    },
+    "Oyunun altyazı ayarlarından yazı arka planını ve konuşan adlarını açarsan çeviriler çok daha isabetli olur.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فعّل خلفية النص وأسماء المتحدثين من إعدادات الترجمة في اللعبة، وستصبح الترجمة أدق بكثير."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zapni v nastavení titulků ve hře pozadí textu a jména mluvčích, překlady budou mnohem přesnější."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ενεργοποίησε το φόντο κειμένου και τα ονόματα ομιλητών στις ρυθμίσεις υποτίτλων του παιχνιδιού και οι μεταφράσεις θα γίνουν πολύ πιο ακριβείς."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on the subtitle background and speaker names in your game's subtitle settings, and translations get much more accurate."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गेम की सबटाइटल सेटिंग में टेक्स्ट बैकग्राउंड और बोलने वाले का नाम चालू कर दें, अनुवाद कहीं ज़्यादा सटीक हो जाएगा।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapcsold be a játék feliratbeállításaiban a szöveg hátterét és a beszélők nevét, így a fordítás sokkal pontosabb lesz."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktifkan latar belakang teks dan nama pembicara di pengaturan subtitle game, terjemahan akan jauh lebih akurat."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zet de tekstachtergrond en sprekersnamen aan in de ondertitelinstellingen van je game, dan worden vertalingen veel nauwkeuriger."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slå på textbakgrund och talarnamn i spelets undertextinställningar, så blir översättningarna mycket mer träffsäkra."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิดพื้นหลังข้อความและชื่อผู้พูดในการตั้งค่าคำบรรยายของเกม แล้วคำแปลจะแม่นยำขึ้นมาก"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Увімкніть тло тексту та імена мовців у налаштуваннях субтитрів гри, і переклад стане значно точнішим."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hãy bật nền chữ và tên người nói trong cài đặt phụ đề của game, bản dịch sẽ chính xác hơn nhiều."
           }
         }
       }

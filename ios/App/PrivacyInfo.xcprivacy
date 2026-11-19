@@ -2,7 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- Subsy reklam izlemesi yapmaz, izleme alan adı yok. -->
+	<!-- Subsy kullanıcıyı izlemez (izleme izni istenmez, reklam kimliği toplanmaz). Meta SDK yalnız kurulum ve
+	     açılış olayını reklam ölçümü için gönderir; kendi gizlilik bildirimi SDK'nın içinde gelir. -->
 	<key>NSPrivacyTracking</key>
 	<false/>
 	<key>NSPrivacyTrackingDomains</key>

@@ -15,6 +15,11 @@ enum MetinOkuyucu {
     }
 
     static func oku(_ image: CIImage, context: CIContext) -> String {
+        satirlar(image, context: context).joined(separator: " ")
+    }
+
+    /// Kutudaki yazı, ekrandaki satırlarıyla (yukarıdan aşağı). `oku` bunları boşlukla birleştirir.
+    static func satirlar(_ image: CIImage, context: CIContext) -> [String] {
         let request = VNRecognizeTextRequest()
         request.recognitionLevel = .accurate
         request.recognitionLanguages = ["en-US"]
@@ -33,10 +38,23 @@ enum MetinOkuyucu {
                 if abs(a.0.midY - b.0.midY) > 0.05 { return a.0.midY > b.0.midY }
                 return a.0.minX < b.0.minX
             }
-            .map(\.1).joined(separator: " ")
+            .map(\.1)
     }
 
     /// Karşılaştırma için sadeleştirir: harf dışını atar, aksanları düzler ("bağlandı" = "baglandi").
+    /// Altyazının yanında okunan dünya yazılarını (plaka, tampon yazısı, tabela) atar: içinde küçük harfli gerçek bir
+    /// cümle satırı varken, hiç küçük harfi olmayan ve rakam içeren ya da 6+ harfli satır altyazı değildir
+    /// (2026-11-20, GTA 6 kutu resimleri: "J2G 487", "THIS VEHICLE STOPS FREQUENTLY"). Her oyunda geçerli, ayar istemez.
+    /// Hepsi büyük harfse dokunmaz; o durumu çeviri hattı ayrıca eler.
+    static func altyaziSatirlari(_ satirlar: [String]) -> [String] {
+        guard satirlar.count > 1, satirlar.contains(where: { $0.contains(where: \.isLowercase) }) else { return satirlar }
+        return satirlar.filter { s in
+            if s.contains(where: \.isLowercase) { return true }
+            let harf = s.filter(\.isLetter).count
+            return !(s.contains(where: \.isNumber) || harf >= 6 || harf == 0)
+        }
+    }
+
     static func sade(_ s: String) -> String {
         let plain = s.replacingOccurrences(of: "ı", with: "i").replacingOccurrences(of: "İ", with: "i")
             .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: nil)

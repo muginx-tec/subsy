@@ -23,6 +23,8 @@ enum Hakkinda {
         ("nanopb", "zlib"),
         ("Jerasure · GF-Complete", "BSD"),
         ("json-c", "MIT"),
+        ("RevenueCat", "MIT"),
+        ("Facebook SDK for iOS", "Meta Platform License"),
     ]
 
     static var surum: String {
