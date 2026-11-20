@@ -61,12 +61,56 @@ final class Pipeline {
             bas = m.range.location + m.range.length
         }
         out.append(ns.substring(from: bas))
-        return out.map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
+        // Unvanlı ad ("Ms. Sharleen:", "Dr. Miller:") sınır değildir: "Ms." deki nokta cümle sonu sanılıp replik
+        // "Ms." ve "Sharleen: ..." diye bölünüyor, eldeki "Ms." atılıyor ve o konuşanın HİÇBİR repliği çevrilmiyordu
+        // (Selim oyunda gördü, 2026-11-20). Tek başına kalan kısa kısaltma bir sonraki parçayla birleştirilir.
+        var birlesik: [String] = []
+        for p in out.map({ $0.trimmingCharacters(in: .whitespaces) }) where !p.isEmpty {
+            if let son = birlesik.last, !son.contains(":"), !son.contains(" "), son.count <= 5, son.hasSuffix(".") {
+                birlesik[birlesik.count - 1] = son + " " + p
+            } else {
+                birlesik.append(p)
+            }
+        }
+        return birlesik
     }
     /// Repliğin başındaki dil etiketi ("In Spanish: ...") oyunun notudur, çevrilmez.
     private static let dilEtiketi = try! NSRegularExpression(pattern: #"^In [A-Z][a-z]+:\s*"#)
     static func etiketsiz(_ s: String) -> String {
         dilEtiketi.stringByReplacingMatches(in: s, range: NSRange(location: 0, length: (s as NSString).length), withTemplate: "")
+    }
+
+    // MARK: Bozuk okunan konuşan adı (Selim, 2026-11-20: "bazen başlıkla geliyor, bazen s.Sharleen: diye")
+    /// Ad küçük ve renkli yazıldığı için baş harfleri okunmayabiliyor ("s. Sharleen", "Sharleen") ya da başına kırıntı
+    /// yapışıyor ("CAVE Jason"). Küçük harfle başlayan önek ad sayılmadığı için başlık kayboluyor, ad repliğin içinde kalıyordu.
+    /// Karar sıklığa göre: oturumda en az 2 kez ve bu önekten daha sık görülmüş bir ad, önekin sonuna uyuyorsa ya da önek
+    /// o adın sonuysa o ad kullanılır. ("Uzun olan doğrudur" denendi: tek bir "CAVE Jason" bütün Jason'ları bozdu.)
+    /// 323 gerçek okumada: tanınmayan ad 21 → 1.
+    private var adSayaci: [String: Int] = [:]
+    private static let onekKalibi = try! NSRegularExpression(pattern: #"^\s*([^:\n]{1,30}):\s+\S"#)
+    private static let bozukUnvan = try! NSRegularExpression(pattern: #"^[a-z]{1,3}\.\s*([A-Z][\p{L}' .-]{2,22})$"#)
+    private func yalin(_ s: String) -> String { String(s.lowercased().filter(\.isLetter)) }
+    private func adDuzelt(_ text: String) -> String {
+        let ns = text as NSString
+        guard let m = Pipeline.onekKalibi.firstMatch(in: text, range: NSRange(location: 0, length: ns.length)),
+              let iki = text.firstIndex(of: ":") else { return text }
+        let onek = ns.substring(with: m.range(at: 1)).trimmingCharacters(in: .whitespaces)
+        let govde = text[text.index(after: iki)...].trimmingCharacters(in: .whitespaces)
+        let k = yalin(onek)
+        guard k.count >= 3 else { return text }
+        let kendi = adSayaci[onek] ?? 0
+        for (ad, n) in adSayaci.sorted(by: { $0.value > $1.value }) where n >= 2 && ad != onek && n > kendi {
+            let a = yalin(ad)
+            guard a.count >= 3 else { continue }
+            if (a.hasSuffix(k) && a.count - k.count <= 4) || (k.hasSuffix(a) && k.count > a.count) || a == k {
+                return ad + ": " + govde
+            }
+        }
+        let o = onek as NSString   // henüz sayı yokken: "s. Sharleen" → "Sharleen"
+        if let b = Pipeline.bozukUnvan.firstMatch(in: onek, range: NSRange(location: 0, length: o.length)) {
+            return o.substring(with: b.range(at: 1)) + ": " + govde
+        }
+        return text
     }
 
     // MARK: Çeviri hafızası (Selim, 2026-11-20)
@@ -76,6 +120,29 @@ final class Pipeline {
     private var hafiza: [String: (ceviri: String, zaman: Double)] = [:]
     private func hafizaAnahtari(_ body: String) -> String {
         "\(CloudTranslator.game)|\(Diller.secili.kod)|\(MetinOkuyucu.sade(body))"
+    }
+
+    /// İki okuma KESİN aynı altyazının hâlleri mi: neredeyse aynı uzunluk ve üçlü harf dizilerinin dörtte üçü ortak.
+    private func kesinAyni(_ a: String, _ b: String) -> Bool {
+        let x = trigrams(a), y = trigrams(b)
+        let sa = MetinOkuyucu.sade(a), sb = MetinOkuyucu.sade(b)
+        guard !x.isEmpty, !y.isEmpty else { return sa == sb }
+        return abs(sa.count - sb.count) <= max(6, sb.count / 6)
+            && Double(x.intersection(y).count) / Double(max(x.count, y.count)) >= 0.75
+    }
+
+    /// Yeni yazının sonunda, ekranda zaten duran yazıyla ortak bir kuyruk varsa (görev hedefi, tuş ipucu) onu ayırır:
+    /// "Andrew: Take a minute... Purchase a longarm" → "Andrew: Take a minute...". En az 2 kelime ve 8 harflik ortak
+    /// kuyruk aranır ve geriye en az 3 harflik bir replik kalmalıdır; yoksa yazı olduğu gibi döner.
+    private func kuyruksuz(_ text: String, _ onceki: String) -> String {
+        let t = text.split(separator: " "), o = onceki.split(separator: " ")
+        var n = 0
+        while n < t.count, n < o.count, t[t.count - 1 - n] == o[o.count - 1 - n] { n += 1 }
+        guard n >= 2, n < t.count else { return text }
+        let kuyruk = t[(t.count - n)...].joined(separator: " ")
+        let kalan = t[..<(t.count - n)].joined(separator: " ").trimmingCharacters(in: CharacterSet(charactersIn: " •-"))
+        guard kuyruk.filter(\.isLetter).count >= 8, kalan.filter(\.isLetter).count >= 3 else { return text }
+        return kalan
     }
 
     /// Son okunan replikler (İngilizce, konuşan adıyla) ve zamanları: bulut çevirisine bağlam olarak gider.
@@ -88,7 +155,7 @@ final class Pipeline {
     func dilDegisti() {
         translator.reset()
         speakerNames = [:]
-        recent = []; hafiza = [:]
+        recent = []; hafiza = [:]; adSayaci = [:]
         lastText = ""; shownSource = ""; variants = [:]
     }
     private func speakerName(_ name: String) async -> String {
@@ -107,6 +174,7 @@ final class Pipeline {
         if parcalar.count > 1 {
             text = parcalar.first { p in !recent.contains { sameSubtitle(p, $0.0) } } ?? parcalar[parcalar.count - 1]
         }
+        text = adDuzelt(text)
         guard text != lastText else { return }
         lastText = text
         // Tek kelimelik, noktalamasız yazı altyazı değildir: düğme, sekme, etiket ("Browse", "Freeform").
@@ -136,19 +204,27 @@ final class Pipeline {
 
         if !shownSource.isEmpty, sameSubtitle(text, shownSource) {
             generation += 1 // bekleyen "temizle" varsa iptal olsun
-            variants[text, default: 0] += 1
-            let count = variants[text] ?? 0, shownCount = variants[shownSource] ?? 1
             let a = MetinOkuyucu.sade(text), b = MetinOkuyucu.sade(shownSource)
             if a == b || b.contains(a) { return }                       // aynısı ya da eksik hâli
-            // Yalnız sonu oynayan okuma aynı repliktir, yeniden çevrilmez; ilk çeviri kalır (Selim, 2026-11-20:
-            // "sonuna bir kaç satır eklendiyse çevirme"). Örnek: repliğin sonuna yapışan plaka her karede başka
-            // okununca aynı cümle iki kez çevriliyor, ikincisi ekranda kalıyordu. Replik gerçekten uzadıysa
-            // (ikinci satır geldi) aşağıdaki kurallar geçerli.
-            let ortak = zip(a, b).prefix { $0 == $1 }.count
-            if ortak * 5 >= min(a.count, b.count) * 4, abs(a.count - b.count) <= max(6, b.count / 6) { return }
-            let fuller = a.contains(b) && count >= 2                     // gösterileni kapsayan daha tam okuma
-            let confirmed = count >= 2 && count >= shownCount + 1        // daha sık görülen okuma
-            guard fuller || confirmed else { return }
+            if kesinAyni(text, shownSource) {
+                // KESİN aynı altyazının başka okunuşu (okuma oynaması): yeniden çevrilmez; yerine ancak daha tam ya da
+                // daha sık görülen okuma geçer.
+                variants[text, default: 0] += 1
+                let count = variants[text] ?? 0, shownCount = variants[shownSource] ?? 1
+                // Yalnız sonu oynayan okuma aynı repliktir (Selim: "sonuna bir kaç satır eklendiyse çevirme").
+                let ortak = zip(a, b).prefix { $0 == $1 }.count
+                if ortak * 5 >= min(a.count, b.count) * 4, abs(a.count - b.count) <= max(6, b.count / 6) { return }
+                let fuller = a.contains(b) && count >= 2                 // gösterileni kapsayan daha tam okuma
+                let confirmed = count >= 2 && count >= shownCount + 1    // daha sık görülen okuma
+                guard fuller || confirmed else { return }
+            } else {
+                // ŞÜPHELİ: gösterilene benziyor ama kesin aynı değil. Atılmaz, yeni replik sayılır (Selim, 2026-11-20:
+                // "kesinse atsın, şüpheliyse çevirsin"). Eskiden burada replik ikinci kez görülmeyi bekliyor, o görüş
+                // hiç gelmediği için sessizce kayboluyordu: ekranda sabit bir görev yazısı dururken ("Purchase a
+                // longarm") ardından gelen her replik onun "daha tam okunuşu" sanılıyordu (300 karede 34 atma, 17 replik).
+                text = kuyruksuz(text, shownSource)
+                variants = [text: 1]
+            }
         } else {
             variants = [text: 1]
         }
@@ -163,9 +239,11 @@ final class Pipeline {
             var (name, body) = Phrasebook.splitSpeaker(Pipeline.etiketsiz(text))
             body = Pipeline.etiketsiz(body)
             if body.isEmpty { body = text; name = nil }
+            if let name { adSayaci[name, default: 0] += 1 }
             var speaker: String?
             var engine = "telefon"
             var proGerekli = false
+            var atla = false
             // Bağlam: son 30 saniyede okunan en çok 4 replik (bu replik hariç). 8 replik ve 90 saniye
             // denendi (2026-11-16); Selim oyunda cevabın uzadığını gördü, 4'e dönüldü.
             let nowT = Date().timeIntervalSince1970
@@ -177,12 +255,16 @@ final class Pipeline {
                 let omur = body.split(separator: " ").count >= 4 ? 600.0 : 20.0
                 if CloudTranslator.enabled, CloudTranslator.configured, let h = hafiza[anahtar], nowT - h.zaman < omur {
                     translated = h.ceviri; engine = "bulut hafıza"
+                    atla = h.ceviri.isEmpty   // sunucu bu yazıyı az önce "altyazı değil" diye atlatmıştı: yeniden sorma
                 } else if CloudTranslator.enabled, CloudTranslator.configured {
                     do {
                         let (t, modelMs) = try await CloudTranslator.translate(body, previous: previous)
                         translated = t; engine = "bulut \(modelMs) ms"
                         hafiza[anahtar] = (t, nowT)
                         if hafiza.count > 300 { hafiza = hafiza.filter { nowT - $0.value.zaman < 600 } }
+                    } catch where (error as? CloudTranslator.Failure)?.message == "atla" {
+                        atla = true
+                        hafiza[anahtar] = ("", nowT)   // boş çeviri = atlandı; aynı yazı 10 dk yeniden gönderilmez
                     } catch { // sunucu yok, yavaş ya da hata: telefonun çevirisine düş, altyazı boş kalmasın
                         if (error as? CloudTranslator.Failure)?.message == "Pro gerekli" { proGerekli = true; CloudTranslator.proYokKapat() }
                         onSkip?("bulut çevirisi olmadı, telefona düşüldü · \((error as? CloudTranslator.Failure)?.message ?? error.localizedDescription)")
@@ -193,6 +275,13 @@ final class Pipeline {
                 }
                 if let name { speaker = await speakerName(name) }
             } catch { failure = error.localizedDescription }
+            if atla {
+                // Altyazı değil: ekrana satır eklenmez, sonraki repliklerin bağlamına da girmez.
+                recent.removeAll { $0.0 == text }
+                if shownSource == text { shownSource = ""; variants = [:] }
+                onSkip?("sunucu atlattı, altyazı değil · \"\(text.prefix(40))\"")
+                return
+            }
             guard gen == generation || shownSource == text else { return } // bu arada altyazı değişti
             let translateMs = (CFAbsoluteTimeGetCurrent() - t0) * 1000
             let totalMs = (Date().timeIntervalSince1970 - capturedAt) * 1000

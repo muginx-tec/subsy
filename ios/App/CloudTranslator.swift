@@ -87,6 +87,14 @@ enum CloudTranslator {
             proGerekliZamani = Date()
             throw Failure(message: "Pro gerekli")
         }
+        // Sunucu "bu altyazı değil" derse (harita, menü, plaka, okuma çöpü) satır hiç gösterilmez, telefonla da
+        // çevrilmez (Selim, 2026-11-20). Kararı sunucu verir; kurallar sürüm çıkarmadan orada ayarlanır.
+        if code == 200, (json?["atla"] as? Bool) == true {
+            #if DEBUG
+            gidenKaydi(line, previous, "[ATLA: \(json?["neden"] as? String ?? "?")]")
+            #endif
+            throw Failure(message: "atla")
+        }
         guard code == 200, let text = json?["ceviri"] as? String, !text.isEmpty else {
             throw Failure(message: "sunucu \(code): \(json?["hata"] as? String ?? "cevap okunamadı")")
         }

@@ -132,7 +132,7 @@ final class Konsol: ObservableObject {
         let simdi = Date().timeIntervalSince1970
         guard metin.count >= 6, metin != sonResimMetni, simdi - sonResimZamani > 1.0,
               let kok = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let klasor = kok.appendingPathComponent("kutu2", isDirectory: true)
+        let klasor = kok.appendingPathComponent("kutu3", isDirectory: true)
         try? FileManager.default.createDirectory(at: klasor, withIntermediateDirectories: true)
         let var_ = (try? FileManager.default.contentsOfDirectory(atPath: klasor.path))?.filter { $0.hasSuffix(".jpg") }.count ?? 0
         guard var_ < 300, let renk = CGColorSpace(name: CGColorSpace.sRGB),
