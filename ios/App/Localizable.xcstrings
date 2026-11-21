@@ -381,6 +381,82 @@
         }
       }
     },
+    "2 saatlik denemen bitti": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انتهت تجربتك المجانية لمدة ساعتين"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tvoje 2hodinová zkušební doba skončila"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η δοκιμή 2 ωρών έληξε"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your 2-hour trial has ended"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आपका 2 घंटे का ट्रायल खत्म हो गया"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lejárt a 2 órás próbaidőd"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uji coba 2 jammu sudah berakhir"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je proefperiode van 2 uur is voorbij"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Din provperiod på 2 timmar är slut"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ช่วงทดลองใช้ 2 ชั่วโมงของคุณหมดแล้ว"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Твій 2-годинний пробний період закінчився"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bản dùng thử 2 giờ của bạn đã kết thúc"
+          }
+        }
+      }
+    },
     "8 haneli kod": {
       "localizations": {
         "ar": {
@@ -12233,6 +12309,82 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dùng bản dịch AI miễn phí trong 2 giờ. Không cần thẻ, chỉ một lần."
+          }
+        }
+      }
+    },
+    "Yapay zekâ çevirisiyle devam etmek için bir paket seç. Seçmezsen telefon çevirisi ücretsiz sürer.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر باقة لمواصلة الترجمة بالذكاء الاصطناعي. وإن لم تفعل، تبقى ترجمة الهاتف مجانية."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyber si tarif a zůstaň u překladu s AI. Jinak zůstává překlad v telefonu zdarma."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Διάλεξε ένα πακέτο για να συνεχίσεις με μετάφραση AI. Αλλιώς, η μετάφραση στο τηλέφωνο μένει δωρεάν."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pick a plan to keep AI translation. If you don't, phone translation stays free."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI अनुवाद जारी रखने के लिए एक प्लान चुनें। न चुनें तो फ़ोन अनुवाद मुफ़्त चलता रहेगा।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Válassz csomagot, ha maradnál az MI-fordításnál. Ha nem, a telefonos fordítás ingyenes marad."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilih paket untuk tetap memakai terjemahan AI. Jika tidak, terjemahan ponsel tetap gratis."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kies een abonnement om AI-vertaling te houden. Doe je dat niet, dan blijft vertalen op je telefoon gratis."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Välj ett abonnemang för att behålla AI-översättning. Annars är översättning i telefonen fortsatt gratis."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เลือกแพ็กเกจเพื่อใช้การแปลด้วย AI ต่อ หากไม่เลือก การแปลด้วยโทรศัพท์ยังใช้ได้ฟรี"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обери план, щоб і далі користуватися перекладом ШІ. Якщо ні, переклад на телефоні лишається безкоштовним."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chọn một gói để tiếp tục dùng bản dịch AI. Nếu không, bản dịch trên điện thoại vẫn miễn phí."
           }
         }
       }

@@ -1,3 +1,4 @@
+import FacebookCore
 import RevenueCat
 import StoreKit
 import SwiftUI
@@ -78,6 +79,16 @@ final class ProMagaza: ObservableObject {
 
     var denemede: Bool { (denemeBitis ?? .distantPast) > Date() }
     var aktif: Bool { satinAlinmis || denemede }
+    /// Abonelik bilgisi RevenueCat'ten en az bir kez okundu mu (okunmadan "satın almamış" sayılmasın).
+    @Published private(set) var bilgiOkundu = false
+    /// 2 saatlik deneme kullanıldı, süresi bitti ve satın alma yok.
+    var denemeBitti: Bool { bilgiOkundu && kilit && denemeKullanildi && !denemede && !satinAlinmis }
+    /// Deneme bitince satış ekranı altyazı ekranında bir kez açılır (Selim, 2026-11-21: "deneme bitince satış ekranı
+    /// çıkaralım, direkt oyunun içinde"). Kişi başı deneme bir kez olduğu için bu da bir kez.
+    static var denemeSonuGosterildi: Bool {
+        get { UserDefaults.standard.bool(forKey: "denemeSonuGosterildi") }
+        set { UserDefaults.standard.set(newValue, forKey: "denemeSonuGosterildi") }
+    }
     var rcHazir: Bool { Purchases.isConfigured }
 
     private var dinleyici: Task<Void, Never>?
@@ -86,6 +97,7 @@ final class ProMagaza: ObservableObject {
         if !Self.rcAnahtar.isEmpty && !Purchases.isConfigured {
             Purchases.configure(withAPIKey: Self.rcAnahtar, appUserID: Kullanici.kimlik)
         }
+
         if Purchases.isConfigured {
             // Satın alma başka cihazda ya da uygulama kapalıyken tamamlanırsa buraya düşer.
             dinleyici = Task { [weak self] in
@@ -103,6 +115,7 @@ final class ProMagaza: ObservableObject {
 
     private func isle(_ bilgi: CustomerInfo) {
         satinAlinmis = bilgi.entitlements.all[Self.yetki]?.isActive == true
+        bilgiOkundu = true
         aktifUrun = satinAlinmis ? bilgi.entitlements.all[Self.yetki]?.productIdentifier : nil
         if satinAlinmis { CloudTranslator.proGerekliZamani = nil; CloudTranslator.enabled = true }
     }
@@ -136,9 +149,17 @@ final class ProMagaza: ObservableObject {
         defer { calisiyor = false; islenen = nil }
         do {
             let sonuc = try await Purchases.shared.purchase(package: paket)
-            if !sonuc.userCancelled { isle(sonuc.customerInfo) }
+            if sonuc.userCancelled { Analiz.olay("satin_alma_vazgecti", ["urun": paket.storeProduct.productIdentifier]) }
+            if !sonuc.userCancelled {
+                isle(sonuc.customerInfo)
+                Analiz.olay("satin_alma", ["urun": paket.storeProduct.productIdentifier, "para_birimi": paket.storeProduct.currencyCode ?? "",
+                                           "tutar": NSDecimalNumber(decimal: paket.storeProduct.price).doubleValue])
+                Self.metaOlay(.subscribe, deger: NSDecimalNumber(decimal: paket.storeProduct.price).doubleValue,
+                              paraBirimi: paket.storeProduct.currencyCode)
+            }
         } catch {
             mesaj = L("Satın alma tamamlanamadı.")
+            Analiz.olay("satin_alma_hata", ["urun": paket.storeProduct.productIdentifier])
         }
     }
 
@@ -147,6 +168,20 @@ final class ProMagaza: ObservableObject {
         calisiyor = true; mesaj = ""; islenen = "geri"
         defer { calisiyor = false; islenen = nil }
         if let bilgi = try? await Purchases.shared.restorePurchases() { isle(bilgi) }
+    }
+
+    /// Reklamın "tıklayanı" değil "deneyeni ve alanı" bulması için Meta'ya olay (Selim, 2026-11-21: "olur").
+    /// Yalnız olay adı, gerekirse tutar ve para birimi gider; kimlik, altyazı, ülke gönderilmez. Meta SDK kapalıysa hiçbir şey.
+    /// Satın almada Meta'nın kendi "fb_mobile_purchase" olayıyla çakışmasın diye "Subscribe" adı kullanılır.
+    static func metaOlay(_ ad: AppEvents.Name, deger: Double? = nil, paraBirimi: String? = nil) {
+        guard AppDelegate.metaAcik else { return }
+        if let deger {
+            var p: [AppEvents.ParameterName: Any] = [:]
+            if let paraBirimi { p[.currency] = paraBirimi }
+            AppEvents.shared.logEvent(ad, valueToSum: deger, parameters: p)
+        } else {
+            AppEvents.shared.logEvent(ad)
+        }
     }
 
     /// Paylaşım penceresi "tamamlandı" deyince çağrılır. Paylaşımın gerçekten yayımlandığını
@@ -158,9 +193,11 @@ final class ProMagaza: ObservableObject {
             mesaj = L("Deneme verilemedi. İnternet bağlantını kontrol et.")
             return
         }
+        let onceDenemede = denemede
         denemeKullanildi = d.denemeKullanildi
         denemeBitis = d.denemeBitis
         if denemede { CloudTranslator.enabled = true }
+        if denemede && !onceDenemede { Self.metaOlay(.startTrial); Analiz.olay("deneme_basladi") }
         mesaj = denemede ? (Self.ucretsizDeneme ? L("Denemen başladı: 2 saat boyunca yapay zekâ çevirisi açık.")
                                                 : L("Pro denemen başladı: 1 saat yapay zekâ çevirisi senin."))
                          : L("Deneme hakkını kullandın.")
@@ -203,6 +240,8 @@ struct ProKart: View {
 struct ProView: View {
     @ObservedObject private var magaza = ProMagaza.shared
     @Environment(\.dismiss) private var dismiss
+    /// Altyazı ekranında deneme bitince açıldıysa üstte "denemen bitti" kartı çıkar, satın alınca ekran kendiliğinden kapanır.
+    var denemeBitti = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -211,43 +250,55 @@ struct ProView: View {
                     Spacer()
                     Button(L("Kapat")) { dismiss() }.font(.system(size: 16, weight: .semibold)).foregroundColor(Theme.accent)
                 }
-                VStack(alignment: .leading, spacing: 8) {
-                    Image(systemName: "sparkles").font(.system(size: 34, weight: .semibold))
-                        .foregroundColor(Theme.pro).shadow(color: Theme.pro.opacity(0.8), radius: 12)
-                    Text("Subsy Pro").font(.system(size: 30, weight: .bold)).foregroundColor(.white)
-                    // Selim'in isteği: Pro'da çeviriyi yapay zekânın yaptığı ve daha gerçekçi olduğu öne çıksın.
-                    Text(L("Pro'da çeviriyi yapay zekâ yapar: sahneyi anlar, replikler gerçek bir konuşma gibi okunur."))
-                        .font(.system(size: 16, weight: .medium)).foregroundColor(Color.white.opacity(0.9))
-                        .fixedSize(horizontal: false, vertical: true)
+                if denemeBitti && !magaza.satinAlinmis {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Label(L("2 saatlik denemen bitti"), systemImage: "hourglass")
+                            .font(.system(size: 18, weight: .bold)).foregroundColor(Theme.pro)
+                        Text(L("Yapay zekâ çevirisiyle devam etmek için bir paket seç. Seçmezsen telefon çevirisi ücretsiz sürer."))
+                            .font(.system(size: 14)).foregroundColor(.white.opacity(0.9)).fixedSize(horizontal: false, vertical: true)
+                    }
+                    .padding(16).frame(maxWidth: .infinity, alignment: .leading).background(Glass(radius: 18, parlak: true))
                 }
-                // Oran 2026-11-17 kıyasından: telefon ~45, yapay zekâ ~14 anlam hatası (DURUM.md). Ölçüm değişirse burası da değişir.
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack(alignment: .firstTextBaseline, spacing: 10) {
-                        Text(L("%70")).font(.system(size: 44, weight: .heavy)).foregroundColor(Theme.pro)
-                            .shadow(color: Theme.pro.opacity(0.6), radius: 10)
-                        Text(L("daha az anlam hatası")).font(.system(size: 18, weight: .bold)).foregroundColor(.white)
+                // Deneme bitince oyunun içinde açıldıysa tanıtım atlanır, fiyatlar hemen görünsün (ekran yatay, yer dar).
+                if !denemeBitti || magaza.satinAlinmis {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Image(systemName: "sparkles").font(.system(size: 34, weight: .semibold))
+                            .foregroundColor(Theme.pro).shadow(color: Theme.pro.opacity(0.8), radius: 12)
+                        Text("Subsy Pro").font(.system(size: 30, weight: .bold)).foregroundColor(.white)
+                        // Selim'in isteği: Pro'da çeviriyi yapay zekânın yaptığı ve daha gerçekçi olduğu öne çıksın.
+                        Text(L("Pro'da çeviriyi yapay zekâ yapar: sahneyi anlar, replikler gerçek bir konuşma gibi okunur."))
+                            .font(.system(size: 16, weight: .medium)).foregroundColor(Color.white.opacity(0.9))
                             .fixedSize(horizontal: false, vertical: true)
                     }
-                    Text(L("Gerçek oyunda yaptığımız testte, telefon çevirisine göre."))
-                        .font(.system(size: 13)).foregroundColor(Theme.dim).fixedSize(horizontal: false, vertical: true)
+                    // Oran 2026-11-17 kıyasından: telefon ~45, yapay zekâ ~14 anlam hatası (DURUM.md). Ölçüm değişirse burası da değişir.
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack(alignment: .firstTextBaseline, spacing: 10) {
+                            Text(L("%70")).font(.system(size: 44, weight: .heavy)).foregroundColor(Theme.pro)
+                                .shadow(color: Theme.pro.opacity(0.6), radius: 10)
+                            Text(L("daha az anlam hatası")).font(.system(size: 18, weight: .bold)).foregroundColor(.white)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        Text(L("Gerçek oyunda yaptığımız testte, telefon çevirisine göre."))
+                            .font(.system(size: 13)).foregroundColor(Theme.dim).fixedSize(horizontal: false, vertical: true)
+                    }
+                    .padding(18).frame(maxWidth: .infinity, alignment: .leading).background(Glass(radius: 22, parlak: true))
+
+                    Text(L("Pro ile neler gelir").uppercased(with: ArayuzDili.yerel))
+                        .font(.system(size: 12, weight: .bold)).kerning(1).foregroundColor(Theme.dim)
+
+                    VStack(alignment: .leading, spacing: 16) {
+                        madde("text.bubble.fill", L("Bağlamı gören çeviri"),
+                              L("Önceki replikleri okur; kimin kime konuştuğunu ve özneyi doğru çevirir."))
+                        madde("quote.bubble.fill", L("Argo ve deyimler"),
+                              L("Sokak ağzını ve deyimleri kelime kelime değil, anlamıyla çevirir."))
+                        madde("book.closed.fill", L("Oyuna özel sözlük"),
+                              L("Adlar ve terimler oyun boyunca hep aynı çevrilir."))
+                    }
+                    .padding(18)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Glass(radius: 22))
+
                 }
-                .padding(18).frame(maxWidth: .infinity, alignment: .leading).background(Glass(radius: 22, parlak: true))
-
-                Text(L("Pro ile neler gelir").uppercased(with: ArayuzDili.yerel))
-                    .font(.system(size: 12, weight: .bold)).kerning(1).foregroundColor(Theme.dim)
-
-                VStack(alignment: .leading, spacing: 16) {
-                    madde("text.bubble.fill", L("Bağlamı gören çeviri"),
-                          L("Önceki replikleri okur; kimin kime konuştuğunu ve özneyi doğru çevirir."))
-                    madde("quote.bubble.fill", L("Argo ve deyimler"),
-                          L("Sokak ağzını ve deyimleri kelime kelime değil, anlamıyla çevirir."))
-                    madde("book.closed.fill", L("Oyuna özel sözlük"),
-                          L("Adlar ve terimler oyun boyunca hep aynı çevrilir."))
-                }
-                .padding(18)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Glass(radius: 22))
-
                 // Deneme kartı fiyatlardan bağımsız görünür: fiyatlar yüklenemese de deneme başlatılabilsin.
                 if ProMagaza.ucretsizDeneme && !magaza.aktif && magaza.kilit && !magaza.denemeKullanildi { denemeKarti }
 
@@ -340,8 +391,12 @@ struct ProView: View {
         }
         .background(Backdrop())
         .preferredColorScheme(.dark)
+        // iPad'de sayfa küçük bir form penceresi olarak açılıyordu (Selim, 2026-11-21: "tablette pro popup küçülmüş").
+        .presentationSizing(.page)
         .task { await magaza.yukle() }
+        .onAppear { Analiz.olay("satis_ekrani_acildi", ["deneme_bitti": denemeBitti, "pro": magaza.aktif, "deneme_kullanildi": magaza.denemeKullanildi]) }
         .onChange(of: yonetiyor) { _, acik in if !acik { Task { await magaza.yukle() } } }   // pencere kapanınca durumu tazele
+        .onChange(of: magaza.satinAlinmis) { _, alindi in if alindi && denemeBitti { dismiss() } }   // oyuna dön
         .onChange(of: sahne) { _, yeni in
             if yeni == .active && instagramaGitti { instagramaGitti = false; Task { await magaza.denemeAl() } }
         }

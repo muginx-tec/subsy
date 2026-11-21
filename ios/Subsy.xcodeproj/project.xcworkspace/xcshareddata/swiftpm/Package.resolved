@@ -1,5 +1,5 @@
 {
-  "originHash" : "014a33ae8e4cb178fa90ed4f88dcd91c8f870bb8de08a2fd50d7a61657335cd3",
+  "originHash" : "6b77946482e7678d989142cdd4e4206c580cf5fc5d2d4b4a443a053fb9cf688d",
   "pins" : [
     {
       "identity" : "facebook-ios-sdk",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "7c3fb7856063fa1074d330616f4070f2ed10a49b",
         "version" : "19.0.1"
+      }
+    },
+    {
+      "identity" : "posthog-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/PostHog/posthog-ios",
+      "state" : {
+        "revision" : "4a6940a043a452db3ff397874ab654a10e63a7c0",
+        "version" : "4.0.2"
       }
     },
     {

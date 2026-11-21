@@ -5,7 +5,10 @@ import UIKit
 final class HomeModel: ObservableObject {
     @Published var language = "denetleniyor" // kurulu / indirilmeli / desteklenmiyor
     @Published var showGuide = false
-    @Published var cloud = CloudTranslator.enabled { didSet { CloudTranslator.enabled = cloud; onCloudChanged() } }
+    @Published var cloud = CloudTranslator.enabled { didSet {
+        CloudTranslator.enabled = cloud; onCloudChanged()
+        if cloud != oldValue { Analiz.olay("ceviri_yolu_secildi", ["yol": cloud ? "yapay_zeka" : "telefon"]) }
+    } }
     @Published var cloudGame = CloudTranslator.game { didSet { CloudTranslator.game = cloudGame; onCloudChanged() } }
     @Published var cloudStatus = ""
     var onCloudChanged: () -> Void = {}

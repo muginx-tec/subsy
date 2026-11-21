@@ -3,3 +3,5 @@ SUBSY_SUNUCU_SIRRI =
 // Meta (Facebook) uygulamasının istemci anahtarı (developers.facebook.com > Ayarlar > Gelişmiş > Client token).
 // Boşsa Meta SDK hiç başlatılmaz; reklam ölçümü olmadan her şey çalışır.
 SUBSY_META_ISTEMCI = 
+// PostHog proje anahtarı (phc_...). Yalnız veri göndermeye yarar. Boşsa analiz kapalı.
+SUBSY_POSTHOG =

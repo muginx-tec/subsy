@@ -1,10 +1,18 @@
 import SwiftUI
+import StoreKit
 import Translation
 
 /// Tam ekran altyazı (kendi PS5 bağlantımızla). Oyun görüntüsü gösterilmez: oyun TV'de, telefon
 /// yanda duran altyazı ekranı. En yeni replik altta, büyük ve beyaz; öncekiler üstünde soluk.
 struct KonsolAltyaziView: View {
     @ObservedObject private var konsol = Konsol.shared
+    @ObservedObject private var magaza = ProMagaza.shared
+    /// Deneme bitince satış ekranı burada, oyunun içinde açılır (Selim, 2026-11-21). Bir kez.
+    @State private var satis = false
+    @Environment(\.requestReview) private var puanIste
+    /// Son yeni replik ne zaman geldi: puan penceresi konuşmanın ortasında değil, sessizlikte açılsın.
+    @State private var sonReplik = Date()
+    @Environment(\.scenePhase) private var sahne
     @Environment(\.dismiss) private var dismiss
 
     private static let renkler: [Color] = [
@@ -13,8 +21,9 @@ struct KonsolAltyaziView: View {
         Color(red: 1.00, green: 0.84, blue: 0.25),   // sarı
     ]
 
-    /// Altyazı açılır açılmaz yataydır (Selim'in isteği). Uygulamanın geri kalanı dik kaldığı için
-    /// ekranı döndürmek yerine içeriği 90 derece çeviriyoruz. Uzun basınca öbür yana döner.
+    /// Altyazı açılır açılmaz yataydır (Selim'in isteği). Uygulama dik kaldığı için ekranı döndürmek yerine içeriği
+    /// 90 derece çeviriyoruz; uzun basınca öbür yana döner. Gerçek yatay dönüş 2026-11-21'de denendi, döndürme kilidi
+    /// açık iPad'de bozuk göründü, geri alındı (Selim: "döndürme işini iptal edelim").
     @AppStorage("altyaziTers") private var ters = false
     /// Yazı boyu çarpanı (0,6 - 2,4). Alttaki A− / A+ ile ayarlanır, hatırlanır. İki parmakla büyütme yok (Selim istemedi).
     @AppStorage("altyaziBoy") private var boy = 1.0
@@ -52,6 +61,11 @@ struct KonsolAltyaziView: View {
             UIApplication.shared.isIdleTimerDisabled = true   // ekran kararmasın
             konsol.altyaziyiBaslat()
             ipucu = true
+            #if DEBUG
+            if ProcessInfo.processInfo.arguments.contains("-denemeBittiOnizleme") { satis = true }
+            if ProcessInfo.processInfo.arguments.contains("-puanOnizleme") { Puan.satir = Puan.esik; Puan.sorulanSurum = nil }
+            #endif
+            Task { await magaza.yukle(); denemeSonunaBak() }   // deneme uygulama kapalıyken bitmiş olabilir
             // Telefonun dil paketi inmemişse sistemin indirme penceresini burada aç: kullanıcı (ve App Store
             // incelemecisi) "çeviri yapılamadı" görüp Ayarlar'ı aramak zorunda kalmasın.
             Task { @MainActor in
@@ -65,10 +79,48 @@ struct KonsolAltyaziView: View {
             try? await oturum.prepareTranslation()
             Pipeline.main?.translator.reset()   // yeni inen paketle oturum yeniden açılsın
         }
+        // Zamanlayıcı görünümün ömrüne bağlı: `.onReceive(Timer.publish...)` her yeniden çizimde baştan kuruluyordu,
+        // oyunda ekran sürekli yenilendiği için hiç tetiklenmedi (puan penceresi tablette açılmadı, 2026-11-21).
+        .onChange(of: sahne) { _, yeni in if yeni == .background { konsol.altyaziOzetiGonder() } }
+        .task {
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .seconds(2))
+                denemeSonunaBak(); puanaBak()
+            }
+        }
+        .onChange(of: konsol.satirlar.last?.id) { _, yeni in
+            // Örnek kipindeki uydurma replikler sayılmaz; aynı repliğin düzeltilmiş okuması yeni kimlik almaz.
+            guard yeni != nil, !konsol.ornekKipi else { return }
+            Puan.satir += 1
+            sonReplik = Date()
+        }
+        .onChange(of: konsol.proNotu) { _, _ in denemeSonunaBak() }
+        .sheet(isPresented: $satis) {
+            ProView(denemeBitti: true).environment(\.layoutDirection, ArayuzDili.sagdanSola ? .rightToLeft : .leftToRight)
+        }
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = false
             konsol.altyaziyiDurdur()
         }
+    }
+
+    /// Deneme süresi bittiyse ve satın alma yoksa satış ekranını bir kez aç. Örnek kipinde açılmaz.
+    private func denemeSonunaBak() {
+        guard !satis, !konsol.ornekKipi, magaza.denemeBitti, !ProMagaza.denemeSonuGosterildi else { return }
+        ProMagaza.denemeSonuGosterildi = true
+        satis = true
+    }
+
+    /// Puan isteme (Selim, 2026-11-21: "çeviri sırasında ekrana çıkaralım, bir çeviri sayısını aşınca"). Apple'ın kendi
+    /// puan penceresi açılır (yıldız + isteğe bağlı yorum, App Store'a gider); Apple 5.6.1 kendi puan formumuzu yasaklıyor.
+    /// Toplam 110 çevrilmiş replikten sonra (Selim, 2026-11-21: "300 çokmuş", "hatta 110"), konuşmada 8 saniyelik bir sessizlik olunca, her sürümde bir kez.
+    /// Apple pencereyi yılda en çok 3 kez gösterir ve göstermeyebilir; TestFlight'ta hiç göstermez.
+    private func puanaBak() {
+        guard !satis, Puan.satir >= Puan.esik, Puan.sorulanSurum != Puan.surum,
+              Date().timeIntervalSince(sonReplik) >= 8 else { return }
+        Puan.sorulanSurum = Puan.surum
+        Analiz.olay("puan_istendi", ["toplam_replik": Puan.satir])
+        puanIste()
     }
 
     private var cevirmenRozeti: some View {
@@ -193,5 +245,19 @@ struct KonsolAltyaziView: View {
             }
         }
         .fixedSize(horizontal: false, vertical: true)
+    }
+}
+
+/// Puan isteme sayacı (telefonda kalır, hiçbir yere gönderilmez).
+enum Puan {
+    static let esik = 110
+    static let surum = (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "?"
+    static var satir: Int {
+        get { UserDefaults.standard.integer(forKey: "puanSatir") }
+        set { UserDefaults.standard.set(newValue, forKey: "puanSatir") }
+    }
+    static var sorulanSurum: String? {
+        get { UserDefaults.standard.string(forKey: "puanSorulanSurum") }
+        set { UserDefaults.standard.set(newValue, forKey: "puanSorulanSurum") }
     }
 }

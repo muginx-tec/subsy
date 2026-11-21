@@ -6,6 +6,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         metaBaslat(application, launchOptions)
+        Analiz.baslat()
         return true
     }
 
@@ -19,7 +20,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         Settings.shared.isAdvertiserTrackingEnabled = false
         Settings.shared.isAdvertiserIDCollectionEnabled = false
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        Self.metaAcik = true
     }
+    /// Meta SDK başlatıldı mı (anahtar boşsa başlatılmaz).
+    static var metaAcik = false
 
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,

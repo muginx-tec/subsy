@@ -62,6 +62,10 @@ final class Konsol: ObservableObject {
     @Published var cevirmen = "telefon"
     /// Telefonun çevirisi dil paketi olmadığı için yapılamadı: altyazı ekranında "Dil paketini indir" çıkar.
     @Published var paketEksik = false
+    /// Analiz için: altyazı ekranının açıldığı an ve çeviren başına yeni replik sayısı.
+    private var altyaziBas: Date?
+    private var replikSayisi: [String: Int] = [:]
+    private var bulunduBildirildi = false
 
     private var okumaAcik = false
     /// Kutu ayar ekranı açıkken: okuma sürer ama çevrilmez; okunan ham yazı ekranda gösterilir.
@@ -84,6 +88,9 @@ final class Konsol: ObservableObject {
         Pipeline.main?.onKonsolResult = { [weak self] r in self?.cevrildi(r) }
         cevirmen = CloudTranslator.enabled ? "bulut" : "telefon"
         proNotu = false; paketEksik = false
+        altyaziBas = Date(); replikSayisi = [:]
+        Analiz.olay("altyazi_acildi", ["ornek_kipi": ornekKipi, "ceviri_yolu": cevirmen == "bulut" ? "yapay_zeka" : "telefon", "bagli": durum == .bagli,
+                                       "pro_durumu": MainActor.assumeIsolated { ProMagaza.shared.satinAlinmis ? "abone" : (ProMagaza.shared.denemede ? "deneme" : "yok") }])
         if ornekKipi {
             ornekBesle()
             ornekZamanlayici = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] _ in
@@ -95,7 +102,26 @@ final class Konsol: ObservableObject {
         yaz("altyazı okuma açık")
     }
 
+    /// Altyazı açıkken uygulama arka plana geçerse ya da kapanırsa özet kaybolmasın: o ana kadarkini gönder, sayacı sıfırla.
+    func altyaziOzetiGonder() {
+        guard altyaziBas != nil else { return }
+        let acikti = okumaAcik || ornekKipi
+        altyaziOzeti()
+        if acikti { altyaziBas = Date(); replikSayisi = [:] }
+    }
+
+    private func altyaziOzeti() {
+        if let bas = altyaziBas {
+            Analiz.olay("altyazi_kapandi", ["sure_sn": Int(Date().timeIntervalSince(bas)), "ornek_kipi": ornekKipi,
+                                            "replik": replikSayisi.values.reduce(0, +), "replik_yapay_zeka": replikSayisi["bulut"] ?? 0,
+                                            "replik_telefon": replikSayisi["telefon"] ?? 0, "pro_gerekli": proNotu, "paket_eksik": paketEksik,
+                                            "gosterilemez": gosterilemez])
+            altyaziBas = nil
+        }
+    }
+
     func altyaziyiDurdur() {
+        altyaziOzeti()
         okumaAcik = false
         Pipeline.main?.onKonsolResult = nil
         ornekZamanlayici?.invalidate(); ornekZamanlayici = nil
@@ -199,6 +225,8 @@ final class Konsol: ObservableObject {
             satirlar[satirlar.count - 1].konusan = r.speaker
         } else {
             siradakiId += 1
+            replikSayisi[cevirmen, default: 0] += 1
+            if !ornekKipi { Analiz.birKez("ilk_ceviri", ["ceviren": cevirmen]) }
             satirlar.append(Satir(id: siradakiId, konusan: r.speaker, metin: r.translated, renk: renk))
             if satirlar.count > 60 { satirlar.removeFirst(satirlar.count - 60) }   // geriye kaydırıp okumak için
         }
@@ -260,8 +288,15 @@ final class Konsol: ObservableObject {
     func aramayiBaslat() {
         guard discovery == nil else { return }
         _ = chiaki_session_bridge_init()
+        bulunduBildirildi = false
+        Analiz.olay("konsol_arama_basladi", ["eslesmis": kayitli])
         discovery = PyluxDiscoveryService { [weak self] found in
-            self?.hosts = found.filter { $0.hostAddr != nil }
+            guard let self else { return }
+            self.hosts = found.filter { $0.hostAddr != nil }
+            if !self.hosts.isEmpty && !self.bulunduBildirildi {
+                self.bulunduBildirildi = true
+                Analiz.olay("konsol_bulundu", ["sayi": self.hosts.count, "ps5": self.hosts.contains { $0.isPS5 }])
+            }
         }
         yaz("ağda PS5 aranıyor")
     }
@@ -288,6 +323,7 @@ final class Konsol: ObservableObject {
         info.psnAccountId = account
         info.pin = code
         durum = .kaydoluyor
+        Analiz.olay("eslesme_basladi", ["ps5": host.isPS5])
         yaz("kayıt isteği gönderildi: \(addr)")
         regist = PyluxRegistService(info: info) { [weak self] result, data, _ in
             guard let self else { return }
@@ -296,7 +332,9 @@ final class Konsol: ObservableObject {
                 Kasa.yaz("ps5RegistKey", data.rpRegistKey)
                 Kasa.yaz("ps5RpKey", data.rpKey)
                 self.yaz("KAYIT TAMAM: \(data.serverNickname ?? "PS5")")
+                Analiz.olay("eslesme_tamam")
             } else {
+                Analiz.olay("eslesme_hata", ["iptal": result == .canceled])
                 self.yaz(result == .canceled ? "kayıt iptal" : "KAYIT OLMADI (kod yanlış ya da süresi dolmuş olabilir)")
             }
             self.durum = .bos
@@ -350,6 +388,7 @@ final class Konsol: ObservableObject {
         guard let ref else {
             receiver.invalidate()
             yaz("oturum açılamadı: \(String(cString: chiaki_session_bridge_error_string(err)))")
+            Analiz.olay("baglanti_hata", ["asama": "olustur", "kod": Int(err)])
             return
         }
         self.decoder = decoder
@@ -365,9 +404,11 @@ final class Konsol: ObservableObject {
             chiaki_session_bridge_free(ref)
             receiver.invalidate()
             yaz("oturum başlamadı: \(String(cString: chiaki_session_bridge_error_string(started)))")
+            Analiz.olay("baglanti_hata", ["asama": "baslat", "kod": Int(started)])
             return
         }
         durum = .baglaniyor
+        Analiz.olay("baglanti_basladi", ["ps5": host.isPS5])
         yaz("bağlanılıyor: \(addr)")
 
         // Oturum bitince (biz durdurunca ya da PS5 kapatınca) temizliği tek yerde yap.
@@ -396,11 +437,14 @@ final class Konsol: ObservableObject {
         switch type {
         case ChiakiSessionBridgeEventConnected:
             durum = .bagli
+            Analiz.olay("baglandi")
             yaz("BAĞLANDI")
         case ChiakiSessionBridgeEventQuit:
+            Analiz.olay(durum == .bagli ? "baglanti_koptu" : "baglanti_hata", ["asama": "oturum", "neden": reason])
             durum = .koptu(reason)
             yaz("oturum bitti: \(reason)")
         case ChiakiSessionBridgeEventLoginPinRequest:
+            Analiz.olay("konsol_pin_istedi", ["yanlis": pinYanlis])
             yaz(pinYanlis ? "PS5 giriş kodu yanlış" : "PS5 bu kullanıcı için giriş kodu istiyor (desteklenmiyor, kodsuz kullanıcı seç)")
         default:
             break

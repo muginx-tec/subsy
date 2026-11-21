@@ -161,6 +161,7 @@ struct PsnGirisView: View {
                         do {
                             let (hesap, ad) = try await PsnGiris.hesap(kod: kod)
                             Konsol.shared.hesapNo = hesap
+                            Analiz.olay("psn_giris_tamam")
                             UserDefaults.standard.set(ad, forKey: "psnAd")
                             Konsol.shared.objectWillChange.send()
                             tamam()
