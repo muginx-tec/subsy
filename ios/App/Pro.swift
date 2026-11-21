@@ -42,7 +42,7 @@ final class ProMagaza: ObservableObject {
     /// Paylaşana 1 saat Pro. Kapalı (Selim, 2026-11-17: "Remove it from 1.0"): Apple 3.2.2 ödül karşılığı eylemi
     /// yasaklıyor, 1.0 incelemesini riske atmasın. Kod duruyor; onaydan sonra 1.1'de açılacak.
     static let paylasOdulu = false
-    /// Paylaşım şartı olmadan, kişi başı bir kez 2 saatlik yapay zekâ denemesi (Selim, 2026-11-18:
+    /// Paylaşım şartı olmadan, kişi başı bir kez süreli yapay zekâ denemesi (2 saat; 2026-11-22 Selim: 45 dakika) (Selim, 2026-11-18:
     /// "2 saat deneme süresi", "bir paylaşım falan yapmadan koyalım"). Süreyi sunucu verir (GT_DENEME_SANIYE).
     static let ucretsizDeneme = true
     /// App Store Connect'te bu kimliklerle açılacak abonelikler (açmak Selim'in işi). RevenueCat'te
@@ -81,7 +81,7 @@ final class ProMagaza: ObservableObject {
     var aktif: Bool { satinAlinmis || denemede }
     /// Abonelik bilgisi RevenueCat'ten en az bir kez okundu mu (okunmadan "satın almamış" sayılmasın).
     @Published private(set) var bilgiOkundu = false
-    /// 2 saatlik deneme kullanıldı, süresi bitti ve satın alma yok.
+    /// Ücretsiz deneme kullanıldı, süresi bitti ve satın alma yok.
     var denemeBitti: Bool { bilgiOkundu && kilit && denemeKullanildi && !denemede && !satinAlinmis }
     /// Deneme bitince satış ekranı altyazı ekranında bir kez açılır (Selim, 2026-11-21: "deneme bitince satış ekranı
     /// çıkaralım, direkt oyunun içinde"). Kişi başı deneme bir kez olduğu için bu da bir kez.
@@ -198,7 +198,7 @@ final class ProMagaza: ObservableObject {
         denemeBitis = d.denemeBitis
         if denemede { CloudTranslator.enabled = true }
         if denemede && !onceDenemede { Self.metaOlay(.startTrial); Analiz.olay("deneme_basladi") }
-        mesaj = denemede ? (Self.ucretsizDeneme ? L("Denemen başladı: 2 saat boyunca yapay zekâ çevirisi açık.")
+        mesaj = denemede ? (Self.ucretsizDeneme ? L("Denemen başladı: 45 dakika boyunca yapay zekâ çevirisi açık.")
                                                 : L("Pro denemen başladı: 1 saat yapay zekâ çevirisi senin."))
                          : L("Deneme hakkını kullandın.")
     }
@@ -252,7 +252,7 @@ struct ProView: View {
                 }
                 if denemeBitti && !magaza.satinAlinmis {
                     VStack(alignment: .leading, spacing: 6) {
-                        Label(L("2 saatlik denemen bitti"), systemImage: "hourglass")
+                        Label(L("45 dakikalık denemen bitti"), systemImage: "hourglass")
                             .font(.system(size: 18, weight: .bold)).foregroundColor(Theme.pro)
                         Text(L("Yapay zekâ çevirisiyle devam etmek için bir paket seç. Seçmezsen telefon çevirisi ücretsiz sürer."))
                             .font(.system(size: 14)).foregroundColor(.white.opacity(0.9)).fixedSize(horizontal: false, vertical: true)
@@ -410,12 +410,12 @@ struct ProView: View {
 
     /// Paylaşana 1 saat Pro (Selim'in kararı, 2026-11-17). Sistem paylaşım penceresi açılır; Instagram
     /// kuruluysa listede çıkar. Paylaşılan şey oyun görüntüsü değil, bizim kartımız ve bağlantımız.
-    /// Paylaşımsız 2 saatlik deneme: basınca sunucu süreyi başlatır, yapay zekâ çevirisi açılır.
+    /// Paylaşımsız ücretsiz deneme (45 dk): basınca sunucu süreyi başlatır, yapay zekâ çevirisi açılır.
     private var denemeKarti: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Label(L("2 saat ücretsiz dene"), systemImage: "gift.fill")
+            Label(L("45 dakika ücretsiz dene"), systemImage: "gift.fill")
                 .font(.system(size: 17, weight: .bold)).foregroundColor(.white)
-            Text(L("Yapay zekâ çevirisini 2 saat ücretsiz kullan. Kart gerekmez, bir kez geçerlidir."))
+            Text(L("Yapay zekâ çevirisini 45 dakika ücretsiz kullan. Kart gerekmez, bir kez geçerlidir."))
                 .font(.system(size: 14)).foregroundColor(Color.white.opacity(0.78)).fixedSize(horizontal: false, vertical: true)
             Button { Task { await magaza.denemeAl() } } label: {
                 Group {

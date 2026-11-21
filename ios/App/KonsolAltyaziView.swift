@@ -28,6 +28,16 @@ struct KonsolAltyaziView: View {
     /// Yazı boyu çarpanı (0,6 - 2,4). Alttaki A− / A+ ile ayarlanır, hatırlanır. İki parmakla büyütme yok (Selim istemedi).
     @AppStorage("altyaziBoy") private var boy = 1.0
 
+    /// iPhone/iPad uygulaması Mac'te ya da Vision Pro'da çalışıyor (ekran fiziksel olarak döndürülemez).
+    static let donmeyenCihaz: Bool = {
+        if ProcessInfo.processInfo.isiOSAppOnMac { return true }
+        #if os(visionOS)
+        return true
+        #else
+        return UIDevice.current.userInterfaceIdiom == .vision
+        #endif
+    }()
+
     private func boyAyarla(_ yeni: Double) { boy = min(max(yeni, 0.6), 2.4) }
 
     /// Tablette ekran büyük: yazı baştan daha büyük başlar (Selim: "tablette de çıkacağız").
@@ -42,18 +52,20 @@ struct KonsolAltyaziView: View {
 
     var body: some View {
         GeometryReader { geo in
+            // Mac'te (ve Vision Pro'da) pencere dönmez: içerik döndürülürse yazı yan durur. Orada pencere olduğu gibi kullanılır.
+            let dondur = !Self.donmeyenCihaz
             icerik
-                .frame(width: geo.size.height, height: geo.size.width)
+                .frame(width: dondur ? geo.size.height : geo.size.width, height: dondur ? geo.size.width : geo.size.height)
                 // Arapça gibi sağdan sola dillerde satır, çizgi ve ad sağa yaslanır.
                 .environment(\.layoutDirection, Diller.secili.sagdanSola ? .rightToLeft : .leftToRight)
-                .rotationEffect(.degrees(ters ? -90 : 90))
+                .rotationEffect(.degrees(dondur ? (ters ? -90 : 90) : 0))
                 .position(x: geo.size.width / 2, y: geo.size.height / 2)
         }
         .ignoresSafeArea()
         .background(Color(red: 10 / 255, green: 16 / 255, blue: 40 / 255).ignoresSafeArea())
         .contentShape(Rectangle())
         .onTapGesture(count: 2) { dismiss() }
-        .onLongPressGesture { ters.toggle() }
+        .onLongPressGesture { if !Self.donmeyenCihaz { ters.toggle() } }
         .statusBarHidden(true)
         .persistentSystemOverlays(.hidden)
         .preferredColorScheme(.dark)

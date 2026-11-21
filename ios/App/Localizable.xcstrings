@@ -305,154 +305,154 @@
         }
       }
     },
-    "2 saat ücretsiz dene": {
+    "45 dakika ücretsiz dene": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "جرّب مجانًا لمدة ساعتين"
+            "value": "جرّب مجانًا لمدة 45 دقيقة"
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vyzkoušej 2 hodiny zdarma"
+            "value": "Vyzkoušej 45 minut zdarma"
           }
         },
         "el": {
           "stringUnit": {
             "state": "translated",
-            "value": "Δοκίμασε δωρεάν για 2 ώρες"
+            "value": "Δοκίμασε δωρεάν για 45 λεπτά"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Try free for 2 hours"
+            "value": "Try free for 45 minutes"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "2 घंटे मुफ़्त आज़माएँ"
+            "value": "45 मिनट मुफ़्त आज़माएँ"
           }
         },
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "Próbáld ki 2 órán át ingyen"
+            "value": "Próbáld ki 45 percig ingyen"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Coba gratis 2 jam"
+            "value": "Coba gratis 45 menit"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Probeer 2 uur gratis"
+            "value": "Probeer 45 minuten gratis"
           }
         },
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Prova gratis i 2 timmar"
+            "value": "Prova gratis i 45 minuter"
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ทดลองใช้ฟรี 2 ชั่วโมง"
+            "value": "ทดลองใช้ฟรี 45 นาที"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Спробуйте безкоштовно 2 години"
+            "value": "Спробуйте безкоштовно 45 хвилин"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dùng thử miễn phí 2 giờ"
+            "value": "Dùng thử miễn phí 45 phút"
           }
         }
       }
     },
-    "2 saatlik denemen bitti": {
+    "45 dakikalık denemen bitti": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "انتهت تجربتك المجانية لمدة ساعتين"
+            "value": "انتهت تجربتك المجانية لمدة 45 دقيقة"
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tvoje 2hodinová zkušební doba skončila"
+            "value": "Tvoje 45minutová zkušební doba skončila"
           }
         },
         "el": {
           "stringUnit": {
             "state": "translated",
-            "value": "Η δοκιμή 2 ωρών έληξε"
+            "value": "Η δοκιμή 45 λεπτών έληξε"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Your 2-hour trial has ended"
+            "value": "Your 45-minute trial has ended"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "आपका 2 घंटे का ट्रायल खत्म हो गया"
+            "value": "आपका 45 मिनट का ट्रायल खत्म हो गया"
           }
         },
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lejárt a 2 órás próbaidőd"
+            "value": "Lejárt a 45 perces próbaidőd"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uji coba 2 jammu sudah berakhir"
+            "value": "Uji coba 45 menitmu sudah berakhir"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je proefperiode van 2 uur is voorbij"
+            "value": "Je proefperiode van 45 minuten is voorbij"
           }
         },
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Din provperiod på 2 timmar är slut"
+            "value": "Din provperiod på 45 minuter är slut"
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ช่วงทดลองใช้ 2 ชั่วโมงของคุณหมดแล้ว"
+            "value": "ช่วงทดลองใช้ 45 นาทีของคุณหมดแล้ว"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Твій 2-годинний пробний період закінчився"
+            "value": "Твій 45-хвилинний пробний період закінчився"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bản dùng thử 2 giờ của bạn đã kết thúc"
+            "value": "Bản dùng thử 45 phút của bạn đã kết thúc"
           }
         }
       }
@@ -3573,78 +3573,78 @@
         }
       }
     },
-    "Denemen başladı: 2 saat boyunca yapay zekâ çevirisi açık.": {
+    "Denemen başladı: 45 dakika boyunca yapay zekâ çevirisi açık.": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "بدأت تجربتك: ترجمة الذكاء الاصطناعي مفعّلة لمدة ساعتين."
+            "value": "بدأت تجربتك: ترجمة الذكاء الاصطناعي مفعّلة لمدة 45 دقيقة."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zkouška začala: AI překlad je zapnutý na 2 hodiny."
+            "value": "Zkouška začala: AI překlad je zapnutý na 45 minut."
           }
         },
         "el": {
           "stringUnit": {
             "state": "translated",
-            "value": "Η δοκιμή ξεκίνησε: η μετάφραση AI είναι ενεργή για 2 ώρες."
+            "value": "Η δοκιμή ξεκίνησε: η μετάφραση AI είναι ενεργή για 45 λεπτά."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Your trial has started: AI translation is on for 2 hours."
+            "value": "Your trial has started: AI translation is on for 45 minutes."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "आपका ट्रायल शुरू हो गया: AI अनुवाद 2 घंटे के लिए चालू है।"
+            "value": "आपका ट्रायल शुरू हो गया: AI अनुवाद 45 मिनट के लिए चालू है।"
           }
         },
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "A próba elindult: az AI-fordítás 2 órán át be van kapcsolva."
+            "value": "A próba elindult: az AI-fordítás 45 percig be van kapcsolva."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Masa coba dimulai: terjemahan AI aktif selama 2 jam."
+            "value": "Masa coba dimulai: terjemahan AI aktif selama 45 menit."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je proefperiode is gestart: AI-vertaling staat 2 uur aan."
+            "value": "Je proefperiode is gestart: AI-vertaling staat 45 minuten aan."
           }
         },
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Din provperiod har startat: AI-översättning är på i 2 timmar."
+            "value": "Din provperiod har startat: AI-översättning är på i 45 minuter."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "เริ่มทดลองใช้แล้ว: การแปลด้วย AI เปิดใช้งาน 2 ชั่วโมง"
+            "value": "เริ่มทดลองใช้แล้ว: การแปลด้วย AI เปิดใช้งาน 45 นาที"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Пробний період розпочато: ШІ-переклад увімкнено на 2 години."
+            "value": "Пробний період розпочато: ШІ-переклад увімкнено на 45 хвилин."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Đã bắt đầu dùng thử: bản dịch AI bật trong 2 giờ."
+            "value": "Đã bắt đầu dùng thử: bản dịch AI bật trong 45 phút."
           }
         }
       }
@@ -12237,78 +12237,78 @@
         }
       }
     },
-    "Yapay zekâ çevirisini 2 saat ücretsiz kullan. Kart gerekmez, bir kez geçerlidir.": {
+    "Yapay zekâ çevirisini 45 dakika ücretsiz kullan. Kart gerekmez, bir kez geçerlidir.": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "استخدم ترجمة الذكاء الاصطناعي مجانًا لمدة ساعتين. لا حاجة لبطاقة، ولمرة واحدة فقط."
+            "value": "استخدم ترجمة الذكاء الاصطناعي مجانًا لمدة 45 دقيقة. لا حاجة لبطاقة، ولمرة واحدة فقط."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Používej AI překlad 2 hodiny zdarma. Bez karty, jen jednou."
+            "value": "Používej AI překlad 45 minut zdarma. Bez karty, jen jednou."
           }
         },
         "el": {
           "stringUnit": {
             "state": "translated",
-            "value": "Χρησιμοποίησε τη μετάφραση AI δωρεάν για 2 ώρες. Χωρίς κάρτα, μόνο μία φορά."
+            "value": "Χρησιμοποίησε τη μετάφραση AI δωρεάν για 45 λεπτά. Χωρίς κάρτα, μόνο μία φορά."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Use AI translation free for 2 hours. No card needed, available once."
+            "value": "Use AI translation free for 45 minutes. No card needed, available once."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI अनुवाद 2 घंटे मुफ़्त इस्तेमाल करें। कार्ड की ज़रूरत नहीं, केवल एक बार।"
+            "value": "AI अनुवाद 45 मिनट मुफ़्त इस्तेमाल करें। कार्ड की ज़रूरत नहीं, केवल एक बार।"
           }
         },
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "Használd az AI-fordítást 2 órán át ingyen. Kártya nem kell, egyszer vehető igénybe."
+            "value": "Használd az AI-fordítást 45 percig ingyen. Kártya nem kell, egyszer vehető igénybe."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pakai terjemahan AI gratis selama 2 jam. Tanpa kartu, hanya sekali."
+            "value": "Pakai terjemahan AI gratis selama 45 menit. Tanpa kartu, hanya sekali."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gebruik AI-vertaling 2 uur gratis. Geen kaart nodig, eenmalig."
+            "value": "Gebruik AI-vertaling 45 minuten gratis. Geen kaart nodig, eenmalig."
           }
         },
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Använd AI-översättning gratis i 2 timmar. Inget kort behövs, gäller en gång."
+            "value": "Använd AI-översättning gratis i 45 minuter. Inget kort behövs, gäller en gång."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ใช้การแปลด้วย AI ฟรี 2 ชั่วโมง ไม่ต้องใช้บัตร ใช้ได้ครั้งเดียว"
+            "value": "ใช้การแปลด้วย AI ฟรี 45 นาที ไม่ต้องใช้บัตร ใช้ได้ครั้งเดียว"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Користуйтеся ШІ-перекладом безкоштовно 2 години. Картка не потрібна, лише один раз."
+            "value": "Користуйтеся ШІ-перекладом безкоштовно 45 хвилин. Картка не потрібна, лише один раз."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dùng bản dịch AI miễn phí trong 2 giờ. Không cần thẻ, chỉ một lần."
+            "value": "Dùng bản dịch AI miễn phí trong 45 phút. Không cần thẻ, chỉ một lần."
           }
         }
       }
