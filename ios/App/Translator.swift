@@ -41,8 +41,12 @@ final class Translator {
 
     func translate(_ text: String) async throws -> String {
         if session == nil { _ = await prepare() }
-        guard let session else { throw NSError(domain: "Translator", code: 1,
-                                               userInfo: [NSLocalizedDescriptionKey: L("Dil paketi indirilmemiş")]) }
+        guard let session else {
+            // Apple'ın çevirisi bu dili hiç desteklemiyorsa (hu, cs, el; 2026-11-22) "paket indirilmemiş" demek yanıltıcı.
+            let mesaj = await gercekDurum() == .unsupported ? L("Telefon bu dili çeviremiyor. Ayarlar'dan yapay zekâyı seç.")
+                                                             : L("Dil paketi indirilmemiş")
+            throw NSError(domain: "Translator", code: 1, userInfo: [NSLocalizedDescriptionKey: mesaj])
+        }
         return try await session.translate(text).targetText
     }
 }

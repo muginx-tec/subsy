@@ -51,6 +51,12 @@
             "value": "70%"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "o 70 %"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -125,6 +131,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "(geen tekst in het kader)"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "(v rámčeku nie je text)"
           }
         },
         "sv": {
@@ -203,6 +215,12 @@
             "value": "Het gratis uur Pro krijg je alleen als je op Instagram deelt."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hodinu Pro zadarmo dostaneš len za zdieľanie na Instagrame."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -277,6 +295,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Game-vertaalapp in 12 talen"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikácia na preklad hier v 12 jazykoch"
           }
         },
         "sv": {
@@ -355,6 +379,12 @@
             "value": "Probeer 45 minuten gratis"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyskúšaj 45 minút zadarmo"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -429,6 +459,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Je proefperiode van 45 minuten is voorbij"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tvoja 45-minútová skúšobná doba skončila"
           }
         },
         "sv": {
@@ -507,6 +543,12 @@
             "value": "8-cijferige code"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "8-miestny kód"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -581,6 +623,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "AI-context"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontext AI"
           }
         },
         "sv": {
@@ -659,6 +707,12 @@
             "value": "Je beheert het abonnement via je App Store-account en kunt altijd opzeggen."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Predplatné spravuješ vo svojom účte App Store a môžeš ho kedykoľvek zrušiť."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -733,6 +787,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Het abonnement wordt automatisch verlengd, tenzij je het uiterlijk 24 uur voor het einde van de periode opzegt. De betaling gaat via je Apple-account; je kunt het abonnement beheren of opzeggen in je App Store-instellingen."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Predplatné sa automaticky obnoví, ak ho nezrušíš aspoň 24 hodín pred koncom obdobia. Platba sa strháva z tvojho účtu Apple; predplatné môžeš spravovať alebo zrušiť v nastaveniach App Storu."
           }
         },
         "sv": {
@@ -811,6 +871,12 @@
             "value": "Abonnement beheren"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spravovať predplatné"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -885,6 +951,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Namen en termen worden de hele game hetzelfde vertaald."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mená a pojmy sa prekladajú rovnako počas celej hry."
           }
         },
         "sv": {
@@ -963,6 +1035,12 @@
             "value": "Actief"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktívne"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -1037,6 +1115,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wachten op ondertitels..."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Čakám na titulky..."
           }
         },
         "sv": {
@@ -1115,6 +1199,12 @@
             "value": "Taal van ondertitels"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jazyk titulkov"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -1189,6 +1279,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Plek van ondertitel"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miesto titulkov"
           }
         },
         "sv": {
@@ -1267,6 +1363,12 @@
             "value": "Plek van ondertitel"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miesto titulkov"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -1341,6 +1443,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Stel de plek van de ondertitel in"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nastav miesto titulkov"
           }
         },
         "sv": {
@@ -1419,6 +1527,12 @@
             "value": "Ondertitels openen"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otvoriť titulky"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -1493,6 +1607,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tik om ondertitels te openen."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ťuknutím otvoríš titulky."
           }
         },
         "sv": {
@@ -1571,6 +1691,12 @@
             "value": "Home"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Domov"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -1645,6 +1771,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Begrepen"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozumiem"
           }
         },
         "sv": {
@@ -1723,6 +1855,12 @@
             "value": "In de App Store"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V App Store"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -1745,6 +1883,170 @@
           "stringUnit": {
             "state": "translated",
             "value": "Trên App Store"
+          }
+        }
+      }
+    },
+    "Apple desteklemiyor": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غير مدعومة من Apple"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple nepodporuje"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Δεν υποστηρίζεται από την Apple"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not supported by Apple"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple समर्थन नहीं करता"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Az Apple nem támogatja"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak didukung Apple"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Niet ondersteund door Apple"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple nepodporuje"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stöds inte av Apple"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple ไม่รองรับ"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple не підтримує"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple không hỗ trợ"
+          }
+        }
+      }
+    },
+    "Apple'ın telefon çevirisi senin dilini desteklemiyor. Bu dilde altyazı için Subsy Pro gerekir.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ترجمة Apple على الهاتف لا تدعم لغتك. للترجمة بهذه اللغة تحتاج إلى Subsy Pro."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Překlad Apple v telefonu tvůj jazyk nepodporuje. Pro titulky v tomto jazyce potřebuješ Subsy Pro."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η μετάφραση της Apple στο τηλέφωνο δεν υποστηρίζει τη γλώσσα σου. Για υπότιτλους σε αυτή τη γλώσσα χρειάζεσαι το Subsy Pro."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple's on-device translation doesn't support your language. Subtitles in this language need Subsy Pro."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple का फ़ोन वाला अनुवाद आपकी भाषा को सपोर्ट नहीं करता। इस भाषा में सबटाइटल के लिए Subsy Pro चाहिए।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Az Apple telefonos fordítása nem támogatja a nyelvedet. Ezen a nyelven a feliratokhoz Subsy Pro kell."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terjemahan bawaan Apple di ponsel tidak mendukung bahasamu. Subtitle dalam bahasa ini butuh Subsy Pro."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De vertaling van Apple op je telefoon ondersteunt jouw taal niet. Voor ondertitels in deze taal heb je Subsy Pro nodig."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad Apple v telefóne tvoj jazyk nepodporuje. Na titulky v tomto jazyku potrebuješ Subsy Pro."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apples översättning i telefonen stöder inte ditt språk. För undertexter på det här språket behöver du Subsy Pro."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การแปลในเครื่องของ Apple ไม่รองรับภาษาของคุณ ต้องใช้ Subsy Pro เพื่อดูซับไตเติลภาษานี้"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переклад Apple на телефоні не підтримує твою мову. Для субтитрів цією мовою потрібен Subsy Pro."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bản dịch trên điện thoại của Apple không hỗ trợ ngôn ngữ của bạn. Phụ đề bằng ngôn ngữ này cần Subsy Pro."
           }
         }
       }
@@ -1797,6 +2099,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Straattaal en uitdrukkingen"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slang a idiómy"
           }
         },
         "sv": {
@@ -1875,6 +2183,12 @@
             "value": "Instellingen"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nastavenia"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -1949,6 +2263,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Maandelijks"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mesačne"
           }
         },
         "sv": {
@@ -2027,6 +2347,12 @@
             "value": "Zit op hetzelfde netwerk"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buď v rovnakej sieti"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -2101,6 +2427,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Details"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podrobnosti"
           }
         },
         "sv": {
@@ -2179,6 +2511,12 @@
             "value": "Open source"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otvorený zdroj"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -2253,6 +2591,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aan, gereed"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zapnutá, pripravená"
           }
         },
         "sv": {
@@ -2331,6 +2675,12 @@
             "value": "Vertaling die de context begrijpt"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad, ktorý rozumie súvislostiam"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -2405,6 +2755,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Verbinden"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripojiť"
           }
         },
         "sv": {
@@ -2483,6 +2839,12 @@
             "value": "Verbind en open ondertitels"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripoj sa a otvor titulky"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -2557,6 +2919,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Verbinding verbroken"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spojenie prerušené"
           }
         },
         "sv": {
@@ -2635,6 +3003,12 @@
             "value": "Valt bij een verbroken verbinding vanzelf terug op vertalen op de telefoon."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pri výpadku spojenia sa sám vráti k prekladu v telefóne."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -2709,6 +3083,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Verbinding verbreken"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odpojiť"
           }
         },
         "sv": {
@@ -2787,6 +3167,12 @@
             "value": "Verbinden..."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripájam..."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -2863,6 +3249,12 @@
             "value": "Aan de slag"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ideme na to"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -2885,6 +3277,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bắt đầu"
+          }
+        }
+      }
+    },
+    "Bir dahakine kendiliğinden uyanması için PS5'te: Ayarlar > Sistem > Güç Tasarrufu > Dinlenme Modunda Kullanılabilen Özellikler > Ağdan PS5'i Açmayı Etkinleştir.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لكي يستيقظ تلقائيًا في المرة القادمة، على PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aby se příště probudila sama, na PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Για να ξυπνά μόνη της την επόμενη φορά, στο PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To let it wake up on its own next time, on the PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अगली बार अपने आप जागने के लिए PS5 पर: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hogy legközelebb magától felébredjen, a PS5-ön: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agar lain kali bisa bangun sendiri, di PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zodat hij de volgende keer zelf wakker wordt, op de PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aby sa nabudúce zobudila sama, na PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "För att den ska vakna av sig själv nästa gång, på PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อให้ตื่นเองในครั้งหน้า บน PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Щоб наступного разу консоль прокидалася сама, на PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Để lần sau máy tự thức dậy, trên PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network."
           }
         }
       }
@@ -2937,6 +3411,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Eenmalig koppelen"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spárovať raz"
           }
         },
         "sv": {
@@ -3015,6 +3495,12 @@
             "value": "Klaar"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hotovo"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -3089,6 +3575,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hoogte"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Výška"
           }
         },
         "sv": {
@@ -3167,6 +3659,12 @@
             "value": "De broncode van deze app is open onder de AGPL-3.0-licentie. Het deel dat met de console verbindt is gebaseerd op het opensourceproject Chiaki en de opvolgers chiaki-ng en Pylux."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdrojový kód tejto aplikácie je otvorený pod licenciou AGPL-3.0. Časť, ktorá sa pripája ku konzole, vychádza z open source projektu Chiaki a jeho pokračovateľov chiaki-ng a Pylux."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -3189,6 +3687,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mã nguồn của ứng dụng này được mở theo giấy phép AGPL-3.0. Phần kết nối với máy chơi game dựa trên dự án mã nguồn mở Chiaki và các bản kế tiếp là chiaki-ng và Pylux."
+          }
+        }
+      }
+    },
+    "Bugünkü ücretsiz süren bitti": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انتهى وقتك المجاني لهذا اليوم"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dnešní čas zdarma jsi vyčerpal"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Τελείωσε ο δωρεάν χρόνος σου για σήμερα"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your free time for today is used up"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आज का आपका मुफ़्त समय खत्म हो गया"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elfogyott a mai ingyenes időd"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waktu gratismu hari ini sudah habis"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je gratis tijd voor vandaag is op"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dnešný čas zadarmo si vyčerpal"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Din gratistid för i dag är slut"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เวลาฟรีของวันนี้หมดแล้ว"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Твій безкоштовний час на сьогодні вичерпано"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bạn đã dùng hết thời gian miễn phí hôm nay"
           }
         }
       }
@@ -3243,6 +3823,12 @@
             "value": "Dit doe je alleen de eerste keer. Op PS4: Settings › Remote Play Connection Settings › Add Device."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Robíš to len prvýkrát. Na PS4: Settings › Remote Play Connection Settings › Add Device."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -3265,6 +3851,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Chỉ cần làm lần đầu. Trên PS4: Settings › Remote Play Connection Settings › Add Device."
+          }
+        }
+      }
+    },
+    "Dene": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جرّب"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zkusit"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Δοκίμασε"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आज़माएँ"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kipróbálom"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coba"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Probeer"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skúsiť"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prova"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลอง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спробувати"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dùng thử"
           }
         }
       }
@@ -3317,6 +3985,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Je hebt je proefperiode al gebruikt."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skúšobnú dobu si už využil."
           }
         },
         "sv": {
@@ -3395,6 +4069,12 @@
             "value": "Proef eindigt om:"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skúšobná doba končí o:"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -3469,6 +4149,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "De proefperiode kon niet starten. Controleer je internetverbinding."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skúšobnú dobu sa nepodarilo spustiť. Skontroluj pripojenie na internet."
           }
         },
         "sv": {
@@ -3547,6 +4233,12 @@
             "value": "Proef · later betaald"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skúšobné · neskôr platené"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -3621,6 +4313,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Je proefperiode is gestart: AI-vertaling staat 45 minuten aan."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skúška sa začala: AI preklad je zapnutý na 45 minút."
           }
         },
         "sv": {
@@ -3699,6 +4397,12 @@
             "value": "Start proefperiode"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spustiť skúšku"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -3773,6 +4477,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Controleren..."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrolujem..."
           }
         },
         "sv": {
@@ -3851,6 +4561,12 @@
             "value": "Ondersteuning"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podpora"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -3925,6 +4641,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Verder"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ďalej"
           }
         },
         "sv": {
@@ -4003,6 +4725,12 @@
             "value": "Taalpakket"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jazykový balík"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -4077,6 +4805,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Taalpakket niet gedownload"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jazykový balík nie je stiahnutý"
           }
         },
         "sv": {
@@ -4155,6 +4889,12 @@
             "value": "Taalpakket downloaden"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stiahnuť jazykový balík"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -4229,6 +4969,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Taal, model"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jazyk, model"
           }
         },
         "sv": {
@@ -4307,6 +5053,12 @@
             "value": "Speel een game die niet in jouw taal is op je tv, met je eigen controller, zoals altijd. Je telefoon ligt naast je en toont de ondertitels van de game in jouw taal."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hraj hru, ktorá nie je v tvojom jazyku, na televízore a vlastným ovládačom ako vždy. Telefón leží vedľa teba a ukazuje titulky hry v tvojom jazyku."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -4381,6 +5133,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lage vertraging"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nízke oneskorenie"
           }
         },
         "sv": {
@@ -4459,6 +5217,12 @@
             "value": "Breedte"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Šírka"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -4535,6 +5299,12 @@
             "value": "Het makkelijkst op het ondertitelscherm in de game-instellingen: de meeste games tonen daar een voorbeeldondertitel."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Najľahšie na obrazovke nastavení titulkov v hre: väčšina hier tam ukazuje ukážkový titulok."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -4557,6 +5327,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dễ nhất là làm ở màn hình cài đặt phụ đề của game: hầu hết game hiện một phụ đề mẫu ở đó."
+          }
+        }
+      }
+    },
+    "Eşleşme olmadı. Kodu ekranda göründüğü sürede gir. Konsolda kodu açan kullanıcı, burada giriş yaptığın PSN hesabıyla aynı olmalı.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فشل الإقران. أدخل الرمز ما دام ظاهرًا على الشاشة. يجب أن يكون المستخدم الذي فتح الرمز على الجهاز هو نفس حساب PSN الذي سجّلت الدخول به هنا."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spárování se nepovedlo. Zadej kód, dokud je na obrazovce. Uživatel, který na konzoli otevřel kód, musí být stejný účet PSN, se kterým ses tady přihlásil."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η σύζευξη απέτυχε. Βάλε τον κωδικό όσο φαίνεται στην οθόνη. Ο χρήστης που άνοιξε τον κωδικό στην κονσόλα πρέπει να είναι ο ίδιος λογαριασμός PSN με τον οποίο συνδέθηκες εδώ."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pairing failed. Enter the code while it's still on screen. The user who opened the code on the console must be the same PSN account you signed in with here."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पेयरिंग नहीं हुई। कोड स्क्रीन पर रहते हुए ही डालें। कंसोल पर कोड खोलने वाला यूज़र वही PSN अकाउंट होना चाहिए जिससे आपने यहाँ लॉग इन किया है।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A párosítás nem sikerült. Akkor írd be a kódot, amíg a képernyőn van. A konzolon a kódot megnyitó felhasználónak ugyanannak a PSN-fióknak kell lennie, amellyel itt bejelentkeztél."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pemasangan gagal. Masukkan kode selagi masih tampil di layar. Pengguna yang membuka kode di konsol harus akun PSN yang sama dengan yang kamu pakai masuk di sini."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koppelen mislukt. Voer de code in zolang die op het scherm staat. De gebruiker die de code op de console opende, moet hetzelfde PSN-account zijn waarmee je hier bent ingelogd."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spárovanie sa nepodarilo. Zadaj kód, kým je na obrazovke. Používateľ, ktorý na konzole otvoril kód, musí byť ten istý účet PSN, s ktorým si sa tu prihlásil."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parkopplingen misslyckades. Skriv in koden medan den syns på skärmen. Användaren som öppnade koden på konsolen måste vara samma PSN-konto som du loggat in med här."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "จับคู่ไม่สำเร็จ ใส่รหัสขณะที่ยังแสดงบนจอ ผู้ใช้ที่เปิดรหัสบนคอนโซลต้องเป็นบัญชี PSN เดียวกับที่คุณเข้าสู่ระบบที่นี่"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося з'єднати. Введи код, поки він на екрані. Користувач, який відкрив код на консолі, має бути тим самим акаунтом PSN, з яким ти увійшов тут."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ghép nối không thành công. Nhập mã khi mã còn hiện trên màn hình. Người dùng mở mã trên máy phải là cùng tài khoản PSN bạn đăng nhập ở đây."
           }
         }
       }
@@ -4609,6 +5461,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Koppelen"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spárovať"
           }
         },
         "sv": {
@@ -4687,6 +5545,12 @@
             "value": "Koppeling verwijderen"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zrušiť spárovanie"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -4761,6 +5625,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Prijzen konden niet worden geladen. Controleer je internetverbinding."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ceny sa nepodarilo načítať. Skontroluj pripojenie na internet."
           }
         },
         "sv": {
@@ -4839,6 +5709,12 @@
             "value": "Prijzen laden..."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Načítavam ceny..."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -4913,6 +5789,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Algemeen"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Všeobecný"
           }
         },
         "sv": {
@@ -4991,6 +5873,12 @@
             "value": "In onze test met echte gameplay, vergeleken met vertalen op het toestel."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V našom teste na skutočnom hraní, v porovnaní s prekladom v zariadení."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -5065,6 +5953,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Overslaan"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preskočiť"
           }
         },
         "sv": {
@@ -5143,6 +6037,12 @@
             "value": "Je logt in op de eigen pagina van Sony. Je wachtwoord komt niet bij deze app en wordt nergens heen gestuurd."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prihlásenie prebieha na stránke samotnej Sony. Tvoje heslo sa do tejto aplikácie nedostane a nikam sa neposiela."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -5217,6 +6117,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Inloggen mislukt, probeer het opnieuw."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prihlásenie zlyhalo, skús to znova."
           }
         },
         "sv": {
@@ -5295,6 +6201,12 @@
             "value": "Privacy"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Súkromie"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -5369,6 +6281,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wekelijks"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Týždenne"
           }
         },
         "sv": {
@@ -5447,6 +6365,12 @@
             "value": "Over"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O aplikácii"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -5521,6 +6445,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vertaalt elke zin los; kan uitdrukkingen en wie tegen wie praat missen."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prekladá každú vetu zvlášť; môže sa mýliť v idiómoch a v tom, kto ku komu hovorí."
           }
         },
         "sv": {
@@ -5599,6 +6529,12 @@
             "value": "Elke game zet ondertitels op een andere plek. Komt er geen vertaling of raakt menutekst erdoorheen, open dan “Plek van ondertitel” en sleep het gele kader over de ondertitel van de game."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Každá hra dáva titulky inam. Keď sa preklad neobjaví alebo sa doň pletie text z menu, otvor „Miesto titulkov“ a presuň žltý rámček na titulok hry."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -5673,6 +6609,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Elke game in jouw taal"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Každá hra v tvojom jazyku"
           }
         },
         "sv": {
@@ -5751,6 +6693,12 @@
             "value": "Begrijpt het verhaal en de context."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozumie príbehu a súvislostiam."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -5825,6 +6773,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Korte handleiding"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rýchly sprievodca"
           }
         },
         "sv": {
@@ -5903,6 +6857,12 @@
             "value": "Deel in je Instagram-verhaal"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdieľať do príbehu na Instagrame"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -5977,6 +6937,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Geen camera, geen kabels."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Žiadna kamera, žiadne káble."
           }
         },
         "sv": {
@@ -6055,6 +7021,12 @@
             "value": "Sluiten"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zavrieť"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -6129,6 +7101,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "De link naar de broncode wordt hier toegevoegd voordat de app uitkomt."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odkaz na zdrojový kód sem bude pridaný pred vydaním aplikácie."
           }
         },
         "sv": {
@@ -6207,6 +7185,12 @@
             "value": "Broncode bekijken"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zobraziť zdrojový kód"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -6281,6 +7265,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ontdek"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zistiť viac"
           }
         },
         "sv": {
@@ -6359,6 +7349,12 @@
             "value": "Console"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzola"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -6433,6 +7429,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Console verbonden"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzola pripojená"
           }
         },
         "sv": {
@@ -6511,6 +7513,12 @@
             "value": "Console zoeken..."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hľadám konzolu..."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -6587,6 +7595,12 @@
             "value": "De console moet aan staan en op hetzelfde wifi-netwerk zitten als je telefoon. Sta bij de eerste keer openen “apparaten op lokaal netwerk zoeken” toe."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzola musí byť zapnutá a v rovnakej sieti Wi-Fi ako telefón. Pri prvom spustení povoľ žiadosť „hľadať zariadenia v miestnej sieti“."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -6609,6 +7623,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Máy chơi game phải đang bật và cùng mạng Wi-Fi với điện thoại. Hãy cho phép yêu cầu “tìm thiết bị trong mạng cục bộ” khi mở lần đầu."
+          }
+        }
+      }
+    },
+    "Konsol bağlantıyı kabul etmedi. PS5'te Uzaktan Oynama'nın açık olduğuna ve konsolun başka bir cihaza bağlı olmadığına bak; birkaç saniye sonra yeniden dene.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لم يقبل الجهاز الاتصال. تأكد من تفعيل التشغيل عن بُعد في PS5 وأن الجهاز غير متصل بجهاز آخر، ثم حاول بعد بضع ثوانٍ."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzole nepřijala připojení. Zkontroluj, že je na PS5 zapnuté Remote Play a konzole není připojená k jinému zařízení; zkus to znovu za pár sekund."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η κονσόλα δεν δέχτηκε τη σύνδεση. Έλεγξε ότι το Remote Play είναι ενεργό στο PS5 και ότι η κονσόλα δεν είναι συνδεδεμένη σε άλλη συσκευή· δοκίμασε ξανά σε λίγα δευτερόλεπτα."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The console didn't accept the connection. Check that Remote Play is turned on on the PS5 and that the console isn't connected to another device; try again in a few seconds."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कंसोल ने कनेक्शन स्वीकार नहीं किया। देखें कि PS5 में रिमोट प्ले चालू है और कंसोल किसी दूसरे डिवाइस से जुड़ा नहीं है; कुछ सेकंड बाद फिर कोशिश करें।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A konzol nem fogadta el a kapcsolatot. Ellenőrizd, hogy a PS5-ön be van-e kapcsolva a Távoli lejátszás, és hogy a konzol nincs-e másik eszközhöz csatlakoztatva; pár másodperc múlva próbáld újra."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konsol tidak menerima koneksi. Pastikan Remote Play aktif di PS5 dan konsol tidak tersambung ke perangkat lain; coba lagi beberapa detik lagi."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De console accepteerde de verbinding niet. Controleer of Remote Play aanstaat op de PS5 en of de console niet met een ander apparaat verbonden is; probeer het over een paar seconden opnieuw."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzola neprijala pripojenie. Skontroluj, či je na PS5 zapnuté Remote Play a konzola nie je pripojená k inému zariadeniu; skús to znova o pár sekúnd."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konsolen tog inte emot anslutningen. Kontrollera att Remote Play är på i PS5 och att konsolen inte är ansluten till en annan enhet; försök igen om några sekunder."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คอนโซลไม่ยอมรับการเชื่อมต่อ ตรวจว่าเปิด Remote Play บน PS5 และคอนโซลไม่ได้เชื่อมกับอุปกรณ์อื่นอยู่ แล้วลองใหม่ในอีกไม่กี่วินาที"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Консоль не прийняла підключення. Перевір, що на PS5 увімкнено дистанційну гру і консоль не підключена до іншого пристрою; спробуй знову за кілька секунд."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Máy không chấp nhận kết nối. Kiểm tra Remote Play đã bật trên PS5 và máy không đang kết nối với thiết bị khác; thử lại sau vài giây."
           }
         }
       }
@@ -6661,6 +7757,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Console verbonden"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzola pripojená"
           }
         },
         "sv": {
@@ -6739,6 +7841,12 @@
             "value": "Speel consolegames in je eigen taal:"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hraj konzolové hry vo svojom jazyku:"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -6761,6 +7869,170 @@
           "stringUnit": {
             "state": "translated",
             "value": "Chơi game console bằng ngôn ngữ của bạn:"
+          }
+        }
+      }
+    },
+    "Konsol uyandırılıyor...": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جارٍ إيقاظ الجهاز..."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Probouzím konzoli..."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Αφύπνιση κονσόλας..."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waking up the console..."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कंसोल जगाया जा रहा है..."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A konzol ébresztése..."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Membangunkan konsol..."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Console wordt gewekt..."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prebúdzam konzolu..."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Väcker konsolen..."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กำลังปลุกคอนโซล..."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пробуджуємо консоль..."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đang đánh thức máy..."
+          }
+        }
+      }
+    },
+    "Konsol uyanmadı. Kumandadaki PS tuşuyla aç, sonra yeniden bağlan.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لم يستيقظ الجهاز. شغّله بزر PS في اليد، ثم اتصل مرة أخرى."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzole se neprobudila. Zapni ji tlačítkem PS na ovladači a připoj se znovu."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η κονσόλα δεν ξύπνησε. Άνοιξέ την με το κουμπί PS του χειριστηρίου και σύνδεσε ξανά."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The console didn't wake up. Turn it on with the PS button on the controller, then connect again."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कंसोल नहीं जागा। कंट्रोलर के PS बटन से चालू करें, फिर दोबारा कनेक्ट करें।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A konzol nem ébredt fel. Kapcsold be a kontroller PS gombjával, majd csatlakozz újra."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konsol tidak bangun. Nyalakan dengan tombol PS di controller, lalu sambungkan lagi."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De console werd niet wakker. Zet hem aan met de PS-knop op de controller en maak opnieuw verbinding."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzola sa neprebudila. Zapni ju tlačidlom PS na ovládači a pripoj sa znova."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konsolen vaknade inte. Starta den med PS-knappen på handkontrollen och anslut igen."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "คอนโซลไม่ตื่น เปิดด้วยปุ่ม PS บนจอย แล้วเชื่อมต่อใหม่"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Консоль не прокинулася. Увімкни її кнопкою PS на контролері й підключись знову."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Máy không thức dậy. Bật bằng nút PS trên tay cầm, rồi kết nối lại."
           }
         }
       }
@@ -6815,6 +8087,12 @@
             "value": "De console en je telefoon moeten op hetzelfde wifi-netwerk zitten. Laat de console aan staan. De app vindt de console zelf; sta bij de eerste keer openen “apparaten op lokaal netwerk zoeken” toe."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzola a telefón musia byť v rovnakej sieti Wi-Fi. Nechaj konzolu zapnutú. Aplikácia si ju nájde sama; pri prvom spustení povoľ žiadosť „hľadať zariadenia v miestnej sieti“."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -6837,6 +8115,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Máy chơi game và điện thoại phải cùng mạng Wi-Fi. Hãy bật máy chơi game. Ứng dụng tự tìm máy; hãy cho phép yêu cầu “tìm thiết bị trong mạng cục bộ” khi mở lần đầu."
+          }
+        }
+      }
+    },
+    "Konsol yalnız aynı Wi-Fi ağından bulunur. Telefonu konsolun bağlı olduğu Wi-Fi ağına bağla; mobil veriyle olmaz.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يمكن العثور على الجهاز إلا من شبكة Wi-Fi نفسها. اربط هاتفك بشبكة Wi-Fi المتصل بها الجهاز؛ بيانات الجوال لا تعمل."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzoli najdeš jen ve stejné síti Wi-Fi. Připoj telefon k Wi-Fi, ve které je konzole; mobilní data nefungují."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η κονσόλα βρίσκεται μόνο από το ίδιο δίκτυο Wi-Fi. Σύνδεσε το τηλέφωνο στο Wi-Fi της κονσόλας· με δεδομένα κινητής δεν γίνεται."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The console can only be found on the same Wi-Fi network. Connect your phone to the Wi-Fi network the console is on; mobile data won't work."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कंसोल सिर्फ़ उसी Wi-Fi नेटवर्क से मिलता है। फ़ोन को उसी Wi-Fi से जोड़ें जिससे कंसोल जुड़ा है; मोबाइल डेटा से नहीं होगा।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A konzol csak ugyanarról a Wi-Fi-hálózatról található meg. Csatlakoztasd a telefont ahhoz a Wi-Fi-hez, amelyen a konzol van; mobilnettel nem megy."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konsol hanya bisa ditemukan dari jaringan Wi-Fi yang sama. Sambungkan ponsel ke Wi-Fi tempat konsol tersambung; data seluler tidak bisa."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De console wordt alleen gevonden op hetzelfde wifinetwerk. Verbind je telefoon met het wifinetwerk van de console; mobiele data werkt niet."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzolu nájdeš len v rovnakej sieti Wi-Fi. Pripoj telefón k Wi-Fi, v ktorej je konzola; mobilné dáta nefungujú."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konsolen hittas bara från samma wifi-nätverk. Anslut telefonen till konsolens wifi; mobildata fungerar inte."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "จะพบคอนโซลได้จากเครือข่าย Wi-Fi เดียวกันเท่านั้น เชื่อมโทรศัพท์กับ Wi-Fi ที่คอนโซลใช้อยู่ ใช้เน็ตมือถือไม่ได้"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Консоль знаходиться лише в тій самій мережі Wi-Fi. Підключи телефон до Wi-Fi, до якої підключена консоль; мобільний інтернет не підійде."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chỉ tìm thấy máy trong cùng mạng Wi-Fi. Kết nối điện thoại với Wi-Fi mà máy đang dùng; dữ liệu di động không được."
           }
         }
       }
@@ -6889,6 +8249,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "De console moet weten bij welk PSN-account het verbonden apparaat hoort. Je logt in op de eigen pagina van Sony; je wachtwoord komt niet bij deze app."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konzola potrebuje vedieť, ku ktorému účtu PSN pripájané zariadenie patrí. Prihlásenie prebieha na stránke samotnej Sony; tvoje heslo sa do tejto aplikácie nedostane."
           }
         },
         "sv": {
@@ -6967,6 +8333,12 @@
             "value": "Verbind met console"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripojiť konzolu"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -7041,6 +8413,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Verbind met console"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripojiť konzolu"
           }
         },
         "sv": {
@@ -7119,6 +8497,12 @@
             "value": "De inhoud die op de console open staat kan niet via Remote Play worden getoond. Open een game en de ondertitels verschijnen vanzelf."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obsah otvorený na konzole sa cez Remote Play nedá zobraziť. Spusti hru a titulky sa objavia samy."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -7193,6 +8577,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Probeer een voorbeeld zonder console"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyskúšať ukážku bez konzoly"
           }
         },
         "sv": {
@@ -7271,6 +8661,12 @@
             "value": "Koppel de console één keer"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spáruj konzolu raz"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -7345,6 +8741,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gebruikte opensourcebibliotheken"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Použité open source knižnice"
           }
         },
         "sv": {
@@ -7423,6 +8825,12 @@
             "value": "Gebruiksvoorwaarden"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podmienky používania"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -7497,6 +8905,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Een tweede gebruiker voor de controller"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Druhý používateľ pre ovládač"
           }
         },
         "sv": {
@@ -7575,6 +8989,12 @@
             "value": "Een korte tip"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Malý tip"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -7649,6 +9069,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Menu's en aftiteling worden niet vertaald. Werkt niet als de telefoon helemaal op stil staat; laat het volume op de laagste stand."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu a záverečné titulky sa neprekladajú. Nefunguje, keď je telefón úplne stlmený; nechaj najnižšiu hlasitosť."
           }
         },
         "sv": {
@@ -7727,6 +9153,12 @@
             "value": "Zo werkt het"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ako to funguje"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -7801,6 +9233,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wat vertalen"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Čo prekladať"
           }
         },
         "sv": {
@@ -7879,6 +9317,12 @@
             "value": "Te lezen gebied"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Čítaná oblasť"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -7953,6 +9397,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "De game wordt naar deze taal vertaald"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hra sa prekladá do tohto jazyka"
           }
         },
         "sv": {
@@ -8031,6 +9481,12 @@
             "value": "Ik game met Subsy"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hrám so Subsy"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -8105,6 +9561,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Woordenlijst van de game"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slovník hry"
           }
         },
         "sv": {
@@ -8183,6 +9645,12 @@
             "value": "Namen en termen uit de game worden altijd hetzelfde vertaald."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mená a pojmy z hry sa prekladajú vždy rovnako."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -8257,6 +9725,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Woordenlijst per game"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slovník pre danú hru"
           }
         },
         "sv": {
@@ -8335,6 +9809,12 @@
             "value": "Ga naar een plek in de game waar ondertitels te zien zijn (het ondertitelscherm in de game-instellingen is het makkelijkst). Sleep het gele kader over de ondertitel; de ondertitel moet erin vallen, menu's en HUD niet."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choď v hre tam, kde vidno titulky (najľahšie na obrazovke nastavení titulkov v hre). Presuň žltý rámček na titulok; má ho obsahovať, ale menu a ukazovatele nechať mimo."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -8409,6 +9889,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zet ondertitels aan in de game"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zapni v hre titulky"
           }
         },
         "sv": {
@@ -8487,6 +9973,12 @@
             "value": "Vertaal gamedialogen direct naar je eigen taal."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prekladaj dialógy v hrách okamžite do svojho jazyka."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -8561,6 +10053,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Zet de tekstachtergrond en sprekersnamen aan in de ondertitelinstellingen van je game, dan worden vertalingen veel nauwkeuriger."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zapni v nastaveniach titulkov v hre pozadie textu a mená hovoriacich, preklady budú oveľa presnejšie."
           }
         },
         "sv": {
@@ -8639,6 +10137,12 @@
             "value": "Zet in de game-instellingen de Engelse ondertitels aan. De app leest die ondertitels op het scherm en vertaalt ze; zonder ondertitels valt er niets te vertalen."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V nastaveniach hry zapni anglické titulky. Aplikácia ich číta z obrazovky a prekladá; bez titulkov nie je čo prekladať."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -8713,6 +10217,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Speel op je tv met je eigen controller. Leg je telefoon naast je; de vertaling verschijnt zodra er ondertitels zijn."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hraj na televízore vlastným ovládačom. Telefón si polož vedľa seba; preklad sa objaví vždy, keď sa ukážu titulky."
           }
         },
         "sv": {
@@ -8791,6 +10301,12 @@
             "value": "Open op je PS4 Settings > Remote Play Connection Settings > Add Device. Vul hier de 8-cijferige code in."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Na PS4 otvor Settings > Remote Play Connection Settings > Add Device. Sem zadaj 8-miestny kód."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -8813,6 +10329,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Trên PS4, mở Settings > Remote Play Connection Settings > Add Device. Nhập mã 8 chữ số vào đây."
+          }
+        }
+      }
+    },
+    "PS5 açık olmalı. Dinlenme modundaysa: Ayarlar > Sistem > Güç Tasarrufu > Dinlenme Modunda Kullanılabilen Özellikler > İnternete Bağlı Kal.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يجب أن يكون PS5 قيد التشغيل. إذا كان في وضع الراحة: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PS5 musí být zapnutá. Pokud je v klidovém režimu: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το PS5 πρέπει να είναι ανοιχτό. Αν είναι σε λειτουργία ηρεμίας: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PS5 must be on. If it's in rest mode: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PS5 चालू होना चाहिए। अगर रेस्ट मोड में है: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A PS5 legyen bekapcsolva. Ha nyugalmi módban van: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PS5 harus menyala. Jika dalam mode istirahat: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De PS5 moet aanstaan. Staat hij in rustmodus: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PS5 musí byť zapnutá. Ak je v pokojovom režime: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PS5 måste vara på. Om den är i viloläge: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PS5 ต้องเปิดอยู่ หากอยู่ในโหมดพัก: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PS5 має бути увімкнена. Якщо вона в режимі спокою: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PS5 phải đang bật. Nếu đang ở chế độ nghỉ: Settings > System > Power Saving > Features Available in Rest Mode > Stay Connected to the Internet."
           }
         }
       }
@@ -8865,6 +10463,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "PS5 niet verbonden"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PS5 nie je pripojená"
           }
         },
         "sv": {
@@ -8943,6 +10547,12 @@
             "value": "Wachten op PS5-beeld..."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Čakám na obraz z PS5..."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -9017,6 +10627,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "PS5 en PS4 worden ondersteund. Het werkt ook als de console bekabeld is en de telefoon via wifi op dezelfde router zit."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podporované sú PS5 aj PS4. Funguje aj vtedy, keď je konzola pripojená káblom a telefón cez Wi-Fi toho istého routera."
           }
         },
         "sv": {
@@ -9095,6 +10711,12 @@
             "value": "Vind je PS5 of PS4 en begin met vertalen."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nájdi svoju PS5 alebo PS4 a začni prekladať."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -9169,6 +10791,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Open op je PS5 Settings > System > Remote Play > Link Device. Vul hier de 8-cijferige code in."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Na PS5 otvor Settings > System > Remote Play > Link Device. Sem zadaj 8-miestny kód."
           }
         },
         "sv": {
@@ -9247,6 +10875,12 @@
             "value": "Open op je PS5 Settings › System › Remote Play › Link Device en vul de 8-cijferige code in de app in."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Na PS5 otvor Settings › System › Remote Play › Link Device a 8-miestny kód zadaj do aplikácie."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -9321,6 +10955,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "PSN-account vereist"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je potrebný účet PSN"
           }
         },
         "sv": {
@@ -9399,6 +11039,12 @@
             "value": "PSN-account wijzigen"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zmeniť účet PSN"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -9473,6 +11119,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Inloggen met PSN"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prihlásiť sa cez PSN"
           }
         },
         "sv": {
@@ -9551,6 +11203,12 @@
             "value": "Delen"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdieľať"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -9625,6 +11283,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Deel en krijg 1 uur Pro"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdieľaj a získaj 1 hodinu Pro"
           }
         },
         "sv": {
@@ -9703,6 +11367,12 @@
             "value": "Pro is actief. Bedankt!"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro je aktívne. Ďakujeme!"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -9777,6 +11447,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Je Pro-proef is begonnen: 1 uur AI-vertaling voor jou."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skúšobné Pro sa začalo: 1 hodina prekladu pomocou AI je tvoja."
           }
         },
         "sv": {
@@ -9855,6 +11531,12 @@
             "value": "Pro is nog niet te koop. AI-vertaling is voorlopig voor iedereen beschikbaar."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro sa zatiaľ nepredáva. Preklad pomocou AI je zatiaľ otvorený pre všetkých."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -9929,6 +11611,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wat je krijgt met Pro"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Čo získaš s Pro"
           }
         },
         "sv": {
@@ -10007,6 +11695,12 @@
             "value": "In Pro vertaalt AI: het volgt de scène, zodat regels lezen als een echt gesprek."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V Pro prekladá AI: rozumie scéne, takže repliky znejú ako skutočný rozhovor."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -10081,6 +11775,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "De aankoop kon niet worden voltooid."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nákup sa nepodarilo dokončiť."
           }
         },
         "sv": {
@@ -10159,6 +11859,12 @@
             "value": "Aankopen herstellen"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obnoviť nákupy"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -10233,6 +11939,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vertaalt straattaal en uitdrukkingen naar betekenis, niet woord voor woord."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prekladá pouličnú reč a idiómy podľa významu, nie slovo po slove."
           }
         },
         "sv": {
@@ -10311,6 +12023,12 @@
             "value": "Sony gaf geen toegangssleutel"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sony nevydala prístupový kľúč"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -10387,6 +12105,12 @@
             "value": "Geen antwoord van Sony"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sony neodpovedala"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -10409,6 +12133,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Không nhận được phản hồi từ Sony"
+          }
+        }
+      }
+    },
+    "Subsy Pro'ya bak": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اطّلع على Subsy Pro"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zobrazit Subsy Pro"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Δες το Subsy Pro"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See Subsy Pro"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subsy Pro देखें"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subsy Pro megtekintése"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lihat Subsy Pro"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bekijk Subsy Pro"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zobraziť Subsy Pro"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Visa Subsy Pro"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ดู Subsy Pro"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переглянути Subsy Pro"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xem Subsy Pro"
           }
         }
       }
@@ -10461,6 +12267,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Subsy is een onafhankelijke app. De app is niet verbonden aan Sony Interactive Entertainment en wordt er niet door ondersteund of goedgekeurd. PlayStation, PS5 en PS4 zijn handelsmerken van Sony Interactive Entertainment Inc."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subsy je nezávislá aplikácia. Nie je spojená so spoločnosťou Sony Interactive Entertainment a nie je ňou podporovaná ani schválená. PlayStation, PS5 a PS4 sú ochranné známky spoločnosti Sony Interactive Entertainment Inc."
           }
         },
         "sv": {
@@ -10539,6 +12351,12 @@
             "value": "Deel Subsy op Instagram en probeer AI-vertaling 1 uur gratis."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdieľaj Subsy na Instagrame a vyskúšaj preklad s AI na 1 hodinu zadarmo."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -10613,6 +12431,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Deel Subsy op Instagram of waar je maar wilt en probeer AI-vertaling 1 uur gratis."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdieľaj Subsy na Instagrame alebo kdekoľvek inde a vyskúšaj preklad pomocou AI na 1 hodinu zadarmo."
           }
         },
         "sv": {
@@ -10691,6 +12515,12 @@
             "value": "Subsy vertaalt op je telefoon de ondertitels van consolegames die niet in jouw taal zijn. De game blijft op je tv, de controller in je handen."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subsy ti v telefóne prekladá titulky konzolových hier, ktoré nie sú v tvojom jazyku. Hra zostáva na televízore, ovládač v tvojich rukách."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -10767,6 +12597,12 @@
             "value": "Verbonden met server"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripojené k serveru"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -10789,6 +12625,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Đã kết nối máy chủ"
+          }
+        }
+      }
+    },
+    "Telefon Wi-Fi'a bağlı değil": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الهاتف غير متصل بشبكة Wi-Fi"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefon není na Wi-Fi"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το τηλέφωνο δεν είναι σε Wi-Fi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your phone isn't on Wi-Fi"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोन Wi-Fi से जुड़ा नहीं है"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A telefon nincs Wi-Fi-n"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ponsel tidak tersambung ke Wi-Fi"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je telefoon zit niet op wifi"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefón nie je na Wi-Fi"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonen är inte på wifi"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โทรศัพท์ไม่ได้เชื่อมต่อ Wi-Fi"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Телефон не підключено до Wi-Fi"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Điện thoại chưa kết nối Wi-Fi"
           }
         }
       }
@@ -10843,6 +12761,12 @@
             "value": "Je telefoon kan deze taal niet vertalen. Kies AI in Instellingen."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefón tento jazyk preložiť nevie. V Nastaveniach zvoľ AI."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -10865,6 +12789,170 @@
           "stringUnit": {
             "state": "translated",
             "value": "Điện thoại không dịch được ngôn ngữ này. Hãy chọn AI trong Cài đặt."
+          }
+        }
+      }
+    },
+    "Telefon ve konsol aynı Wi-Fi ağında olmalı (misafir ağı ya da mobil veri olmaz).": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يجب أن يكون الهاتف والجهاز على شبكة Wi-Fi نفسها (ليست شبكة ضيوف ولا بيانات الجوال)."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefon a konzole musí být ve stejné síti Wi-Fi (ne v síti pro hosty ani na mobilních datech)."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το τηλέφωνο και η κονσόλα πρέπει να είναι στο ίδιο δίκτυο Wi-Fi (όχι δίκτυο επισκεπτών ή δεδομένα κινητής)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your phone and console must be on the same Wi-Fi network (not a guest network or mobile data)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोन और कंसोल एक ही Wi-Fi नेटवर्क पर होने चाहिए (गेस्ट नेटवर्क या मोबाइल डेटा नहीं)।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A telefon és a konzol ugyanazon a Wi-Fi-hálózaton legyen (ne vendéghálózaton vagy mobilneten)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ponsel dan konsol harus di jaringan Wi-Fi yang sama (bukan jaringan tamu atau data seluler)."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je telefoon en console moeten op hetzelfde wifinetwerk zitten (geen gastnetwerk of mobiele data)."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefón a konzola musia byť v rovnakej sieti Wi-Fi (nie v sieti pre hostí ani na mobilných dátach)."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonen och konsolen måste vara på samma wifi-nätverk (inte gästnätverk eller mobildata)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โทรศัพท์และคอนโซลต้องอยู่ในเครือข่าย Wi-Fi เดียวกัน (ไม่ใช่เครือข่ายแขกหรือเน็ตมือถือ)"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Телефон і консоль мають бути в одній мережі Wi-Fi (не гостьова мережа і не мобільний інтернет)."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Điện thoại và máy phải cùng một mạng Wi-Fi (không phải mạng khách hay dữ liệu di động)."
+          }
+        }
+      }
+    },
+    "Telefon ve konsol aynı Wi-Fi'da mı?": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هل الهاتف والجهاز على شبكة Wi-Fi نفسها؟"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jsou telefon a konzole na stejné Wi-Fi?"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Τηλέφωνο και κονσόλα είναι στο ίδιο Wi-Fi;"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Are your phone and console on the same Wi-Fi?"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "क्या फ़ोन और कंसोल एक ही Wi-Fi पर हैं?"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ugyanazon a Wi-Fi-n van a telefon és a konzol?"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apakah ponsel dan konsol di Wi-Fi yang sama?"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zitten je telefoon en console op hetzelfde wifi?"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sú telefón a konzola na rovnakej Wi-Fi?"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Är telefonen och konsolen på samma wifi?"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โทรศัพท์และคอนโซลอยู่ใน Wi-Fi เดียวกันไหม?"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Телефон і консоль в одній мережі Wi-Fi?"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Điện thoại và máy có cùng Wi-Fi không?"
           }
         }
       }
@@ -10917,6 +13005,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vertaling op toestel"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad v zariadení"
           }
         },
         "sv": {
@@ -10995,6 +13089,12 @@
             "value": "Vertalen op telefoon"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad v telefóne"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -11069,6 +13169,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vertalen op de telefoon is klaar voor deze taal."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad v telefóne je pre tento jazyk pripravený."
           }
         },
         "sv": {
@@ -11147,6 +13253,12 @@
             "value": "Vertalen op de telefoon vereist een eenmalige download (gratis)."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad v telefóne vyžaduje jednorazové stiahnutie (zadarmo)."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -11221,6 +13333,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vertalen op de telefoon vereist een eenmalige download van het taalpakket (gratis)."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad v telefóne vyžaduje jednorazové stiahnutie jazykového balíka (zadarmo)."
           }
         },
         "sv": {
@@ -11299,6 +13417,12 @@
             "value": "Vertalen op je telefoon in minder dan een seconde."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad v telefóne za menej ako sekundu."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -11321,6 +13445,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dịch trên điện thoại chưa tới một giây."
+          }
+        }
+      }
+    },
+    "Telefonun Ayarlar'ında Subsy için \"Yerel Ağ\" izni açık olmalı.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في إعدادات الهاتف يجب تفعيل إذن \"الشبكة المحلية\" لتطبيق Subsy."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V Nastavení telefonu musí mít Subsy zapnuté oprávnění \"Místní síť\"."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Στις Ρυθμίσεις του τηλεφώνου, η άδεια \"Τοπικό δίκτυο\" για το Subsy πρέπει να είναι ενεργή."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In your phone's Settings, \"Local Network\" must be turned on for Subsy."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फ़ोन की सेटिंग्स में Subsy के लिए \"लोकल नेटवर्क\" अनुमति चालू होनी चाहिए।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A telefon Beállításaiban a Subsy \"Helyi hálózat\" engedélye legyen bekapcsolva."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di Pengaturan ponsel, izin \"Jaringan Lokal\" untuk Subsy harus aktif."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In de Instellingen van je telefoon moet \"Lokaal netwerk\" voor Subsy aanstaan."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V Nastaveniach telefónu musí mať Subsy zapnuté povolenie \"Miestna sieť\"."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I telefonens Inställningar måste \"Lokalt nätverk\" vara på för Subsy."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ในการตั้งค่าโทรศัพท์ ต้องเปิดสิทธิ์ \"เครือข่ายเฉพาะที่\" ให้ Subsy"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У Параметрах телефона для Subsy має бути увімкнено дозвіл \"Локальна мережа\"."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trong Cài đặt của điện thoại, quyền \"Mạng cục bộ\" cho Subsy phải được bật."
           }
         }
       }
@@ -11375,6 +13581,12 @@
             "value": "De ingebouwde vertaling van je telefoon ondersteunt deze taal niet. Voor deze taal werkt alleen \"Vertalen met AI\"."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vstavaný preklad telefónu tento jazyk nepodporuje. Preň funguje len \"Preklad pomocou AI\"."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -11401,78 +13613,166 @@
         }
       }
     },
-    "Uygulama ana hesabını kullandığı için kumandan o hesapla çalışmaz. Konsolda ikinci bir kullanıcı oluştur. Bağlandıktan sonra kumandada PS tuşuna bas, o kullanıcıyı seç ve oyunu onunla oyna.": {
+    "Uyanmazsa kumandadaki PS tuşuyla aç; açılınca kendiliğinden bağlanır.": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لأن التطبيق يستخدم حسابك الرئيسي، لا تعمل يد التحكم بذلك الحساب. أنشئ مستخدمًا ثانيًا على الجهاز. بعد الاتصال اضغط زر PS في يد التحكم، اختر ذلك المستخدم والعب به."
+            "value": "إذا لم يستيقظ، شغّله بزر PS في اليد؛ يتصل تلقائيًا بعد تشغيله."
           }
         },
         "cs": {
           "stringUnit": {
             "state": "translated",
-            "value": "Protože aplikace používá tvůj hlavní účet, ovladač s ním nefunguje. Vytvoř na konzoli druhého uživatele. Po připojení stiskni na ovladači tlačítko PS, vyber tohoto uživatele a hraj za něj."
+            "value": "Když se neprobudí, zapni ji tlačítkem PS na ovladači; jakmile se zapne, připojí se sama."
           }
         },
         "el": {
           "stringUnit": {
             "state": "translated",
-            "value": "Επειδή η εφαρμογή χρησιμοποιεί τον κύριο λογαριασμό σου, το χειριστήριο δεν δουλεύει με αυτόν. Φτιάξε έναν δεύτερο χρήστη στην κονσόλα. Μετά τη σύνδεση πάτησε το κουμπί PS στο χειριστήριο, διάλεξε αυτόν τον χρήστη και παίξε με αυτόν."
+            "value": "Αν δεν ξυπνήσει, άνοιξέ την με το κουμπί PS του χειριστηρίου· μόλις ανοίξει, συνδέεται μόνη της."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Because the app uses your main account, your controller can't use that account. Create a second user on the console. After connecting, press the PS button on the controller, choose that user and play with it."
+            "value": "If it doesn't wake, turn it on with the PS button on the controller; it connects by itself once it's on."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "ऐप आपका मुख्य खाता इस्तेमाल करता है, इसलिए कंट्रोलर उस खाते से नहीं चलता। कंसोल पर दूसरा यूज़र बनाएँ। कनेक्ट होने के बाद कंट्रोलर पर PS बटन दबाएँ, वह यूज़र चुनें और उसी से खेलें।"
+            "value": "अगर न जागे तो कंट्रोलर के PS बटन से चालू करें; चालू होते ही अपने आप कनेक्ट हो जाएगा।"
           }
         },
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mivel az alkalmazás a fő fiókodat használja, a kontrollered azzal nem működik. Hozz létre egy második felhasználót a konzolon. Csatlakozás után nyomd meg a PS gombot a kontrolleren, válaszd ezt a felhasználót, és vele játssz."
+            "value": "Ha nem ébred fel, kapcsold be a kontroller PS gombjával; amint bekapcsol, magától csatlakozik."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Karena aplikasi memakai akun utamamu, controller tidak bisa memakai akun itu. Buat pengguna kedua di konsol. Setelah terhubung, tekan tombol PS di controller, pilih pengguna itu, dan mainkan game dengannya."
+            "value": "Kalau tidak bangun, nyalakan dengan tombol PS di controller; begitu menyala langsung tersambung."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Omdat de app je hoofdaccount gebruikt, werkt je controller niet met dat account. Maak een tweede gebruiker aan op de console. Druk na het verbinden op de PS-knop van de controller, kies die gebruiker en speel daarmee."
+            "value": "Wordt hij niet wakker, zet hem dan aan met de PS-knop op de controller; zodra hij aan is, maakt hij zelf verbinding."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ak sa nezobudí, zapni ju tlačidlom PS na ovládači; keď sa zapne, pripojí sa sama."
           }
         },
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eftersom appen använder ditt huvudkonto fungerar inte handkontrollen med det kontot. Skapa en andra användare på konsolen. Tryck på PS-knappen på handkontrollen efter anslutningen, välj den användaren och spela med den."
+            "value": "Om den inte vaknar, starta den med PS-knappen på handkontrollen; när den är på ansluter den av sig själv."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "เพราะแอปใช้บัญชีหลักของคุณ คอนโทรลเลอร์จึงใช้บัญชีนั้นไม่ได้ สร้างผู้ใช้คนที่สองบนคอนโซล หลังเชื่อมต่อแล้วกดปุ่ม PS บนคอนโทรลเลอร์ เลือกผู้ใช้นั้นแล้วเล่นเกมด้วยผู้ใช้นั้น"
+            "value": "หากไม่ตื่น ให้เปิดด้วยปุ่ม PS บนจอย เมื่อเปิดแล้วจะเชื่อมต่อเอง"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Оскільки застосунок використовує ваш основний обліковий запис, контролер із ним не працює. Створіть на консолі другого користувача. Після підключення натисніть кнопку PS на контролері, виберіть цього користувача й грайте ним."
+            "value": "Якщо не прокинеться, увімкни кнопкою PS на контролері; щойно увімкнеться, підключиться сама."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vì ứng dụng dùng tài khoản chính của bạn, tay cầm không dùng được tài khoản đó. Hãy tạo người dùng thứ hai trên máy. Sau khi kết nối, nhấn nút PS trên tay cầm, chọn người dùng đó và chơi game bằng người dùng đó."
+            "value": "Nếu máy không thức dậy, bật bằng nút PS trên tay cầm; bật xong sẽ tự kết nối."
+          }
+        }
+      }
+    },
+    "Uygulama ana hesabını kullandığı için kumandan o hesapla çalışmaz. Konsolda ikinci bir kullanıcı oluştur. Bağlandıktan sonra kumandada PS tuşuna bas, o kullanıcıyı seç ve oyunu onunla oyna. Oyun açıksa kapat ve o kullanıcıyla yeniden aç: kumanda oyunu yalnız onu açan kullanıcıyla oynatır.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لأن التطبيق يستخدم حسابك الرئيسي، لا تعمل يد التحكم بذلك الحساب. أنشئ مستخدمًا ثانيًا على الجهاز. بعد الاتصال اضغط زر PS في يد التحكم، اختر ذلك المستخدم والعب به. إذا كانت اللعبة مفتوحة، أغلقها وشغّلها من جديد بذلك المستخدم: يد التحكم لا تتحكم باللعبة إلا مع المستخدم الذي شغّلها."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protože aplikace používá tvůj hlavní účet, ovladač s ním nefunguje. Vytvoř na konzoli druhého uživatele. Po připojení stiskni na ovladači tlačítko PS, vyber tohoto uživatele a hraj za něj. Pokud už hra běží, zavři ji a spusť ji znovu za tohoto uživatele: ovladač ovládá hru jen za uživatele, který ji spustil."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Επειδή η εφαρμογή χρησιμοποιεί τον κύριο λογαριασμό σου, το χειριστήριο δεν δουλεύει με αυτόν. Φτιάξε έναν δεύτερο χρήστη στην κονσόλα. Μετά τη σύνδεση πάτησε το κουμπί PS στο χειριστήριο, διάλεξε αυτόν τον χρήστη και παίξε με αυτόν. Αν το παιχνίδι είναι ήδη ανοιχτό, κλείσ' το και άνοιξέ το ξανά με αυτόν τον χρήστη: το χειριστήριο ελέγχει το παιχνίδι μόνο για τον χρήστη που το ξεκίνησε."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Because the app uses your main account, your controller can't use that account. Create a second user on the console. After connecting, press the PS button on the controller, choose that user and play with it. If the game is already running, close it and start it again as that user: the controller only plays the game for the user who started it."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ऐप आपका मुख्य खाता इस्तेमाल करता है, इसलिए कंट्रोलर उस खाते से नहीं चलता। कंसोल पर दूसरा यूज़र बनाएँ। कनेक्ट होने के बाद कंट्रोलर पर PS बटन दबाएँ, वह यूज़र चुनें और उसी से खेलें। अगर गेम पहले से चल रहा है, तो उसे बंद करें और उसी यूज़र से फिर शुरू करें: कंट्रोलर गेम सिर्फ़ उसी यूज़र के लिए चलाता है जिसने उसे शुरू किया।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mivel az alkalmazás a fő fiókodat használja, a kontrollered azzal nem működik. Hozz létre egy második felhasználót a konzolon. Csatlakozás után nyomd meg a PS gombot a kontrolleren, válaszd ezt a felhasználót, és vele játssz. Ha a játék már fut, zárd be, és indítsd el újra ezzel a felhasználóval: a kontroller csak annak a felhasználónak irányítja a játékot, aki elindította."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karena aplikasi memakai akun utamamu, controller tidak bisa memakai akun itu. Buat pengguna kedua di konsol. Setelah terhubung, tekan tombol PS di controller, pilih pengguna itu, dan mainkan game dengannya. Jika game sudah berjalan, tutup lalu jalankan lagi dengan pengguna itu: controller hanya mengendalikan game untuk pengguna yang menjalankannya."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Omdat de app je hoofdaccount gebruikt, werkt je controller niet met dat account. Maak een tweede gebruiker aan op de console. Druk na het verbinden op de PS-knop van de controller, kies die gebruiker en speel daarmee. Draait de game al, sluit hem dan en start hem opnieuw als die gebruiker: de controller bestuurt de game alleen voor de gebruiker die hem startte."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keďže aplikácia používa tvoj hlavný účet, ovládač s ním nefunguje. Vytvor na konzole druhého používateľa. Po pripojení stlač na ovládači tlačidlo PS, vyber tohto používateľa a hraj zaňho. Ak už hra beží, zavri ju a spusti ju znova za tohto používateľa: ovládač ovláda hru len za používateľa, ktorý ju spustil."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eftersom appen använder ditt huvudkonto fungerar inte handkontrollen med det kontot. Skapa en andra användare på konsolen. Tryck på PS-knappen på handkontrollen efter anslutningen, välj den användaren och spela med den. Om spelet redan är igång, stäng det och starta det igen som den användaren: handkontrollen styr spelet bara för den användare som startade det."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพราะแอปใช้บัญชีหลักของคุณ คอนโทรลเลอร์จึงใช้บัญชีนั้นไม่ได้ สร้างผู้ใช้คนที่สองบนคอนโซล หลังเชื่อมต่อแล้วกดปุ่ม PS บนคอนโทรลเลอร์ เลือกผู้ใช้นั้นแล้วเล่นเกมด้วยผู้ใช้นั้น ถ้าเกมเปิดอยู่แล้ว ให้ปิดแล้วเปิดใหม่ด้วยผู้ใช้คนนั้น: คอนโทรลเลอร์จะควบคุมเกมได้เฉพาะผู้ใช้ที่เปิดเกมเท่านั้น"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оскільки застосунок використовує ваш основний обліковий запис, контролер із ним не працює. Створіть на консолі другого користувача. Після підключення натисніть кнопку PS на контролері, виберіть цього користувача й грайте ним. Якщо гра вже запущена, закрийте її і запустіть знову від імені цього користувача: контролер керує грою лише для того, хто її запустив."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vì ứng dụng dùng tài khoản chính của bạn, tay cầm không dùng được tài khoản đó. Hãy tạo người dùng thứ hai trên máy. Sau khi kết nối, nhấn nút PS trên tay cầm, chọn người dùng đó và chơi game bằng người dùng đó. Nếu game đang chạy, hãy đóng rồi mở lại bằng người dùng đó: tay cầm chỉ điều khiển game cho người dùng đã mở nó."
           }
         }
       }
@@ -11525,6 +13825,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "De app verbindt met de console via je hoofd-PSN-account. Log één keer in met dat account op het tabblad “Console”."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikácia sa ku konzole pripája tvojím hlavným účtom PSN. Raz sa ním prihlás na karte „Konzola“."
           }
         },
         "sv": {
@@ -11603,6 +13909,12 @@
             "value": "In rust"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "V režime spánku"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -11677,6 +13989,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Standaard herstellen"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Obnoviť predvolené"
           }
         },
         "sv": {
@@ -11755,6 +14073,12 @@
             "value": "Annuleren"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zrušiť"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -11777,6 +14101,170 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hủy"
+          }
+        }
+      }
+    },
+    "Video hazırlanıyor...": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جارٍ تجهيز الفيديو..."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Připravuji video..."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ετοιμάζεται το βίντεο..."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing video..."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वीडियो तैयार हो रहा है..."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Videó előkészítése..."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menyiapkan video..."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video wordt voorbereid..."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pripravujem video..."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Förbereder video..."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กำลังเตรียมวิดีโอ..."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Готуємо відео..."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đang chuẩn bị video..."
+          }
+        }
+      }
+    },
+    "Video izle, 30 dakika daha": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شاهد فيديو، 30 دقيقة إضافية"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Podívej se na video, 30 minut navíc"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Δες ένα βίντεο, 30 λεπτά ακόμα"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watch a video, 30 more minutes"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वीडियो देखें, 30 मिनट और"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nézz meg egy videót, még 30 perc"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tonton video, 30 menit lagi"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bekijk een video, 30 minuten extra"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pozri si video, 30 minút navyše"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titta på en video, 30 minuter till"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ดูวิดีโอ รับเพิ่ม 30 นาที"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Переглянь відео, ще 30 хвилин"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xem video, thêm 30 phút"
           }
         }
       }
@@ -11829,6 +14317,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Binnenkort"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Už čoskoro"
           }
         },
         "sv": {
@@ -11907,6 +14401,12 @@
             "value": "Alleen vertalen als er wordt gesproken"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prekladať len pri reči"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -11981,6 +14481,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Natuurlijkere vertaling met AI"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prirodzenejší preklad vďaka AI"
           }
         },
         "sv": {
@@ -12059,6 +14565,12 @@
             "value": "Vertalen met AI"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad pomocou AI"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -12130,6 +14642,12 @@
           }
         },
         "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI · Pro"
+          }
+        },
+        "sk": {
           "stringUnit": {
             "state": "translated",
             "value": "AI · Pro"
@@ -12211,6 +14729,12 @@
             "value": "AI-vertaling zit in Pro · voorlopig vertaalt je telefoon"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad pomocou AI je v Pro · zatiaľ prekladá telefón"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -12233,6 +14757,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dịch bằng AI có trong Pro · tạm thời dịch trên điện thoại"
+          }
+        }
+      }
+    },
+    "Yapay zekâ çevirisini 45 dakika ücretsiz dene": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جرّب الترجمة بالذكاء الاصطناعي مجانًا لمدة 45 دقيقة"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyzkoušej AI překlad 45 minut zdarma"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Δοκίμασε δωρεάν τη μετάφραση AI για 45 λεπτά"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try AI translation free for 45 minutes"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI अनुवाद 45 मिनट मुफ़्त आज़माएँ"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próbáld ki az MI-fordítást 45 percig ingyen"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coba terjemahan AI gratis selama 45 menit"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Probeer AI-vertaling 45 minuten gratis"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyskúšaj AI preklad 45 minút zadarmo"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prova AI-översättning gratis i 45 minuter"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลองแปลด้วย AI ฟรี 45 นาที"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спробуй ШІ-переклад безкоштовно 45 хвилин"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dùng thử dịch AI miễn phí 45 phút"
           }
         }
       }
@@ -12285,6 +14891,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gebruik AI-vertaling 45 minuten gratis. Geen kaart nodig, eenmalig."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Používaj AI preklad 45 minút zadarmo. Bez karty, len raz."
           }
         },
         "sv": {
@@ -12363,6 +14975,12 @@
             "value": "Kies een abonnement om AI-vertaling te houden. Doe je dat niet, dan blijft vertalen op je telefoon gratis."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyber si tarif a zostaň pri preklade s AI. Inak zostáva preklad v telefóne zadarmo."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -12437,6 +15055,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Juridische informatie"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Právne informácie"
           }
         },
         "sv": {
@@ -12515,6 +15139,12 @@
             "value": "Pas de tekstgrootte aan met A− / A+ onderaan. Scrol omhoog om eerdere regels te lezen."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veľkosť textu meníš tlačidlami A− / A+ dole. Posunom nahor si prečítaš staršie repliky."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -12537,6 +15167,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Chỉnh cỡ chữ bằng A− / A+ ở dưới. Cuộn lên để đọc các câu trước."
+          }
+        }
+      }
+    },
+    "Yeniden ara": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابحث مرة أخرى"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hledat znovu"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Νέα αναζήτηση"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search again"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "फिर से खोजें"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Újrakeresés"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cari lagi"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opnieuw zoeken"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hľadať znova"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sök igen"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ค้นหาอีกครั้ง"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шукати знову"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tìm lại"
           }
         }
       }
@@ -12589,6 +15301,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Opnieuw proberen"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skúsiť znova"
           }
         },
         "sv": {
@@ -12667,6 +15385,12 @@
             "value": "Jaarlijks"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ročne"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -12741,6 +15465,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "minder betekenisfouten"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "menej chýb vo význame"
           }
         },
         "sv": {
@@ -12819,6 +15549,12 @@
             "value": "accountnummer niet leesbaar"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "číslo účtu sa nepodarilo prečítať"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -12893,6 +15629,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "dubbeltik: sluiten · lang indrukken: omdraaien"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "dvojité ťuknutie: zavrieť · dlhé podržanie: otočiť"
           }
         },
         "sv": {
@@ -12971,6 +15713,12 @@
             "value": "laden..."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "načítavam..."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -13045,6 +15793,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vertaling"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad"
           }
         },
         "sv": {
@@ -13123,6 +15877,12 @@
             "value": "Vertalen mislukt. Kijk bij Instellingen."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad zlyhal. Skontroluj Nastavenia."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -13197,6 +15957,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vertalen..."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prekladám..."
           }
         },
         "sv": {
@@ -13275,6 +16041,12 @@
             "value": "Offline vertalen"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad offline"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -13349,6 +16121,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Heel snel: ongeveer 0,3 seconde."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Veľmi rýchle: asi 0,3 sekundy."
           }
         },
         "sv": {
@@ -13427,6 +16205,12 @@
             "value": "Leest ook de vorige regels mee: onderwerp, uitdrukkingen en straattaal kloppen."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číta aj predchádzajúce repliky: podmet, idiómy a slang sedia."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -13501,6 +16285,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Leest de vorige regels; weet wie tegen wie praat en vertaalt het onderwerp goed."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Číta predchádzajúce repliky; správne spozná, kto ku komu hovorí, a preloží podmet."
           }
         },
         "sv": {
@@ -13579,6 +16369,12 @@
             "value": "Voorbeeld: verzonnen regels, echte vertaling"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukážka: vymyslené repliky, skutočný preklad"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -13655,6 +16451,12 @@
             "value": "Gratis"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadarmo"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -13677,6 +16479,252 @@
           "stringUnit": {
             "state": "translated",
             "value": "Miễn phí"
+          }
+        }
+      }
+    },
+    "Ücretsiz · %d dk": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مجاني · %d د"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdarma · %d min"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Δωρεάν · %d λεπ."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free · %d min"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मुफ़्त · %d मिनट"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingyenes · %d perc"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gratis · %d mnt"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gratis · %d min"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadarmo · %d min"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gratis · %d min"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฟรี · %d นาที"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Безкоштовно · %d хв"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miễn phí · %d phút"
+          }
+        }
+      }
+    },
+    "Ücretsiz · %d:%02d": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مجاني · %d:%02d"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdarma · %d:%02d"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Δωρεάν · %d:%02d"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free · %d:%02d"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मुफ़्त · %d:%02d"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingyenes · %d:%02d"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gratis · %d:%02d"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gratis · %d:%02d"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zadarmo · %d:%02d"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gratis · %d:%02d"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฟรี · %d:%02d"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Безкоштовно · %d:%02d"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miễn phí · %d:%02d"
+          }
+        }
+      }
+    },
+    "Ücretsiz çeviri yarın yeniden açılır. Şimdi devam etmek için:": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعود الترجمة المجانية غدًا. للمتابعة الآن:"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Překlad zdarma se znovu otevře zítra. Chceš-li pokračovat hned:"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η δωρεάν μετάφραση ανοίγει ξανά αύριο. Για να συνεχίσεις τώρα:"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free translation opens again tomorrow. To keep going now:"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मुफ़्त अनुवाद कल फिर खुलेगा। अभी जारी रखने के लिए:"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Az ingyenes fordítás holnap újra elérhető. Ha most folytatnád:"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terjemahan gratis buka lagi besok. Untuk lanjut sekarang:"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gratis vertalen gaat morgen weer open. Om nu door te gaan:"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preklad zadarmo sa znova otvorí zajtra. Ak chceš pokračovať hneď:"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gratis översättning öppnar igen i morgon. För att fortsätta nu:"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การแปลฟรีจะเปิดอีกครั้งพรุ่งนี้ หากต้องการเล่นต่อตอนนี้:"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Безкоштовний переклад відкриється завтра. Щоб продовжити зараз:"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dịch miễn phí sẽ mở lại vào ngày mai. Để tiếp tục ngay:"
           }
         }
       }
@@ -13729,6 +16777,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "De tweede gebruiker maak je één keer aan. De game loopt door op je tv; opgeslagen spellen en trofeeën komen bij die gebruiker."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Druhého používateľa vytváraš raz. Hra beží ďalej na televízore; uložené pozície a trofeje sa ukladajú tomuto používateľovi."
           }
         },
         "sv": {
@@ -13807,6 +16861,12 @@
             "value": "Download"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stiahnuť"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -13881,6 +16941,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Geen internet nodig; werkt op je telefoon."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bez internetu, beží priamo v telefóne."
           }
         },
         "sv": {
@@ -13959,6 +17025,12 @@
             "value": "Internet nodig; duurt ongeveer 1 seconde."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vyžaduje internet, trvá asi 1 sekundu."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -14035,6 +17107,12 @@
             "value": "Werkt ook zonder internet."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Funguje aj bez internetu."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -14057,6 +17135,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Không cần internet vẫn chạy."
+          }
+        }
+      }
+    },
+    "İzni aç": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فعّل الإذن"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zapnout oprávnění"
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ενεργοποίηση άδειας"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on access"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अनुमति चालू करें"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Engedély bekapcsolása"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktifkan izin"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toegang aanzetten"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zapnúť povolenie"
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slå på åtkomst"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิดสิทธิ์"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Увімкнути дозвіл"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bật quyền"
           }
         }
       }
@@ -14111,6 +17271,12 @@
             "value": "NU GELEZEN"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PRÁVE ČÍTANÉ"
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -14133,6 +17299,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "ĐANG ĐỌC"
+          }
+        }
+      }
+    },
+    "Şimdilik yalnız PS5 ve PS4 destekleniyor; Xbox desteklenmiyor.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حاليًا ندعم PS5 وPS4 فقط؛ Xbox غير مدعوم."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zatím podporujeme jen PS5 a PS4; Xbox podporovaný není."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Προς το παρόν υποστηρίζονται μόνο PS5 και PS4· το Xbox δεν υποστηρίζεται."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only PS5 and PS4 are supported for now; Xbox isn't supported."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अभी सिर्फ़ PS5 और PS4 सपोर्टेड हैं; Xbox सपोर्टेड नहीं है।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Egyelőre csak a PS5 és a PS4 támogatott; az Xbox nem."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ini hanya PS5 dan PS4 yang didukung; Xbox belum didukung."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Voorlopig worden alleen PS5 en PS4 ondersteund; Xbox niet."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zatiaľ podporujeme len PS5 a PS4; Xbox podporovaný nie je."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Just nu stöds bara PS5 och PS4; Xbox stöds inte."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตอนนี้รองรับเฉพาะ PS5 และ PS4 ยังไม่รองรับ Xbox"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Наразі підтримуються лише PS5 і PS4; Xbox не підтримується."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hiện chỉ hỗ trợ PS5 và PS4; chưa hỗ trợ Xbox."
           }
         }
       }
@@ -14185,6 +17433,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tik op “Verbind met console”. Tik na het verbinden op “Ondertitels openen”: de ondertitels vullen het scherm. Leg je telefoon liggend naast je."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ťukni na „Pripojiť konzolu“. Po pripojení ťukni na „Otvoriť titulky“: titulky zaplnia obrazovku. Polož telefón na šírku vedľa seba."
           }
         },
         "sv": {

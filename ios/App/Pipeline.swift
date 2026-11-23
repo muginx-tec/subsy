@@ -166,6 +166,15 @@ final class Pipeline {
         return out
     }
 
+    /// Telefonun çevirisi; günlük ücretsiz süre (UcretsizSure) dolduysa çevirmez.
+    private func telefonla(_ body: String) async throws -> String {
+        if await MainActor.run(body: { UcretsizSure.bitti }) {
+            throw NSError(domain: "UcretsizSure", code: 1, userInfo: [NSLocalizedDescriptionKey: Pipeline.ucretsizBittiHatasi])
+        }
+        return try await translator.translate(Phrasebook.normalize(body))
+    }
+    static let ucretsizBittiHatasi = "ucretsiz_sure_bitti"
+
     func handle(text raw: String, capturedAt: Double, ocrMs: Double, place: String) {
         var text = raw.trimmingCharacters(in: .whitespacesAndNewlines)
         // Kutuda iki replik birden varsa: daha önce görülmemiş ilk parça işlenir (eskisi yeniden çevrilmez);
@@ -268,10 +277,10 @@ final class Pipeline {
                     } catch { // sunucu yok, yavaş ya da hata: telefonun çevirisine düş, altyazı boş kalmasın
                         if (error as? CloudTranslator.Failure)?.message == "Pro gerekli" { proGerekli = true; CloudTranslator.proYokKapat() }
                         onSkip?("bulut çevirisi olmadı, telefona düşüldü · \((error as? CloudTranslator.Failure)?.message ?? error.localizedDescription)")
-                        translated = try await translator.translate(Phrasebook.normalize(body))
+                        translated = try await telefonla(body)
                     }
                 } else {
-                    translated = try await translator.translate(Phrasebook.normalize(body))
+                    translated = try await telefonla(body)
                 }
                 if let name { speaker = await speakerName(name) }
             } catch { failure = error.localizedDescription }

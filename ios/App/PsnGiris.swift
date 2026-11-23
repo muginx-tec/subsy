@@ -142,7 +142,7 @@ struct PsnGirisView: View {
                 .padding(.horizontal, 14).padding(.vertical, 8)
                 .background(Capsule().fill(Color.white.opacity(0.10)))
                 HStack {
-                    Button(L("Vazgeç")) { dismiss() }.font(.system(size: 16)).foregroundColor(Theme.accent)
+                    Button(L("Vazgeç")) { Analiz.olay("psn_giris_vazgecti"); dismiss() }.font(.system(size: 16)).foregroundColor(Theme.accent)
                     Spacer()
                 }
             }
@@ -176,5 +176,6 @@ struct PsnGirisView: View {
         }
         .background(Theme.night.ignoresSafeArea())
         .preferredColorScheme(.dark)
+        .onAppear { Analiz.olay("psn_giris_acildi") }   // 2026-11-23: konsolu bulan 400 kişinin 155'i girişe hiç ulaşmadı mı, açıp vaz mı geçti, ayırmak için
     }
 }

@@ -33,7 +33,7 @@ struct GuideView: View {
              note: L("Yazı boyunu alttaki A− / A+ ile ayarlarsın. Yukarı kaydırınca eski replikleri okursun.")),
         // Hesap düzeni Selim'in kararı (2026-11-16): uygulama ana hesabı kullanır, kumanda ikinci bir kullanıcıyla oynar.
         Step(icon: "person.2.fill", title: L("Kumanda için ikinci kullanıcı"),
-             text: L("Uygulama ana hesabını kullandığı için kumandan o hesapla çalışmaz. Konsolda ikinci bir kullanıcı oluştur. Bağlandıktan sonra kumandada PS tuşuna bas, o kullanıcıyı seç ve oyunu onunla oyna."),
+             text: L("Uygulama ana hesabını kullandığı için kumandan o hesapla çalışmaz. Konsolda ikinci bir kullanıcı oluştur. Bağlandıktan sonra kumandada PS tuşuna bas, o kullanıcıyı seç ve oyunu onunla oyna. Oyun açıksa kapat ve o kullanıcıyla yeniden aç: kumanda oyunu yalnız onu açan kullanıcıyla oynatır."),
              note: L("İkinci kullanıcıyı bir kez oluşturursun. Oyun TV'de sürer; kayıtların ve kupaların o kullanıcıda birikir.")),
         Step(icon: "rectangle.dashed", title: L("Altyazının yerini ayarla"),
              text: L("Her oyun altyazıyı başka yere koyar. Çeviri gelmiyorsa ya da menü yazıları karışıyorsa “Altyazının Yeri”ni aç ve sarı kutuyu oyundaki altyazının üstüne sürükle."),

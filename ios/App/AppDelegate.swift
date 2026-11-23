@@ -7,6 +7,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         metaBaslat(application, launchOptions)
         Analiz.baslat()
+        Task { await UcretsizSure.yukle() }
         return true
     }
 

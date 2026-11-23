@@ -26,6 +26,16 @@ final class Konsol: ObservableObject {
     enum Durum: Equatable { case bos, kaydoluyor, baglaniyor, bagli, koptu(String) }
 
     @Published var hosts: [PyluxDiscoveredHost] = []
+    /// Uykudaki konsol uyandırılıyor (bağlanmadan önce). 2026-11-23: bağlantı hatalarının çoğu "Bağlan"dan 0 sn sonra geliyordu;
+    /// uygulama uykudaki konsolu hiç uyandırmıyordu.
+    @Published var uyandiriliyor = false
+    /// Son bağlantı denemesi neden olmadı (kullanıcıya gösterilir); boşsa yok.
+    @Published var baglantiHatasi = ""
+    /// Son eşleştirme denemesi olmadı (kullanıcıya gösterilir). Önceden yalnız deneme kaydına yazılıyordu, kullanıcı hiçbir şey görmüyordu.
+    @Published var eslesmeHatasi = false
+    /// Son oturum ne zaman bitti: PS5, oturum kapandıktan sonraki ~3 sn içinde gelen isteği reddediyor (chiaki-ng #25);
+    /// kullanıcılar hatadan 0 sn sonra yeniden basıyordu (kişi başı ortanca 6, en çok 85 hata).
+    private var sonBitis = Date.distantPast
     @Published var durum: Durum = .bos
     @Published var gunluk: [String] = []
     @Published var sonKare: UIImage?
@@ -62,6 +72,8 @@ final class Konsol: ObservableObject {
     @Published var cevirmen = "telefon"
     /// Telefonun çevirisi dil paketi olmadığı için yapılamadı: altyazı ekranında "Dil paketini indir" çıkar.
     @Published var paketEksik = false
+    /// Günlük ücretsiz süre doldu (UcretsizSure): altyazı ekranında süre bitti kartı.
+    @Published var ucretsizBitti = false
     /// Analiz için: altyazı ekranının açıldığı an ve çeviren başına yeni replik sayısı.
     private var altyaziBas: Date?
     private var replikSayisi: [String: Int] = [:]
@@ -87,7 +99,7 @@ final class Konsol: ObservableObject {
         }
         Pipeline.main?.onKonsolResult = { [weak self] r in self?.cevrildi(r) }
         cevirmen = CloudTranslator.enabled ? "bulut" : "telefon"
-        proNotu = false; paketEksik = false
+        proNotu = false; paketEksik = false; ucretsizBitti = false   // altyazı ekranı 2 sn içinde gerçek durumu koyar
         altyaziBas = Date(); replikSayisi = [:]
         Analiz.olay("altyazi_acildi", ["ornek_kipi": ornekKipi, "ceviri_yolu": cevirmen == "bulut" ? "yapay_zeka" : "telefon", "bagli": durum == .bagli,
                                        "pro_durumu": MainActor.assumeIsolated { ProMagaza.shared.satinAlinmis ? "abone" : (ProMagaza.shared.denemede ? "deneme" : "yok") }])
@@ -198,6 +210,7 @@ final class Konsol: ObservableObject {
         if r.proGerekli { proNotu = true }   // bu oturumda kalıcı: Pro bitti, telefonla çevriliyor
         // Çeviri yapılamadıysa (ör. telefonda dil paketi yok) sessiz kalma: altyazı ekranının altına yaz.
         if let hata = r.error {
+            if hata == Pipeline.ucretsizBittiHatasi { ucretsizBitti = true; return }   // altyazı ekranı kartı gösterir
             if hata == L("Dil paketi indirilmemiş") { paketEksik = true }
             sonSure = L("Çeviri yapılamadı. Ayarlar'a bak.") + " (\(hata))"; return
         }
@@ -323,6 +336,7 @@ final class Konsol: ObservableObject {
         info.psnAccountId = account
         info.pin = code
         durum = .kaydoluyor
+        eslesmeHatasi = false
         Analiz.olay("eslesme_basladi", ["ps5": host.isPS5])
         yaz("kayıt isteği gönderildi: \(addr)")
         regist = PyluxRegistService(info: info) { [weak self] result, data, _ in
@@ -333,7 +347,9 @@ final class Konsol: ObservableObject {
                 Kasa.yaz("ps5RpKey", data.rpKey)
                 self.yaz("KAYIT TAMAM: \(data.serverNickname ?? "PS5")")
                 Analiz.olay("eslesme_tamam")
+                self.eslesmeHatasi = false
             } else {
+                self.eslesmeHatasi = result != .canceled
                 Analiz.olay("eslesme_hata", ["iptal": result == .canceled])
                 self.yaz(result == .canceled ? "kayıt iptal" : "KAYIT OLMADI (kod yanlış ya da süresi dolmuş olabilir)")
             }
@@ -343,7 +359,66 @@ final class Konsol: ObservableObject {
 
     // MARK: Bağlanma
 
+    /// Eşleştirmede saklanan anahtardan "uyan" paketinin kimliği: anahtarın içeriği onaltılık yazı (Pylux HostModels.swift ile aynı).
+    private var uyandirmaKimligi: UInt64? {
+        guard let key = Kasa.oku("ps5RegistKey") else { return nil }
+        let yazi = String(decoding: key.prefix(while: { $0 != 0 }), as: UTF8.self)
+        return UInt64(yazi, radix: 16)
+    }
+
+    /// Bağlan: konsol uykudaysa önce uyandır, hazır olunca bağlan; az önce oturum bittiyse birkaç saniye bekle.
     func baglan(host: PyluxDiscoveredHost) {
+        guard session == nil, !uyandiriliyor, host.hostAddr != nil else { return }
+        baglantiHatasi = ""
+        let bekle = max(0, 4 - Date().timeIntervalSince(sonBitis))
+        if host.state == .ready {
+            if bekle > 0 {
+                durum = .baglaniyor
+                DispatchQueue.main.asyncAfter(deadline: .now() + bekle) { [weak self] in
+                    guard let self else { return }
+                    if self.durum == .baglaniyor { self.durum = .bos }
+                    self.baglanSimdi(host: self.guncel(host) ?? host)
+                }
+            } else {
+                baglanSimdi(host: host)
+            }
+            return
+        }
+        // Uykuda: uyan paketi, sonra konsol "hazır" diyene kadar en çok 20 sn bekle (45 sn uzundu: ağdan açma ayarı kapalı
+        // konsolda kullanıcı boşuna bekliyordu, Selim 2026-11-23). Kullanıcı PS tuşuyla açarsa da hazır olunca bağlanır.
+        guard let addr = host.hostAddr, let kimlik = uyandirmaKimligi else { baglanSimdi(host: host); return }
+        uyandiriliyor = true
+        Analiz.olay("konsol_uyandirma", ["ps5": host.isPS5])
+        yaz("konsol uykuda, uyandırılıyor: \(addr)")
+        let basla = Date()
+        func dene() {
+            PyluxDiscoveryService.wakeupHost(addr, credential: kimlik, ps5: host.isPS5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+                guard let self, self.uyandiriliyor else { return }
+                if let h = self.guncel(host), h.state == .ready {
+                    self.uyandiriliyor = false
+                    Analiz.olay("konsol_uyandi", ["sn": Int(Date().timeIntervalSince(basla))])
+                    // Uyanan konsolun Uzaktan Oynama servisi birkaç saniye geç açılıyor.
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) { self.baglanSimdi(host: h) }
+                } else if Date().timeIntervalSince(basla) > 20 {
+                    self.uyandiriliyor = false
+                    Analiz.olay("konsol_uyanmadi")
+                    self.baglantiHatasi = L("Konsol uyanmadı. Kumandadaki PS tuşuyla aç, sonra yeniden bağlan.") + " "
+                        + L("Bir dahakine kendiliğinden uyanması için PS5'te: Ayarlar > Sistem > Güç Tasarrufu > Dinlenme Modunda Kullanılabilen Özellikler > Ağdan PS5'i Açmayı Etkinleştir.")
+                } else {
+                    dene()
+                }
+            }
+        }
+        dene()
+    }
+
+    /// Aramadaki en güncel hâli (durum: hazır / uykuda).
+    private func guncel(_ host: PyluxDiscoveredHost) -> PyluxDiscoveredHost? {
+        hosts.first { $0.hostId != nil && $0.hostId == host.hostId } ?? hosts.first { $0.hostAddr == host.hostAddr }
+    }
+
+    private func baglanSimdi(host: PyluxDiscoveredHost) {
         guard session == nil, let addr = host.hostAddr else { return }
         gosterilemez = false
         guard let registKey = Kasa.oku("ps5RegistKey"), let rpKey = Kasa.oku("ps5RpKey") else {
@@ -361,8 +436,13 @@ final class Konsol: ObservableObject {
         receiver.eventBlock = { [weak self] ptr in
             guard let ptr else { return }
             let event = ptr.assumingMemoryBound(to: ChiakiSessionBridgeEvent.self).pointee
-            let reason = event.quit_reason_str.map { String(cString: $0) } ?? ""
-            DispatchQueue.main.async { self?.olay(event.type, reason: reason, pinYanlis: event.login_pin_incorrect) }
+            // quit_reason_str çoğu zaman boş geliyordu (PostHog'da 1.808 hatanın hepsinde neden ""); kodu ve kütüphanenin
+            // kendi açıklamasını da al.
+            let ek = event.quit_reason_str.map { String(cString: $0) } ?? ""
+            let kod = Int(event.quit_reason)
+            let ad = String(cString: chiaki_session_bridge_quit_reason_string(Int32(event.quit_reason)))
+            let reason = ek.isEmpty ? ad : ek
+            DispatchQueue.main.async { self?.olay(event.type, reason: reason, kod: kod, pinYanlis: event.login_pin_incorrect) }
         }
 
         var info = ChiakiSessionBridgeConnectInfo()
@@ -433,14 +513,20 @@ final class Konsol: ObservableObject {
         _ = chiaki_session_bridge_stop(session)
     }
 
-    private func olay(_ type: ChiakiSessionBridgeEventType, reason: String, pinYanlis: Bool) {
+    private func olay(_ type: ChiakiSessionBridgeEventType, reason: String, kod: Int = -1, pinYanlis: Bool) {
         switch type {
         case ChiakiSessionBridgeEventConnected:
             durum = .bagli
             Analiz.olay("baglandi")
             yaz("BAĞLANDI")
         case ChiakiSessionBridgeEventQuit:
-            Analiz.olay(durum == .bagli ? "baglanti_koptu" : "baglanti_hata", ["asama": "oturum", "neden": reason])
+            let bagliydi = durum == .bagli
+            Analiz.olay(bagliydi ? "baglanti_koptu" : "baglanti_hata",
+                        ["asama": "oturum", "neden": reason, "kod": kod, "arka_plan": UIApplication.shared.applicationState == .background])
+            sonBitis = Date()
+            if !bagliydi {
+                baglantiHatasi = L("Konsol bağlantıyı kabul etmedi. PS5'te Uzaktan Oynama'nın açık olduğuna ve konsolun başka bir cihaza bağlı olmadığına bak; birkaç saniye sonra yeniden dene.")
+            }
             durum = .koptu(reason)
             yaz("oturum bitti: \(reason)")
         case ChiakiSessionBridgeEventLoginPinRequest:

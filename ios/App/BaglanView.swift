@@ -1,4 +1,5 @@
 import SwiftUI
+import Network
 
 /// Konsola bağlanma ekranı: konsolu bul, bir kez eşleştir, bağlan, altyazıyı aç.
 /// Oyun görüntüsü burada gösterilmez; oyun TV'de, telefon altyazı ekranı.
@@ -12,6 +13,12 @@ struct BaglanView: View {
     @State private var showKutu = false
     @State private var showAyrinti = false
     @State private var showGiris = false
+    /// Konsol 15 saniyede bulunamadı: bekleme yerine yapılacakları göster (2026-11-22: aramaya başlayan 343 kişiden 93'ü bulamadı).
+    @State private var bulunamadi = false
+    /// Telefon Wi-Fi'da (ya da kabloda) değil: konsol hiç bulunamaz (2026-11-23: bulamayanların %26'sı mobil verideydi).
+    @State private var wifiYok = false
+    @State private var agIzleyici: NWPathMonitor?
+    @State private var aramaTuru = 0
     /// PSN girişi bitince yapılacak iş (ör. bağlanma). Giriş ayrı bir adım değil, bağlanmanın parçası (Selim).
     @State private var giristenSonra: (() -> Void)?
 
@@ -33,7 +40,7 @@ struct BaglanView: View {
                 if bagli {
                     bagliKart
                 } else if konsol.hosts.isEmpty {
-                    araniyor
+                    if wifiYok { wifiKarti } else if bulunamadi { bulunamadiKarti } else { araniyor }
                 } else {
                     ForEach(konsol.hosts, id: \.self) { host in konsolKarti(host) }
                 }
@@ -71,7 +78,23 @@ struct BaglanView: View {
         .fullScreenCover(isPresented: $showAltyazi) { KonsolAltyaziView() }
         .fullScreenCover(isPresented: $showKutu) { KonsolKutuView().environment(\.layoutDirection, ArayuzDili.sagdanSola ? .rightToLeft : .leftToRight) }
         .sheet(isPresented: $showGiris) { PsnGirisView { giristenSonra?(); giristenSonra = nil } }
-        .onAppear { konsol.aramayiBaslat() }
+        .onAppear {
+            konsol.aramayiBaslat()
+            let m = NWPathMonitor()
+            m.pathUpdateHandler = { yol in
+                let yok = !(yol.usesInterfaceType(.wifi) || yol.usesInterfaceType(.wiredEthernet))
+                DispatchQueue.main.async { if wifiYok != yok { wifiYok = yok; if yok { Analiz.olay("wifi_yok") } } }
+            }
+            m.start(queue: .global(qos: .utility)); agIzleyici = m
+        }
+        .onDisappear { agIzleyici?.cancel(); agIzleyici = nil }
+        .task(id: aramaTuru) {
+            bulunamadi = false
+            try? await Task.sleep(for: .seconds(15))
+            guard !Task.isCancelled, konsol.hosts.isEmpty, !bagli else { return }
+            withAnimation { bulunamadi = true }
+            Analiz.olay("konsol_bulunamadi", ["tur": aramaTuru])
+        }
         .onDisappear { konsol.aramayiDurdur() }
         // Bağlanınca altyazı kendiliğinden açılmaz (Selim, 2026-11-16); kullanıcı L("Altyazıyı aç")a basar.
     }
@@ -87,6 +110,46 @@ struct BaglanView: View {
             Text(L("Konsol, bağlanan cihazın hangi PSN hesabına ait olduğunu bilmek ister. Giriş Sony'nin kendi sayfasında yapılır; parolan bu uygulamaya gelmez."))
                 .font(.system(size: 14)).foregroundColor(Color.white.opacity(0.8)).fixedSize(horizontal: false, vertical: true)
             buyukDugme(L("PSN ile giriş yap"), simge: "person.crop.circle") { showGiris = true }
+        }
+    }
+
+    /// Telefon Wi-Fi'da değil: aramayı beklemeden söyle.
+    private var wifiKarti: some View {
+        kart(vurgulu: true) {
+            Label(L("Telefon Wi-Fi'a bağlı değil"), systemImage: "wifi.slash")
+                .font(.system(size: 17, weight: .bold)).foregroundColor(.white)
+            Text(L("Konsol yalnız aynı Wi-Fi ağından bulunur. Telefonu konsolun bağlı olduğu Wi-Fi ağına bağla; mobil veriyle olmaz."))
+                .font(.system(size: 14)).foregroundColor(Color.white.opacity(0.85)).fixedSize(horizontal: false, vertical: true)
+        }
+    }
+
+    /// 15 saniyede konsol çıkmadı: en sık dört neden ve iki düğme (izin ayarı, yeniden ara).
+    private var bulunamadiKarti: some View {
+        kart(vurgulu: true) {
+            Label(L("Telefon ve konsol aynı Wi-Fi'da mı?"), systemImage: "wifi.exclamationmark")
+                .font(.system(size: 17, weight: .bold)).foregroundColor(.white)
+            VStack(alignment: .leading, spacing: 10) {
+                madde("wifi", L("Telefon ve konsol aynı Wi-Fi ağında olmalı (misafir ağı ya da mobil veri olmaz)."))
+                madde("power", L("PS5 açık olmalı. Dinlenme modundaysa: Ayarlar > Sistem > Güç Tasarrufu > Dinlenme Modunda Kullanılabilen Özellikler > İnternete Bağlı Kal."))
+                madde("antenna.radiowaves.left.and.right", L("Telefonun Ayarlar'ında Subsy için \"Yerel Ağ\" izni açık olmalı."))
+                madde("gamecontroller", L("Şimdilik yalnız PS5 ve PS4 destekleniyor; Xbox desteklenmiyor."))
+            }
+            HStack(spacing: 10) {
+                buyukDugme(L("İzni aç"), simge: "gearshape") {
+                    Analiz.olay("konsol_bulunamadi_ayarlar")
+                    if let url = URL(string: UIApplication.openSettingsURLString) { UIApplication.shared.open(url) }
+                }
+                buyukDugme(L("Yeniden ara"), simge: "arrow.clockwise") {
+                    konsol.aramayiDurdur(); konsol.aramayiBaslat(); aramaTuru += 1
+                }
+            }
+        }
+    }
+
+    private func madde(_ simge: String, _ yazi: String) -> some View {
+        HStack(alignment: .top, spacing: 10) {
+            Image(systemName: simge).font(.system(size: 15, weight: .semibold)).foregroundColor(Theme.accent).frame(width: 22)
+            Text(yazi).font(.system(size: 14)).foregroundColor(Color.white.opacity(0.85)).fixedSize(horizontal: false, vertical: true)
         }
     }
 
@@ -126,7 +189,7 @@ struct BaglanView: View {
                 Spacer(minLength: 0)
             }
             if konsol.kayitli {
-                buyukDugme(konsol.durum == .baglaniyor ? L("Bağlanıyor...") : L("Bağlan"), simge: "dot.radiowaves.left.and.right") {
+                buyukDugme(konsol.uyandiriliyor ? L("Konsol uyandırılıyor...") : (konsol.durum == .baglaniyor ? L("Bağlanıyor...") : L("Bağlan")), simge: "dot.radiowaves.left.and.right") {
                     if konsol.hesapNo.isEmpty {
                         giristenSonra = { konsol.baglan(host: host) }
                         showGiris = true
@@ -134,9 +197,16 @@ struct BaglanView: View {
                         konsol.baglan(host: host)
                     }
                 }
-                .disabled(konsol.durum == .baglaniyor)
-                if case .koptu(let neden) = konsol.durum {
-                    Text(L("Bağlantı kesildi") + (neden.isEmpty ? "" : ": \(neden)")).font(.system(size: 13)).foregroundColor(Theme.dim)
+                .disabled(konsol.durum == .baglaniyor || konsol.uyandiriliyor)
+                if konsol.uyandiriliyor {
+                    Text(L("Uyanmazsa kumandadaki PS tuşuyla aç; açılınca kendiliğinden bağlanır."))
+                        .font(.system(size: 13)).foregroundColor(Theme.dim).fixedSize(horizontal: false, vertical: true)
+                }
+                if !konsol.baglantiHatasi.isEmpty {
+                    Label(konsol.baglantiHatasi, systemImage: "exclamationmark.triangle.fill")
+                        .font(.system(size: 14)).foregroundColor(.white.opacity(0.9)).fixedSize(horizontal: false, vertical: true)
+                } else if case .koptu = konsol.durum {
+                    Text(L("Bağlantı kesildi")).font(.system(size: 13)).foregroundColor(Theme.dim)
                 }
                 Button(L("Eşleştirmeyi sil")) { konsol.kaydiSil() }.font(.system(size: 13)).foregroundColor(Theme.dim)
             } else if konsol.hesapNo.isEmpty {
@@ -158,6 +228,12 @@ struct BaglanView: View {
                         .padding(.horizontal, 18).padding(.vertical, 13)
                         .background(RoundedRectangle(cornerRadius: 12).fill(Theme.accent))
                         .disabled(konsol.durum == .kaydoluyor)
+                }
+                if konsol.eslesmeHatasi {
+                    // Önceden eşleşme olmayınca kullanıcı hiçbir şey görmüyordu (3 günde 58 kişide 344 başarısız deneme).
+                    Label(L("Eşleşme olmadı. Kodu ekranda göründüğü sürede gir. Konsolda kodu açan kullanıcı, burada giriş yaptığın PSN hesabıyla aynı olmalı."),
+                          systemImage: "exclamationmark.triangle.fill")
+                        .font(.system(size: 14)).foregroundColor(.white.opacity(0.9)).fixedSize(horizontal: false, vertical: true)
                 }
             }
         }

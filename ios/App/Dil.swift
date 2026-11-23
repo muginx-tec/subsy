@@ -23,6 +23,7 @@ enum Diller {
         Dil(kod: "uk", ad: "Українська", turkce: "Ukraynaca", sagdanSola: false),
         Dil(kod: "el", ad: "Ελληνικά", turkce: "Yunanca", sagdanSola: false),
         Dil(kod: "cs", ad: "Čeština", turkce: "Çekçe", sagdanSola: false),
+        Dil(kod: "sk", ad: "Slovenčina", turkce: "Slovakça", sagdanSola: false),   // 2026-11-23: CZ/SK grubundan gelen Slovaklar
         Dil(kod: "hu", ad: "Magyar", turkce: "Macarca", sagdanSola: false),
         Dil(kod: "sv", ad: "Svenska", turkce: "İsveççe", sagdanSola: false),
     ]

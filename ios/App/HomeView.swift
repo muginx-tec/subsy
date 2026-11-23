@@ -126,6 +126,7 @@ struct HomeView: View {
     @State private var showKutu = ProcessInfo.processInfo.arguments.contains("-kutuOnizleme")
     @State private var showPro = ProcessInfo.processInfo.arguments.contains("-proEkrani")
     @ObservedObject private var konsol = Konsol.shared
+    @ObservedObject private var magaza = ProMagaza.shared
 
     /// Alt çubuktaki sekme: 0 ana sayfa, 1 konsol, 2 ayarlar.
     @State private var sekme = (ProcessInfo.processInfo.arguments.contains("-konsolDeneme") || ProcessInfo.processInfo.arguments.contains("-altyaziOnizleme")) ? 1 : (ProcessInfo.processInfo.arguments.contains("-hakkinda") || ProcessInfo.processInfo.arguments.contains("-ayarlarSekmesi") ? 2 : 0)
@@ -174,8 +175,11 @@ struct HomeView: View {
                 sahne
                 VStack(spacing: 22) {   // Pro kartı gelince 30'dan 22'ye: sayfa kaymasın
                     baglaDugmesi
+                    // Apple'ın çevirisi bu dili desteklemiyorsa ücretsiz yol yok: hemen söyle (Selim, 2026-11-22).
+                    let dilKarti = DilDestekKarti.gorunur(dilDesteklenmiyor: model.language == "desteklenmiyor")
+                    if dilKarti { DilDestekKarti(yer: "ana") { showPro = true } }
                     ozellikler
-                    ProKart { showPro = true }
+                    if !dilKarti { ProKart { showPro = true } }   // aynı şeyi iki kartla söyleme
                     kutucuklar
                 }
                 .padding(.horizontal, 20)

@@ -54,6 +54,10 @@ enum Onizleme {
                "Most byl zavřený, tak jsem jel oklikou.",
                "Dobře. Vezmi mapu, vyrážíme za svítání.",
                "Drž se blízko. Na téhle cestě se rychle stmívá."],
+        "sk": ["Kde si bol? Čakal som celú noc.",
+               "Most bol zatvorený, tak som šiel okľukou.",
+               "Dobre. Vezmi mapu, vyrážame na úsvite.",
+               "Drž sa blízko. Na tejto ceste sa rýchlo stmieva."],
         "hu": ["Hol voltál? Egész éjjel vártam.",
                "A híd le volt zárva, ezért kerülővel jöttem.",
                "Rendben. Fogd a térképet, napkeltekor indulunk.",
@@ -68,6 +72,8 @@ enum Onizleme {
     static let ornekIngilizce = [
         "Mara: Where have you been? I waited all night.",
         "Theo: The bridge was closed, so I took the long way.",
+        // Uzun replik: yazı büyükken taşma ve kaydırma görülsün (Selim, 2026-11-23: "deneme yazısı ekle de görelim").
+        "Mara: Listen to me, if we keep following the river we will reach the old station before the storm hits, but if we lose the trail in the dark we will have to wait until morning, and nobody knows what is waiting for us out there.",
         "Mara: Fine. Grab the map, we leave at sunrise.",
         "Theo: You almost gave me a heart attack back there.",
         "Mara: Stay close. This road gets dark fast.",
