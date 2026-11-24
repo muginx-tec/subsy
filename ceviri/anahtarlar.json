@@ -211,5 +211,7 @@
  "Ücretsiz · %d dk",
  "Bir dahakine kendiliğinden uyanması için PS5'te: Ayarlar > Sistem > Güç Tasarrufu > Dinlenme Modunda Kullanılabilen Özellikler > Ağdan PS5'i Açmayı Etkinleştir.",
  "Uyanmazsa kumandadaki PS tuşuyla aç; açılınca kendiliğinden bağlanır.",
- "Ücretsiz · %d:%02d"
+ "Ücretsiz · %d:%02d",
+ "Konsola yeniden bağlanıyor...",
+ "Bağlantı koptu. Konsol sekmesinden yeniden bağlan."
 ]

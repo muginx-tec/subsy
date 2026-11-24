@@ -211,5 +211,7 @@
  "Free · %d min",
  "To let it wake up on its own next time, on the PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network.",
  "If it doesn't wake, turn it on with the PS button on the controller; it connects by itself once it's on.",
- "Free · %d:%02d"
+ "Free · %d:%02d",
+ "Reconnecting to the console...",
+ "Connection lost. Reconnect from the Console tab."
 ]

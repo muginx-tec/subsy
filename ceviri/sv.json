@@ -211,5 +211,7 @@
  "Gratis · %d min",
  "För att den ska vakna av sig själv nästa gång, på PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network.",
  "Om den inte vaknar, starta den med PS-knappen på handkontrollen; när den är på ansluter den av sig själv.",
- "Gratis · %d:%02d"
+ "Gratis · %d:%02d",
+ "Ansluter till konsolen igen...",
+ "Anslutningen bröts. Anslut igen från fliken Konsol."
 ]

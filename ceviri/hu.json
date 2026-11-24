@@ -211,5 +211,7 @@
  "Ingyenes · %d perc",
  "Hogy legközelebb magától felébredjen, a PS5-ön: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network.",
  "Ha nem ébred fel, kapcsold be a kontroller PS gombjával; amint bekapcsol, magától csatlakozik.",
- "Ingyenes · %d:%02d"
+ "Ingyenes · %d:%02d",
+ "Újracsatlakozás a konzolhoz...",
+ "Megszakadt a kapcsolat. Csatlakozz újra a Konzol fülön."
 ]

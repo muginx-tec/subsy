@@ -392,6 +392,21 @@ struct KonsolAltyaziView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center).offset(y: 60)
             }
+            if !konsol.ornekKipi && konsol.durum != .bagli {
+                // Bağlantı durumu (Selim, 2026-11-23: "bu sırada çeviri ekranına bağlanıyor gibi bir şey koyabilir miyiz"):
+                // arka planda kopup kendiliğinden yeniden bağlanırken kullanıcı ne olduğunu görsün.
+                let baglaniyor = konsol.durum == .baglaniyor || konsol.uyandiriliyor
+                HStack(spacing: 8) {
+                    if baglaniyor { ProgressView().tint(.white).scaleEffect(0.8) }
+                    else { Image(systemName: "wifi.exclamationmark") }
+                    Text(baglaniyor ? L("Konsola yeniden bağlanıyor...") : L("Bağlantı koptu. Konsol sekmesinden yeniden bağlan."))
+                }
+                .font(.system(size: 14 * taban, weight: .semibold)).foregroundColor(.white)
+                .padding(.horizontal, 14).padding(.vertical, 8)
+                .background(Capsule().fill(baglaniyor ? Theme.accent.opacity(0.85) : Color.orange.opacity(0.85)))
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top).padding(.top, 14)
+                .zIndex(12)
+            }
             if konsol.satirlar.isEmpty {
                 Text(konsol.ornekKipi ? L("Çevriliyor...") : (konsol.gosterilemez ? L("Konsolda açık olan içerik Uzaktan Oynama'da gösterilemiyor. Bir oyun aç, altyazı kendiliğinden gelir.") : (konsol.durum == .bagli ? L("Altyazı bekleniyor...") : L("PS5 bağlı değil"))))
                     .multilineTextAlignment(.center).padding(.horizontal, 80)

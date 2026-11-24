@@ -18,3 +18,8 @@ Bu kod uygulamaya girdiği için **telefon uygulamasının tamamı AGPL-3.0 ile 
   işaretli). Neden: konsol Uzaktan Oynama'ya kapalı bir içerik gösterirken (ör. YouTube) kütüphane bu geri
   çağrıyı denetimsiz çağırıyor, verilmemişse uygulama çöküyordu (2026-11-18). Durum `SubsyGosterilemez`
   bildirimiyle uygulamaya iletilir.
+
+## Değişiklik: VideoDecoder.m (2026-11-23)
+Uygulama arka plana gidip dönünce iOS çözücü oturumunu geçersiz kılıyor (kVTInvalidSessionErr, -12903). Pylux'un çözücüsü
+oturumu yeniden kurmuyordu; bağlantı "bağlı" görünüp kare gelmiyordu. Şimdi -12903'te oturum silinir, sonraki karede
+`createSession` ile yeniden kurulur.

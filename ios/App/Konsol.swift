@@ -21,6 +21,29 @@ final class Konsol: ObservableObject {
             self.gosterilemez = (n.object as? NSNumber)?.boolValue ?? false
             self.yaz(self.gosterilemez ? "konsol: içerik Uzaktan Oynama'da gösterilemiyor" : "konsol: içerik yeniden gösterilebiliyor")
         }
+        // Kendiliğinden yeniden bağlanma (2026-11-23, Selim tablette: ana ekrana çıkınca bağlantı 1 dk dolmadan kopuyor;
+        // iOS arka plandaki uygulamanın ağını kesiyor). Altyazı açıkken arka plana gidildiyse ve bağlantı koptuysa,
+        // uygulamaya dönünce kullanıcı bir şeye basmadan son konsola yeniden bağlanılır.
+        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main) { [weak self] _ in
+            guard let self, self.okumaAcik, self.durum == .bagli else { return }
+            self.yenidenBaglan = true
+        }
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
+            self?.gerekirseYenidenBaglan()
+        }
+    }
+
+    /// Arka plana giderken altyazı açık ve bağlıydı: kopma olursa dönüşte kendiliğinden yeniden bağlan.
+    private var yenidenBaglan = false
+    private var sonHost: PyluxDiscoveredHost?
+
+    private func gerekirseYenidenBaglan() {
+        guard yenidenBaglan, UIApplication.shared.applicationState == .active else { return }
+        guard session == nil, durum != .bagli, durum != .baglaniyor, durum != .kaydoluyor, let host = sonHost else { return }
+        yenidenBaglan = false
+        yaz("arka planda koptu: yeniden bağlanılıyor")
+        Analiz.olay("otomatik_yeniden_baglanti")
+        baglan(host: host)
     }
 
     enum Durum: Equatable { case bos, kaydoluyor, baglaniyor, bagli, koptu(String) }
@@ -135,6 +158,7 @@ final class Konsol: ObservableObject {
     func altyaziyiDurdur() {
         altyaziOzeti()
         okumaAcik = false
+        yenidenBaglan = false
         Pipeline.main?.onKonsolResult = nil
         ornekZamanlayici?.invalidate(); ornekZamanlayici = nil
         ornekKipi = false
@@ -420,6 +444,7 @@ final class Konsol: ObservableObject {
 
     private func baglanSimdi(host: PyluxDiscoveredHost) {
         guard session == nil, let addr = host.hostAddr else { return }
+        sonHost = host
         gosterilemez = false
         guard let registKey = Kasa.oku("ps5RegistKey"), let rpKey = Kasa.oku("ps5RpKey") else {
             yaz("önce kayıt gerekli"); return
@@ -496,27 +521,44 @@ final class Konsol: ObservableObject {
             _ = chiaki_session_bridge_join(ref)
             DispatchQueue.main.sync {
                 guard let self else { return }
+                // Bekçi bu oturumu çoktan bırakıp yenisini açmış olabilir: yalnız kendi oturumunu temizle.
+                guard self.session == ref else { return }
                 self.session = nil
                 self.decoder = nil
                 self.receiver = nil
                 self.gosterilemez = false
                 if self.durum == .bagli || self.durum == .baglaniyor { self.durum = .bos }
+                self.gerekirseYenidenBaglan()   // kopma uygulamaya döndükten sonra anlaşıldıysa
             }
             chiaki_session_bridge_free(ref)
             receiver.invalidate()
+            // Kütüphane kareleri çözücüye sahipsiz işaretçiyle verir: oturum serbest bırakılana kadar çözücü yaşamalı
+            // (bekçi ya da kop() oturumu erken bırakırsa self.decoder nil olur).
+            withExtendedLifetime(decoder) {}
         }
     }
 
     func kop() {
-        guard let session else { return }
+        yenidenBaglan = false   // kullanıcı kendisi kesti: kendiliğinden yeniden bağlanma
+        guard let ref = session else { return }
         yaz("bağlantı kapatılıyor")
-        _ = chiaki_session_bridge_stop(session)
+        _ = chiaki_session_bridge_stop(ref)
+        // Durdurma takılırsa (ağ çoktan gitmişse) oturumu bırak: yoksa yeniden bağlanmak için uygulamayı kapatmak gerekiyordu.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+            guard let self, self.session == ref else { return }
+            self.yaz("oturum kapanmadı: bırakıldı")
+            self.session = nil; self.decoder = nil; self.receiver = nil
+            self.gosterilemez = false
+            if self.durum == .bagli || self.durum == .baglaniyor { self.durum = .bos }
+        }
     }
 
     private func olay(_ type: ChiakiSessionBridgeEventType, reason: String, kod: Int = -1, pinYanlis: Bool) {
         switch type {
         case ChiakiSessionBridgeEventConnected:
             durum = .bagli
+            sonKareZamani = Date()
+            bekciyiKur()
             Analiz.olay("baglandi")
             yaz("BAĞLANDI")
         case ChiakiSessionBridgeEventQuit:
@@ -537,8 +579,41 @@ final class Konsol: ObservableObject {
         }
     }
 
+    // MARK: Bekçi (2026-11-23, kullanıcı şikâyeti: "bağlantı zaman aşımıyla koparsa ya da oturumu kapatırsam bağlıymış gibi
+    // görünüyor ama çevirmiyor, ancak uygulamayı yeniden başlatınca düzeliyor")
+    // Bağlıyken 15 sn hiç kare gelmezse oturum ölü sayılır: durdurulur, kullanıcı "Bağlan" ile yeniden bağlanır.
+    // Durdurma da 5 sn'de bitmezse oturum bırakılır ki yeniden bağlanmak uygulamayı kapatmayı gerektirmesin.
+
+    private var sonKareZamani = Date.distantPast
+    private var bekci: Timer?
+
+    private func bekciyiKur() {
+        bekci?.invalidate()
+        bekci = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] _ in self?.bekciBak() }
+    }
+
+    private func bekciBak() {
+        guard durum == .bagli, let ref = session else { bekci?.invalidate(); bekci = nil; return }
+        // Arka planda kare gelmemesi normal; konsol içeriği göstermiyorsa da (gosterilemez) kare gelmez.
+        guard UIApplication.shared.applicationState == .active, !gosterilemez else { sonKareZamani = Date(); return }
+        guard Date().timeIntervalSince(sonKareZamani) > 15 else { return }
+        bekci?.invalidate(); bekci = nil
+        yaz("15 sn kare gelmedi: oturum kapatılıyor")
+        Analiz.olay("baglanti_koptu", ["asama": "kare_yok"])
+        sonBitis = Date()
+        durum = .koptu("kare_yok")
+        _ = chiaki_session_bridge_stop(ref)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+            guard let self, self.session == ref else { return }
+            self.yaz("oturum kapanmadı: bırakıldı")
+            self.session = nil; self.decoder = nil; self.receiver = nil
+            self.gosterilemez = false
+        }
+    }
+
     /// Çözücünün iş parçacığında çağrılır.
     private func kare(_ buffer: CVPixelBuffer) {
+        sonKareZamani = Date()
         kareGeldi?(buffer)
         oku(buffer)
         sayac += 1

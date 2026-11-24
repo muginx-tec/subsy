@@ -211,5 +211,7 @@
  "Gratis · %d min",
  "Zodat hij de volgende keer zelf wakker wordt, op de PS5: Settings > System > Power Saving > Features Available in Rest Mode > Enable Turning On PS5 from Network.",
  "Wordt hij niet wakker, zet hem dan aan met de PS-knop op de controller; zodra hij aan is, maakt hij zelf verbinding.",
- "Gratis · %d:%02d"
+ "Gratis · %d:%02d",
+ "Opnieuw verbinden met de console...",
+ "Verbinding verbroken. Maak opnieuw verbinding via het tabblad Console."
 ]

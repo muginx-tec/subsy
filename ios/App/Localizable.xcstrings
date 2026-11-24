@@ -2953,6 +2953,88 @@
         }
       }
     },
+    "Bağlantı koptu. Konsol sekmesinden yeniden bağlan.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انقطع الاتصال. أعد الاتصال من تبويب الجهاز."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spojení se přerušilo. Připoj se znovu na kartě Konzole."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η σύνδεση χάθηκε. Σύνδεσε ξανά από την καρτέλα Κονσόλα."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connection lost. Reconnect from the Console tab."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कनेक्शन टूट गया। कंसोल टैब से फिर से कनेक्ट करें।"
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Megszakadt a kapcsolat. Csatlakozz újra a Konzol fülön."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koneksi terputus. Sambungkan lagi dari tab Konsol."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinding verbroken. Maak opnieuw verbinding via het tabblad Console."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spojenie sa prerušilo. Pripoj sa znova na karte Konzola."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anslutningen bröts. Anslut igen från fliken Konsol."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การเชื่อมต่อขาดหาย เชื่อมต่อใหม่จากแท็บคอนโซล"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "З'єднання втрачено. Підключись знову на вкладці «Консоль»."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mất kết nối. Hãy kết nối lại từ thẻ Máy chơi game."
+          }
+        }
+      }
+    },
     "Bağlantı olmazsa kendiliğinden telefonun çevirisine döner.": {
       "localizations": {
         "ar": {
@@ -8443,6 +8525,88 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kết nối máy chơi game"
+          }
+        }
+      }
+    },
+    "Konsola yeniden bağlanıyor...": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جارٍ إعادة الاتصال بالجهاز..."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Znovu se připojuji ke konzoli..."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Επανασύνδεση με την κονσόλα..."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reconnecting to the console..."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कंसोल से फिर से जुड़ रहा है..."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Újracsatlakozás a konzolhoz..."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menyambungkan ulang ke konsol..."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opnieuw verbinden met de console..."
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Znova sa pripájam ku konzole..."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ansluter till konsolen igen..."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กำลังเชื่อมต่อคอนโซลใหม่..."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторне підключення до консолі..."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đang kết nối lại với máy..."
           }
         }
       }

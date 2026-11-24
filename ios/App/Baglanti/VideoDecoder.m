@@ -320,8 +320,12 @@ static uint8_t h265NALType(const uint8_t *nal, size_t len) {
         return NO;
     }
     if (!self.session) {
-        os_log_with_type(g_vdec_log, OS_LOG_TYPE_ERROR, "[feedSample] Decoder session not available");
-        return NO;
+        // Subsy: oturum önceden geçersizleşip kurulamadıysa yeniden dene (aşağıdaki -12903 notu).
+        if (self.formatDesc) [self createSession];
+        if (!self.session) {
+            os_log_with_type(g_vdec_log, OS_LOG_TYPE_ERROR, "[feedSample] Decoder session not available");
+            return NO;
+        }
     }
     NSMutableData *avcc = [NSMutableData dataWithCapacity:bufSize + 256];
     off = 0;
@@ -361,6 +365,15 @@ static uint8_t h265NALType(const uint8_t *nal, size_t len) {
     CFRelease(sampleBuf);
     if (err != noErr) {
         os_log_with_type(g_vdec_log, OS_LOG_TYPE_ERROR, "[feedSample] VTDecompressionSessionDecodeFrame err=%d buf=%zu lost=%d", (int)err, bufSize, (int)framesLost);
+        // Subsy (2026-11-23): uygulama arka plana gidip dönünce iOS çözücü oturumunu geçersiz kılar
+        // (kVTInvalidSessionErr -12903). Pylux oturumu yeniden kurmuyordu: bağlantı "bağlı" görünüp hiç kare
+        // gelmiyordu, ancak uygulamayı yeniden başlatınca düzeliyordu. Oturumu sil; sonraki karede yeniden kurulur,
+        // NO dönünce kütüphane anahtar kare ister.
+        if (err == kVTInvalidSessionErr) {
+            VTDecompressionSessionInvalidate(self.session);
+            CFRelease(self.session);
+            _session = NULL;
+        }
         return NO;
     }
     if (s_callbackCount <= 5 || (self.presentationTimeStamp > 0 && self.presentationTimeStamp % 300 == 1)) {
