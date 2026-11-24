@@ -1,6 +1,7 @@
 import SwiftUI
 import StoreKit
 import Translation
+import CoreMotion
 
 /// Tam ekran altyazı (kendi PS5 bağlantımızla). Oyun görüntüsü gösterilmez: oyun TV'de, telefon
 /// yanda duran altyazı ekranı. En yeni replik altta, büyük ve beyaz; öncekiler üstünde soluk.
@@ -26,6 +27,24 @@ struct KonsolAltyaziView: View {
     /// 90 derece çeviriyoruz; uzun basınca öbür yana döner. Gerçek yatay dönüş 2026-11-21'de denendi, döndürme kilidi
     /// açık iPad'de bozuk göründü, geri alındı (Selim: "döndürme işini iptal edelim").
     @AppStorage("altyaziTers") private var ters = false
+    /// Yön kendiliğinden (2026-11-24, Çek kullanıcı: iPad klavyeli kılıfta normal dururken yazı baş aşağıydı, ters
+    /// çevirince düzeliyordu). Tabletin hangi kenarının yukarıda olduğu yerçekiminden okunur; döndürme kilidi açıkken de
+    /// çalışır, izin istemez. Kullanıcı uzun basıp elle çevirirse bu oturumda kendiliğinden döndürme durur.
+    @State private var otomatikYon = true
+    @State private var hareket = CMMotionManager()
+
+    private func yonuIzle() {
+        guard !Self.donmeyenCihaz, hareket.isDeviceMotionAvailable, !hareket.isDeviceMotionActive else { return }
+        hareket.deviceMotionUpdateInterval = 0.5
+        hareket.startDeviceMotionUpdates(to: .main) { veri, _ in
+            guard otomatikYon, let g = veri?.gravity else { return }
+            // Yatay tutuluyorsa (x baskın): sol kenar aşağıda (x < 0) → içerik saat yönünde (+90), sağ kenar aşağıda → -90.
+            // Masada düz yatıyorsa ya da dikse son yön kalır.
+            guard abs(g.x) > 0.6, abs(g.x) > abs(g.y) else { return }
+            let yeni = g.x > 0
+            if yeni != ters { ters = yeni }
+        }
+    }
     /// Yazı boyu çarpanı (0,6 - 2,4). Alttaki A− / A+ ile ayarlanır, hatırlanır. İki parmakla büyütme yok (Selim istemedi).
     @AppStorage("altyaziBoy") private var boy = 1.0
     /// Eski repliklerin parlaklığı (0 - 1; 0 = eskiler hiç görünmez). Alttaki çubukla ayarlanır, hatırlanır (Selim, 2026-11-22: "eski replikleri
@@ -95,6 +114,7 @@ struct KonsolAltyaziView: View {
         .preferredColorScheme(.dark)
         .onAppear {
             UIApplication.shared.isIdleTimerDisabled = true   // ekran kararmasın
+            yonuIzle()
             konsol.altyaziyiBaslat()
             ipucu = true
             #if DEBUG
@@ -147,6 +167,7 @@ struct KonsolAltyaziView: View {
         }
         .onDisappear {
             UcretsizSure.simdiKaydet()
+            hareket.stopDeviceMotionUpdates()
             UIApplication.shared.isIdleTimerDisabled = false
             konsol.altyaziyiDurdur()
         }
@@ -215,24 +236,31 @@ struct KonsolAltyaziView: View {
             // Asıl seçenek: ödüllü video. Oyuncu kendisi seçer, oyun kendiliğinden durmaz.
             Button {
                 Analiz.olay("sure_bitti_video")
+                // Video hazır değilse geri çekilmeyi beklemeden yeniden dene (düğme bunun için hep basılabilir).
+                guard reklam.hazir else { reklam.simdiYukle(); return }
                 reklam.goster {
                     UcretsizSure.ekDakika += OdulluReklam.dakika
                     withAnimation { konsol.ucretsizBitti = false }
                 }
             } label: {
                 HStack(spacing: 8) {
-                    if reklam.hazir { Image(systemName: "play.fill") } else { ProgressView().tint(Theme.proKoyu1) }
-                    Text(reklam.hazir ? L("Video izle, 30 dakika daha") : L("Video hazırlanıyor...")).lineLimit(1).minimumScaleFactor(0.7)
+                    if reklam.hazir { Image(systemName: "play.fill") }
+                    else if reklam.yukleniyor { ProgressView().tint(Theme.proKoyu1) }
+                    else { Image(systemName: "arrow.clockwise") }
+                    Text(reklam.hazir ? L("Video izle, 30 dakika daha")
+                         : (reklam.yukleniyor ? L("Video hazırlanıyor...") : L("Video şu an yok, tekrar dene")))
+                        .lineLimit(1).minimumScaleFactor(0.7)
                 }
                 .font(.system(size: 16 * taban, weight: .bold)).foregroundColor(Theme.proKoyu1)
                 .frame(maxWidth: .infinity).padding(.vertical, 12 * taban)
                 .background(Capsule().fill(Theme.pro))
             }
-            .buttonStyle(Basili()).disabled(!reklam.hazir)
+            .buttonStyle(Basili()).disabled(reklam.yukleniyor && !reklam.hazir)
             if denemeVar {
                 Button {
                     Analiz.olay("sure_bitti_deneme")
-                    Task { await magaza.denemeAl() }
+                    // Deneme başlayınca kart hemen kalksın (önceden 2 sn'lik kontrolü bekliyordu; bir kullanıcı bu arada videoya da bastı).
+                    Task { await magaza.denemeAl(); if magaza.denemede { withAnimation { konsol.ucretsizBitti = false } } }
                 } label: {
                     HStack(spacing: 6) {
                         if magaza.islenen == "deneme" { ProgressView().tint(.white) }
@@ -432,7 +460,7 @@ struct KonsolAltyaziView: View {
                 // iki kez basınca ekran kapanıyordu (Selim, 2026-11-23).
                 .contentShape(Rectangle())
                 .onTapGesture(count: 2) { dismiss() }
-                .onLongPressGesture { if !Self.donmeyenCihaz { ters.toggle() } }
+                .onLongPressGesture { if !Self.donmeyenCihaz { otomatikYon = false; ters.toggle() } }
                 .padding(.bottom, 56)
                 .onChange(of: konsol.satirlar) { _, yeni in
                     guard let son = yeni.last else { return }

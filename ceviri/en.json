@@ -213,5 +213,10 @@
  "If it doesn't wake, turn it on with the PS button on the controller; it connects by itself once it's on.",
  "Free · %d:%02d",
  "Reconnecting to the console...",
- "Connection lost. Reconnect from the Console tab."
+ "Connection lost. Reconnect from the Console tab.",
+ "A new version is ready",
+ "This version is no longer supported. Update Subsy from the App Store to continue.",
+ "Update",
+ "Privacy options",
+ "No video right now, try again"
 ]

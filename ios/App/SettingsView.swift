@@ -10,6 +10,7 @@ struct SettingsView: View {
     @State private var showHakkinda = ProcessInfo.processInfo.arguments.contains("-hakkinda")
     @State private var showPro = false
     @ObservedObject private var magaza = ProMagaza.shared
+    @ObservedObject private var reklam = OdulluReklam.shared
 
     var body: some View {
         ScrollView {
@@ -91,11 +92,28 @@ struct SettingsView: View {
                     .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Theme.card))
                 }
                 .buttonStyle(Basili())
+
+                // Reklam onayını sonradan değiştirme (AdMob / GDPR, 2026-11-24): yalnız Google'ın onay penceresi bu kullanıcı
+                // için gerekliyse (AB/BK) görünür; öbür kullanıcılarda yok.
+                if reklam.gizlilikGerekli {
+                    Button { reklam.gizlilikSecenekleri() } label: {
+                        HStack(spacing: 12) {
+                            Image(systemName: "hand.raised").font(.system(size: 18)).foregroundColor(Theme.accent)
+                            Text(L("Gizlilik seçenekleri")).font(.system(size: 16, weight: .semibold)).foregroundColor(.white)
+                            Spacer(minLength: 0)
+                            Image(systemName: "chevron.forward").font(.system(size: 13, weight: .semibold)).foregroundColor(Theme.dim)
+                        }
+                        .padding(16)
+                        .background(RoundedRectangle(cornerRadius: 16, style: .continuous).fill(Theme.card))
+                    }
+                    .buttonStyle(Basili())
+                }
             }
             .padding(.horizontal, 20).padding(.top, 18).padding(.bottom, 30)
         }
         .background(gomulu ? AnyView(Color.clear) : AnyView(Backdrop()))
         .preferredColorScheme(.dark)
+        .onAppear { reklam.gizlilikDurumunuYenile() }
         .sheet(isPresented: $showPro, onDismiss: { if magaza.aktif { model.cloud = true } }) {
             ProView().environment(\.layoutDirection, ArayuzDili.sagdanSola ? .rightToLeft : .leftToRight)
         }

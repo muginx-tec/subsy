@@ -13,4 +13,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         self.window = window
     }
+
+    /// Her öne gelişte zorunlu güncelleme kontrolü (Guncelleme.swift).
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        guard let windowScene = scene as? UIWindowScene else { return }
+        Guncelleme.kontrol(windowScene)
+    }
 }

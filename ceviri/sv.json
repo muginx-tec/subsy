@@ -213,5 +213,10 @@
  "Om den inte vaknar, starta den med PS-knappen på handkontrollen; när den är på ansluter den av sig själv.",
  "Gratis · %d:%02d",
  "Ansluter till konsolen igen...",
- "Anslutningen bröts. Anslut igen från fliken Konsol."
+ "Anslutningen bröts. Anslut igen från fliken Konsol.",
+ "En ny version finns",
+ "Den här versionen stöds inte längre. Uppdatera Subsy i App Store för att fortsätta.",
+ "Uppdatera",
+ "Integritetsalternativ",
+ "Ingen video just nu, försök igen"
 ]

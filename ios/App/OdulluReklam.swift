@@ -29,12 +29,15 @@ final class OdulluReklam: NSObject, ObservableObject, FullScreenContentDelegate 
 
     /// İlk çağrıda onay penceresi (gerekirse) ve kütüphane başlatılır, sonra bir video önceden yüklenir.
     func hazirla() {
-        if basladi { if reklam == nil && !yukleniyor { yukle() }; return }
+        if basladi { if reklam == nil && !yukleniyor && Date() >= sonrakiDeneme { yukle() }; return }
         basladi = true
+        UserDefaults.standard.set(true, forKey: "reklamOnayIstendi")
         ConsentInformation.shared.requestConsentInfoUpdate(with: nil) { [weak self] _ in
             Task { @MainActor in
+                self?.gizlilikDurumunuOku()
                 ConsentForm.loadAndPresentIfRequired(from: nil) { _ in
                     Task { @MainActor in
+                        self?.gizlilikDurumunuOku()
                         guard let self, ConsentInformation.shared.canRequestAds else { return }
                         MobileAds.shared.start(completionHandler: nil)
                         self.yukle()
@@ -42,6 +45,46 @@ final class OdulluReklam: NSObject, ObservableObject, FullScreenContentDelegate 
                 }
             }
         }
+    }
+
+    // MARK: Gizlilik seçenekleri (2026-11-24, AdMob'da AB onay mesajı yayımlandı; Google ve GDPR, kullanıcının onayını
+    // sonradan değiştirebileceği görünür bir giriş istiyor). Ayarlar'da yalnız UMP "gerekli" derse görünür.
+
+    /// Onay penceresinin yeniden açılması bu kullanıcı için gerekli mi (AB/BK). Onay bilgisi okunmadıysa false.
+    @Published private(set) var gizlilikGerekli = false
+
+    /// Ayarlar açılınca: kullanıcı daha önce Google'ın onay akışından geçtiyse (sonradan Pro olmuş olsa da) durumu tazele.
+    /// Hiç geçmediyse Google'a hiçbir şey gitmez.
+    func gizlilikDurumunuYenile() {
+        guard UserDefaults.standard.bool(forKey: "reklamOnayIstendi") else { return }
+        ConsentInformation.shared.requestConsentInfoUpdate(with: nil) { [weak self] _ in
+            Task { @MainActor in self?.gizlilikDurumunuOku() }
+        }
+    }
+
+    private func gizlilikDurumunuOku() {
+        gizlilikGerekli = ConsentInformation.shared.privacyOptionsRequirementStatus == .required
+    }
+
+    /// Google'ın gizlilik seçenekleri penceresini açar; kullanıcı onayını değiştirebilir.
+    func gizlilikSecenekleri() {
+        Analiz.olay("gizlilik_secenekleri")
+        ConsentForm.presentPrivacyOptionsForm(from: Self.enUstEkran()) { [weak self] _ in
+            Task { @MainActor in self?.gizlilikDurumunuOku() }
+        }
+    }
+
+    // Başarısız yüklemeden sonra üstel geri çekilme (2026-11-24): altyazı ekranı 2 sn'de bir hazirla() çağırıyor; video
+    // gelmeyen bir kullanıcıda (Katar, 3 dk'da 14 istek) boşa istek AdMob'da gösterim oranını düşürüyordu.
+    // 30 sn, 60, 120... en çok 10 dk; başarılı yüklemede sıfırlanır. Kullanıcı düğmeye basınca beklemeden denenir.
+    private var basarisiz = 0
+    private var sonrakiDeneme = Date.distantPast
+
+    /// "Video izle"ye basıldı ama video hazır değil: geri çekilmeyi beklemeden bir kez dene.
+    func simdiYukle() {
+        guard basladi, reklam == nil, !yukleniyor else { return }
+        Analiz.olay("reklam_elle_yukle")
+        yukle()
     }
 
     private func yukle() {
@@ -54,7 +97,14 @@ final class OdulluReklam: NSObject, ObservableObject, FullScreenContentDelegate 
                 self.reklam = ad
                 self.reklam?.fullScreenContentDelegate = self
                 self.hazir = ad != nil
-                if hata != nil { Analiz.olay("reklam_yuklenemedi") }
+                if let hata = hata as NSError? {
+                    self.basarisiz += 1
+                    let bekle = min(600.0, 30.0 * pow(2.0, Double(self.basarisiz - 1)))
+                    self.sonrakiDeneme = Date().addingTimeInterval(bekle)
+                    Analiz.olay("reklam_yuklenemedi", ["kod": hata.code, "alan": hata.domain, "deneme": self.basarisiz])
+                } else if ad != nil {
+                    self.basarisiz = 0; self.sonrakiDeneme = .distantPast
+                }
             }
         }
     }
@@ -92,8 +142,9 @@ final class OdulluReklam: NSObject, ObservableObject, FullScreenContentDelegate 
     }
 
     nonisolated func ad(_ ad: any FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: any Error) {
+        let e = error as NSError
         Task { @MainActor in
-            Analiz.olay("reklam_gosterilemedi")
+            Analiz.olay("reklam_gosterilemedi", ["kod": e.code, "alan": e.domain])
             self.reklam = nil; self.hazir = false
             self.yukle()
         }

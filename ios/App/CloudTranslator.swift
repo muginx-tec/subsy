@@ -118,13 +118,14 @@ enum CloudTranslator {
     }
     #endif
 
-    struct ProDurumu { let kilit: Bool; let denemeBitis: Date?; let denemeKullanildi: Bool }
+    struct ProDurumu { let kilit: Bool; let denemeBitis: Date?; let denemeKullanildi: Bool; var enDusukSurum: String = "" }
 
     private static func durumOku(_ json: [String: Any]?) -> ProDurumu? {
         guard let json else { return nil }
         let bitis = (json["deneme_bitis"] as? Double).flatMap { $0 > 0 ? Date(timeIntervalSince1970: $0) : nil }
         return ProDurumu(kilit: json["kilit"] as? Bool ?? false, denemeBitis: bitis,
-                         denemeKullanildi: json["deneme_kullanildi"] as? Bool ?? false)
+                         denemeKullanildi: json["deneme_kullanildi"] as? Bool ?? false,
+                         enDusukSurum: json["en_dusuk_surum"] as? String ?? "")
     }
 
     private static func istek(_ yol: String, _ yontem: String) -> URLRequest? {
