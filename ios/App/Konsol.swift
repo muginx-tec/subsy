@@ -29,7 +29,9 @@ final class Konsol: ObservableObject {
             self.yenidenBaglan = true
         }
         NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
-            self?.gerekirseYenidenBaglan()
+            guard let self else { return }
+            self.gerekirseYenidenBaglan()
+            if self.durum == .bagli, self.session != nil { self.bekciyiKur() }   // bağlantı arka planı atlattı: kare geliyor mu?
         }
     }
 
@@ -557,8 +559,6 @@ final class Konsol: ObservableObject {
         switch type {
         case ChiakiSessionBridgeEventConnected:
             durum = .bagli
-            sonKareZamani = Date()
-            bekciyiKur()
             Analiz.olay("baglandi")
             yaz("BAĞLANDI")
         case ChiakiSessionBridgeEventQuit:
@@ -579,28 +579,33 @@ final class Konsol: ObservableObject {
         }
     }
 
-    // MARK: Bekçi (2026-11-23, kullanıcı şikâyeti: "bağlantı zaman aşımıyla koparsa ya da oturumu kapatırsam bağlıymış gibi
-    // görünüyor ama çevirmiyor, ancak uygulamayı yeniden başlatınca düzeliyor")
-    // Bağlıyken 15 sn hiç kare gelmezse oturum ölü sayılır: durdurulur, kullanıcı "Bağlan" ile yeniden bağlanır.
-    // Durdurma da 5 sn'de bitmezse oturum bırakılır ki yeniden bağlanmak uygulamayı kapatmayı gerektirmesin.
+    // MARK: Bekçi (2026-11-23, kullanıcı şikâyeti: "bağlantı kopunca bağlıymış gibi görünüyor ama çevirmiyor, ancak yeniden
+    // başlatınca düzeliyor"). Yalnız uygulama arka plandan döndükten sonra çalışır: dönüşten sonraki 15 sn'de tek kare gelmezse
+    // oturum ölü sayılır, kapatılır ve kendiliğinden yeniden bağlanılır. Bir kare gelince bekçi kapanır.
+    // 2026-11-24: ilk hâli bütün oyun boyunca çalışıyordu ve Selim'in tabletinde 40 dk oyundan sonra sağlam bağlantıyı kesti
+    // (ekran değişmeyince PS5 bir süre kare göndermiyor olabilir); oyun sırasında artık hiç devreye girmez.
+    // Durdurma 5 sn'de bitmezse oturum bırakılır ki yeniden bağlanmak uygulamayı kapatmayı gerektirmesin.
 
     private var sonKareZamani = Date.distantPast
+    private var donus = Date.distantPast
     private var bekci: Timer?
 
     private func bekciyiKur() {
+        donus = Date()
         bekci?.invalidate()
         bekci = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] _ in self?.bekciBak() }
     }
 
     private func bekciBak() {
         guard durum == .bagli, let ref = session else { bekci?.invalidate(); bekci = nil; return }
-        // Arka planda kare gelmemesi normal; konsol içeriği göstermiyorsa da (gosterilemez) kare gelmez.
-        guard UIApplication.shared.applicationState == .active, !gosterilemez else { sonKareZamani = Date(); return }
-        guard Date().timeIntervalSince(sonKareZamani) > 15 else { return }
+        if sonKareZamani > donus { bekci?.invalidate(); bekci = nil; return }   // dönüşten sonra kare geldi: sorun yok
+        guard UIApplication.shared.applicationState == .active, !gosterilemez else { donus = Date(); return }
+        guard Date().timeIntervalSince(donus) > 15 else { return }
         bekci?.invalidate(); bekci = nil
-        yaz("15 sn kare gelmedi: oturum kapatılıyor")
+        yaz("arka plandan dönüşte 15 sn kare gelmedi: oturum yeniden açılıyor")
         Analiz.olay("baglanti_koptu", ["asama": "kare_yok"])
         sonBitis = Date()
+        yenidenBaglan = okumaAcik   // oturum kapanınca kendiliğinden yeniden bağlan
         durum = .koptu("kare_yok")
         _ = chiaki_session_bridge_stop(ref)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
@@ -608,6 +613,7 @@ final class Konsol: ObservableObject {
             self.yaz("oturum kapanmadı: bırakıldı")
             self.session = nil; self.decoder = nil; self.receiver = nil
             self.gosterilemez = false
+            self.gerekirseYenidenBaglan()
         }
     }
 
